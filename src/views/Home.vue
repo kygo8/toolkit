@@ -1,0 +1,180 @@
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const tools = [
+  {
+    path: '/password',
+    icon: '🔑',
+    title: '随机密码生成',
+    desc: '生成安全随机密码，支持自定义长度和字符类型',
+    color: '#00d9ff'
+  },
+  {
+    path: '/json',
+    icon: '{}',
+    title: 'JSON格式化',
+    desc: '格式化、压缩JSON，支持语法高亮',
+    color: '#7c3aed'
+  },
+  {
+    path: '/base64',
+    icon: '↔',
+    title: 'Base64 编解码',
+    desc: 'Base64 编码与解码转换',
+    color: '#10b981'
+  },
+  {
+    path: '/url',
+    icon: '🔗',
+    title: 'URL 编解码',
+    desc: 'URL 编码与解码转换',
+    color: '#f59e0b'
+  }
+]
+
+const navigateTo = (path) => {
+  router.push(path)
+}
+</script>
+
+<template>
+  <div class="home">
+    <section class="hero">
+      <h1 class="hero-title">
+        <span class="gradient-text">开发者工具站</span>
+      </h1>
+      <p class="hero-subtitle">高效的在线开发工具集合</p>
+    </section>
+
+    <section class="tools-grid">
+      <div 
+        v-for="tool in tools" 
+        :key="tool.path"
+        class="tool-card"
+        @click="navigateTo(tool.path)"
+      >
+        <div class="tool-icon" :style="{ '--tool-color': tool.color }">
+          {{ tool.icon }}
+        </div>
+        <h3 class="tool-title">{{ tool.title }}</h3>
+        <p class="tool-desc">{{ tool.desc }}</p>
+        <div class="tool-arrow">→</div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<style scoped>
+.home {
+  padding: 1rem 0;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  color: var(--text-muted);
+  font-size: 1.125rem;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.tool-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tool-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--tool-color, var(--primary-color));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.tool-card:hover {
+  border-color: var(--tool-color, var(--primary-color));
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 217, 255, 0.15);
+}
+
+.tool-card:hover::before {
+  transform: scaleX(1);
+}
+
+.tool-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 8px var(--tool-color, var(--primary-color)));
+}
+
+.tool-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.tool-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.tool-arrow {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.tool-card:hover .tool-arrow {
+  color: var(--primary-color);
+  transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
