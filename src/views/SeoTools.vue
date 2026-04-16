@@ -52,6 +52,13 @@ const seoTools = [
     title: 'H标签检查',
     desc: '检查网页H1-H6标签结构是否合理',
     color: '#14b8a6'
+  },
+  {
+    path: '/seo/batch-url',
+    icon: '🌐',
+    title: '批量域名工具',
+    desc: '批量提取主域名和打开URL',
+    color: '#8b5cf6'
   }
 ]
 
