@@ -12,6 +12,7 @@ import DeadLinkChecker from '../views/seo/DeadLinkChecker.vue'
 import RobotsTxt from '../views/seo/RobotsTxt.vue'
 import SitemapXml from '../views/seo/SitemapXml.vue'
 import HTagChecker from '../views/seo/HTagChecker.vue'
+import BatchUrlOpener from '../views/seo/BatchUrlOpener.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -26,7 +27,8 @@ const routes = [
   { path: '/seo/dead-link', name: 'DeadLinkChecker', component: DeadLinkChecker },
   { path: '/seo/robots', name: 'RobotsTxt', component: RobotsTxt },
   { path: '/seo/sitemap', name: 'SitemapXml', component: SitemapXml },
-  { path: '/seo/htag', name: 'HTagChecker', component: HTagChecker }
+  { path: '/seo/htag', name: 'HTagChecker', component: HTagChecker },
+  { path: '/seo/batch-url', name: 'BatchUrlOpener', component: BatchUrlOpener }
 ]
 
 const router = createRouter({
