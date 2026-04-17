@@ -13,6 +13,8 @@ import RobotsTxt from '../views/seo/RobotsTxt.vue'
 import SitemapXml from '../views/seo/SitemapXml.vue'
 import HTagChecker from '../views/seo/HTagChecker.vue'
 import BatchUrlOpener from '../views/seo/BatchUrlOpener.vue'
+import Page404Checker from '../views/seo/Page404Checker.vue'
+import SiteCrawler from '../views/seo/SiteCrawler.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -28,7 +30,9 @@ const routes = [
   { path: '/seo/robots', name: 'RobotsTxt', component: RobotsTxt },
   { path: '/seo/sitemap', name: 'SitemapXml', component: SitemapXml },
   { path: '/seo/htag', name: 'HTagChecker', component: HTagChecker },
-  { path: '/seo/batch-url', name: 'BatchUrlOpener', component: BatchUrlOpener }
+  { path: '/seo/batch-url', name: 'BatchUrlOpener', component: BatchUrlOpener },
+  { path: '/seo/404-checker', name: 'Page404Checker', component: Page404Checker },
+  { path: '/seo/site-crawler', name: 'SiteCrawler', component: SiteCrawler }
 ]
 
 const router = createRouter({
