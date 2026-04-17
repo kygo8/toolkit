@@ -1,91 +1,134 @@
 # DevTools Hub - 开发者工具站
 
-一个基于 Vue 3 + Vite 的在线工具站，纯前端实现，可部署到任意静态托管服务。
+> 官网: https://toolx.app
+
+一个基于 Vue 3 + Vite 的在线工具站，纯前端实现，已部署到 Cloudflare Pages。
 
 ## 功能列表
 
 ### 编码/解码工具 (`/codec`)
-- ↔ Base64 编解码
-- 🔗 URL 编解码
-- <> HTML 实体编解码
-- 🌐 Unicode 编解码 (`\uXXXX`)
-- 🔢 HEX 十六进制编解码
-- 🔑 JWT Token 解码
-- # MD5 / SHA-1 / SHA-256 / SHA-512 哈希计算
+| 工具 | 说明 |
+|------|------|
+| ↔ Base64 | Base64 编码与解码 |
+| 🔗 URL | URL 编码与解码 |
+| <> HTML | HTML 实体编码与解码 |
+| 🌐 Unicode | Unicode 编码 (`\uXXXX` 格式) |
+| 🔢 HEX | 十六进制编码与解码 |
+| 🔑 JWT | JWT Token 解码 (Header/Payload) |
+| # Hash | MD5 / SHA-1 / SHA-256 / SHA-512 |
 
 ### 开发者工具 (`/dev`)
-- 🕐 时间戳转换（Unix 时间戳 ↔ 日期时间，秒/毫秒）
-- 🎨 颜色转换（HEX / RGB / HSL 实时联动，带颜色选择器）
-- 🔍 正则表达式测试（匹配高亮、分组捕获、替换预览）
-- 🔢 进制转换（二进制 / 八进制 / 十进制 / 十六进制）
-- 🆔 UUID 批量生成（v4，支持大写）
-- 📄 文本对比（逐行差异高亮）
+| 工具 | 说明 |
+|------|------|
+| 🕐 时间戳 | Unix 时间戳 ↔ 日期时间，秒/毫秒互转 |
+| 🎨 颜色转换 | HEX / RGB / HSL 实时联动，颜色选择器 |
+| 🔍 正则测试 | 正则表达式匹配高亮、分组捕获、替换预览 |
+| 🔢 进制转换 | 二/八/十/十六进制互转 |
+| 🆔 UUID | 批量生成 UUID v4，支持大写 |
+| 📄 文本对比 | 逐行差异高亮显示 |
+
+### 二维码工具 (`/qrcode`)
+| 工具 | 说明 |
+|------|------|
+| 📱 生成 | 输入文本/URL 生成二维码，支持尺寸/容错/颜色 |
+| 🔍 解码 | 上传/拖拽/粘贴图片识别二维码 |
+| 🎨 美化 | 渐变色/圆角/圆点样式/定位点配色/嵌入Logo |
+
+### cURL 工具 (`/curl`)
+| 工具 | 说明 |
+|------|------|
+| 🔄 转代码 | cURL 命令转为 Python/JavaScript/Go/PHP/Java 代码 |
+| 🛠️ 构建器 | 可视化表单构建 cURL 命令 |
+| 🔍 解析器 | 解析 cURL 命令，提取 Headers(k:v)，直接发送请求获取响应 |
 
 ### SEO 工具 (`/seo`)
-- 🌐 批量域名工具
-- 🕷️ 全站链接爬取（CORS代理，自动发现站内链接）
-- 📝 Meta 标签生成器
-- 📊 关键词密度分析
-- 🗺️ Sitemap.xml 生成器
-- 🔍 404 页面检查
-- 🔗 死链检测
-- 🤖 Robots.txt 生成器
-- # H 标签结构检查
-- 🔢 字符计数器
+| 工具 | 说明 |
+|------|------|
+| 🌐 批量域名 | 批量提取主域名和打开URL |
+| 🕷️ 全站爬取 | 递归爬取站内链接，CORS代理，发现死链和404 |
+| 📝 Meta标签 | 生成 title/description/keywords 等 |
+| 📊 关键词密度 | 分析关键词出现频率和密度 |
+| 🗺️ Sitemap | 生成 XML 网站地图 |
+| 🔍 404检查 | 批量检查URL是否返回404 |
+| 🔗 死链检测 | 检测网页中的无效链接 |
+| 🤖 Robots.txt | 生成符合标准的 robots.txt |
+| # H标签 | 检查网页H1-H6标签结构 |
+| 🔢 字符计数 | 统计标题/描述字符长度 |
 
-### 其他工具
-- 🔑 随机密码生成（密码强度检测）
-- {} JSON 格式化 / 压缩
+### 首页工具
+| 工具 | 说明 |
+|------|------|
+| 🔑 密码生成 | 随机密码，支持长度/字符类型，密码强度检测 |
+| {} JSON | JSON 格式化/压缩，语法高亮 |
 
-## 本地开发
+## 部署
 
+### 本地开发
 ```bash
-# 安装依赖
 pnpm install
-
-# 启动开发服务器
 pnpm dev
 ```
 
-## 构建部署
-
+### 构建
 ```bash
-# 构建生产版本
 pnpm build
 ```
 
-构建完成后，`dist` 目录中的静态文件可部署到任意静态托管服务。
+### Cloudflare Pages 部署
 
-### 部署到 Cloudflare Pages
+1. **方式一：手动上传**
+   - 访问 https://dash.cloudflare.com
+   - 进入 **Workers 和 Pages** → **toolkit**
+   - 点击 **部署新版本**，上传 `dist` 目录
 
-1. 访问 [Cloudflare Dashboard](https://dash.cloudflare.com)
-2. 进入 **Workers 和 Pages** → **toolkit**
-3. 点击 **部署新版本**
-4. 直接上传 `dist` 目录中的所有文件（拖拽或选择文件夹）
-5. 部署完成后即可通过分配的域名访问
+2. **方式二：CI/CD (推荐)**
+   - 推送代码到 GitHub/Gitee
+   - 在 Cloudflare Pages 绑定仓库
+   - 设置：
+     - Build command: `pnpm build`
+     - Output directory: `dist`
+
+### Cloudflare Workers (API代理)
+```bash
+# 安装 wrangler
+pnpm add -D wrangler
+
+# 部署 Workers
+npx wrangler pages project deploy toolkit --branch=master
+```
+
+## 技术栈
+
+- **前端**: Vue 3 (Composition API) + Vue Router + Vite
+- **部署**: Cloudflare Pages + Workers
+- **纯前端**: 无需后端服务，通过 Workers 实现 API 代理
 
 ## 项目结构
 
 ```
 src/
 ├── views/
-│   ├── codec/        # 编码/解码工具 (7个)
-│   ├── dev/          # 开发者工具 (6个)
-│   ├── seo/          # SEO工具 (10个)
+│   ├── codec/        # 7个编码解码工具
+│   ├── dev/          # 6个开发者工具
+│   ├── seo/          # 10个SEO工具
+│   ├── qrcode/       # 3个二维码工具
+│   ├── curl/         # 3个cURL工具
 │   ├── CodecTools.vue
 │   ├── DevTools.vue
 │   ├── SeoTools.vue
+│   ├── QrcodeTools.vue
+│   ├── CurlTools.vue
 │   ├── Home.vue
 │   ├── PasswordGenerator.vue
 │   └── JsonFormatter.vue
 ├── router/
 ├── App.vue
 └── main.js
+functions/
+├── api/proxy.js      # Cloudflare Worker API代理
+└── _routes.json     # 路由配置
 ```
 
-## 技术栈
+## License
 
-- Vue 3 (Composition API)
-- Vue Router
-- Vite
-- 纯前端，无后台依赖
+MIT

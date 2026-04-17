@@ -66,8 +66,7 @@ const sendRequest = async () => {
   responseHeaders.value = {}
   responseTab.value = 'body'
 
-  const proxy = 'https://corsproxy.io/?'
-  const targetUrl = proxy + encodeURIComponent(parsed.value.url)
+  const proxyUrl = '/api/proxy'
 
   const fetchOptions = {
     method: parsed.value.method,
@@ -82,18 +81,33 @@ const sendRequest = async () => {
   }
 
   try {
-    const resp = await fetch(targetUrl, fetchOptions)
-    responseStatus.value = resp.status
-    resp.headers.forEach((v, k) => { responseHeaders.value[k] = v })
-    const text = await resp.text()
+    const resp = await fetch(proxyUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        url: parsed.value.url,
+        method: parsed.value.method,
+        headers: parsed.value.headers,
+        body: parsed.value.data || null
+      })
+    })
+
+    const result = await resp.json()
     
-    try {
-      responseText.value = JSON.stringify(JSON.parse(text), null, 2)
-    } catch {
-      responseText.value = text
+    if (result.error) {
+      requestError.value = '请求失败: ' + result.error
+    } else {
+      responseStatus.value = result.status
+      responseHeaders.value = result.headers || {}
+      const body = result.body || ''
+      try {
+        responseText.value = JSON.stringify(JSON.parse(body), null, 2)
+      } catch {
+        responseText.value = body
+      }
     }
   } catch (e) {
-    requestError.value = '请求失败: ' + e.message + '（可能受 CORS 限制）'
+    requestError.value = '请求失败: ' + e.message
   }
 
   isRequesting.value = false
