@@ -30,7 +30,7 @@ const closeMenu = () => {
       <div class="header-content">
         <router-link to="/" class="logo">
           <span class="logo-icon">⚡</span>
-          <span class="logo-text">DevTools</span>
+          <span class="logo-text">ToolX</span>
         </router-link>
         
         <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
@@ -62,7 +62,7 @@ const closeMenu = () => {
     </main>
 
     <footer class="footer">
-      <p>© 2026 Toolx - 开发者工具站</p>
+      <p>© 2026 ToolX - 开发者工具站 | Developer Tools</p>
     </footer>
   </div>
 </template>
