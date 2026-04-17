@@ -10,6 +10,13 @@ import UnicodeCodec from '../views/codec/UnicodeCodec.vue'
 import HexCodec from '../views/codec/HexCodec.vue'
 import JwtDecoder from '../views/codec/JwtDecoder.vue'
 import HashTool from '../views/codec/HashTool.vue'
+import DevTools from '../views/DevTools.vue'
+import Timestamp from '../views/dev/Timestamp.vue'
+import ColorConverter from '../views/dev/ColorConverter.vue'
+import RegexTester from '../views/dev/RegexTester.vue'
+import NumberBase from '../views/dev/NumberBase.vue'
+import UuidGenerator from '../views/dev/UuidGenerator.vue'
+import TextDiff from '../views/dev/TextDiff.vue'
 import SeoTools from '../views/SeoTools.vue'
 import MetaGenerator from '../views/seo/MetaGenerator.vue'
 import KeywordDensity from '../views/seo/KeywordDensity.vue'
@@ -34,6 +41,13 @@ const routes = [
   { path: '/codec/hex', name: 'HexCodec', component: HexCodec },
   { path: '/codec/jwt', name: 'JwtDecoder', component: JwtDecoder },
   { path: '/codec/hash', name: 'HashTool', component: HashTool },
+  { path: '/dev', name: 'DevTools', component: DevTools },
+  { path: '/dev/timestamp', name: 'Timestamp', component: Timestamp },
+  { path: '/dev/color', name: 'ColorConverter', component: ColorConverter },
+  { path: '/dev/regex', name: 'RegexTester', component: RegexTester },
+  { path: '/dev/number-base', name: 'NumberBase', component: NumberBase },
+  { path: '/dev/uuid', name: 'UuidGenerator', component: UuidGenerator },
+  { path: '/dev/text-diff', name: 'TextDiff', component: TextDiff },
   { path: '/seo', name: 'SeoTools', component: SeoTools },
   { path: '/seo/meta', name: 'MetaGenerator', component: MetaGenerator },
   { path: '/seo/keyword-density', name: 'KeywordDensity', component: KeywordDensity },

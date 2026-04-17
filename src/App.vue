@@ -8,9 +8,8 @@ const isMenuOpen = ref(false)
 
 const navItems = [
   { path: '/', label: '首页', icon: '⌂' },
-  { path: '/password', label: '密码生成', icon: '🔑' },
-  { path: '/json', label: 'JSON格式化', icon: '{}' },
   { path: '/codec', label: '编码解码', icon: '↔' },
+  { path: '/dev', label: '开发工具', icon: '🛠' },
   { path: '/seo', label: 'SEO工具', icon: '📊' }
 ]
 

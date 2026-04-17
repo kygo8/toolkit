@@ -5,20 +5,6 @@ const router = useRouter()
 
 const tools = [
   {
-    path: '/password',
-    icon: '🔑',
-    title: '随机密码生成',
-    desc: '生成安全随机密码，支持自定义长度和字符类型',
-    color: '#00d9ff'
-  },
-  {
-    path: '/json',
-    icon: '{}',
-    title: 'JSON格式化',
-    desc: '格式化、压缩JSON，支持语法高亮',
-    color: '#7c3aed'
-  },
-  {
     path: '/codec',
     icon: '↔',
     title: '编码/解码工具',
@@ -26,11 +12,32 @@ const tools = [
     color: '#10b981'
   },
   {
+    path: '/dev',
+    icon: '🛠️',
+    title: '开发者工具',
+    desc: '时间戳转换、颜色转换、正则测试、进制转换、UUID生成、文本对比',
+    color: '#00d9ff'
+  },
+  {
     path: '/seo',
     icon: '📊',
     title: 'SEO工具集',
     desc: '全站爬取、Meta生成、关键词分析、Sitemap等',
     color: '#f59e0b'
+  },
+  {
+    path: '/password',
+    icon: '🔑',
+    title: '随机密码生成',
+    desc: '生成安全随机密码，支持自定义长度和字符类型',
+    color: '#7c3aed'
+  },
+  {
+    path: '/json',
+    icon: '{}',
+    title: 'JSON格式化',
+    desc: '格式化、压缩JSON，支持语法高亮',
+    color: '#ec4899'
   }
 ]
 
