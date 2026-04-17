@@ -32,6 +32,10 @@ import QrcodeTools from '../views/QrcodeTools.vue'
 import QrGenerator from '../views/qrcode/QrGenerator.vue'
 import QrDecoder from '../views/qrcode/QrDecoder.vue'
 import QrBeautify from '../views/qrcode/QrBeautify.vue'
+import CurlTools from '../views/CurlTools.vue'
+import CurlToCode from '../views/curl/CurlToCode.vue'
+import CurlBuilder from '../views/curl/CurlBuilder.vue'
+import CurlParser from '../views/curl/CurlParser.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -66,7 +70,11 @@ const routes = [
   { path: '/qrcode', name: 'QrcodeTools', component: QrcodeTools },
   { path: '/qrcode/generate', name: 'QrGenerator', component: QrGenerator },
   { path: '/qrcode/decode', name: 'QrDecoder', component: QrDecoder },
-  { path: '/qrcode/beautify', name: 'QrBeautify', component: QrBeautify }
+  { path: '/qrcode/beautify', name: 'QrBeautify', component: QrBeautify },
+  { path: '/curl', name: 'CurlTools', component: CurlTools },
+  { path: '/curl/to-code', name: 'CurlToCode', component: CurlToCode },
+  { path: '/curl/builder', name: 'CurlBuilder', component: CurlBuilder },
+  { path: '/curl/parser', name: 'CurlParser', component: CurlParser }
 ]
 
 const router = createRouter({
