@@ -26,6 +26,13 @@ const tools = [
     color: '#ec4899'
   },
   {
+    path: '/curl',
+    icon: '🌐',
+    title: 'cURL 工具',
+    desc: 'cURL 转代码、可视化构建、命令解析',
+    color: '#f97316'
+  },
+  {
     path: '/seo',
     icon: '📊',
     title: 'SEO工具集',
