@@ -38,7 +38,7 @@
 
 | 修改类型 | 更新文件 |
 |----------|----------|
-| 添加工具 | `README.md` (工具列表) |
+| 添加工具 | `README.md`,`README-zh.md`,`README-en.md` (工具列表) |
 | 修改配置 | `wrangler.toml` |
 | 修改路由 | `src/router/index.js` |
 
