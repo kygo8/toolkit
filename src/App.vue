@@ -62,7 +62,7 @@ const closeMenu = () => {
     </main>
 
     <footer class="footer">
-      <p>© 2026 ToolX - 开发者工具站 | Developer Tools</p>
+      <p>© 2026 ToolX | Developer Tools</p>
     </footer>
   </div>
 </template>
