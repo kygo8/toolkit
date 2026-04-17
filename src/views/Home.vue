@@ -19,17 +19,17 @@ const tools = [
     color: '#7c3aed'
   },
   {
-    path: '/base64',
+    path: '/codec',
     icon: '↔',
-    title: 'Base64 编解码',
-    desc: 'Base64 编码与解码转换',
+    title: '编码/解码工具',
+    desc: 'Base64、URL、HTML、Unicode、HEX、JWT、MD5/Hash',
     color: '#10b981'
   },
   {
-    path: '/url',
-    icon: '🔗',
-    title: 'URL 编解码',
-    desc: 'URL 编码与解码转换',
+    path: '/seo',
+    icon: '📊',
+    title: 'SEO工具集',
+    desc: '全站爬取、Meta生成、关键词分析、Sitemap等',
     color: '#f59e0b'
   }
 ]

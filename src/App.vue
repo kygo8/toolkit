@@ -10,8 +10,7 @@ const navItems = [
   { path: '/', label: '首页', icon: '⌂' },
   { path: '/password', label: '密码生成', icon: '🔑' },
   { path: '/json', label: 'JSON格式化', icon: '{}' },
-  { path: '/base64', label: 'Base64', icon: '↔' },
-  { path: '/url', label: 'URL编码', icon: '🔗' },
+  { path: '/codec', label: '编码解码', icon: '↔' },
   { path: '/seo', label: 'SEO工具', icon: '📊' }
 ]
 

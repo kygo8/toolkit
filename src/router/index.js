@@ -2,8 +2,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import PasswordGenerator from '../views/PasswordGenerator.vue'
 import JsonFormatter from '../views/JsonFormatter.vue'
-import Base64 from '../views/Base64.vue'
-import UrlCodec from '../views/UrlCodec.vue'
+import CodecTools from '../views/CodecTools.vue'
+import Base64 from '../views/codec/Base64.vue'
+import UrlCodec from '../views/codec/UrlCodec.vue'
+import HtmlCodec from '../views/codec/HtmlCodec.vue'
+import UnicodeCodec from '../views/codec/UnicodeCodec.vue'
+import HexCodec from '../views/codec/HexCodec.vue'
+import JwtDecoder from '../views/codec/JwtDecoder.vue'
+import HashTool from '../views/codec/HashTool.vue'
 import SeoTools from '../views/SeoTools.vue'
 import MetaGenerator from '../views/seo/MetaGenerator.vue'
 import KeywordDensity from '../views/seo/KeywordDensity.vue'
@@ -20,8 +26,14 @@ const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/password', name: 'PasswordGenerator', component: PasswordGenerator },
   { path: '/json', name: 'JsonFormatter', component: JsonFormatter },
-  { path: '/base64', name: 'Base64', component: Base64 },
-  { path: '/url', name: 'UrlCodec', component: UrlCodec },
+  { path: '/codec', name: 'CodecTools', component: CodecTools },
+  { path: '/codec/base64', name: 'Base64', component: Base64 },
+  { path: '/codec/url', name: 'UrlCodec', component: UrlCodec },
+  { path: '/codec/html', name: 'HtmlCodec', component: HtmlCodec },
+  { path: '/codec/unicode', name: 'UnicodeCodec', component: UnicodeCodec },
+  { path: '/codec/hex', name: 'HexCodec', component: HexCodec },
+  { path: '/codec/jwt', name: 'JwtDecoder', component: JwtDecoder },
+  { path: '/codec/hash', name: 'HashTool', component: HashTool },
   { path: '/seo', name: 'SeoTools', component: SeoTools },
   { path: '/seo/meta', name: 'MetaGenerator', component: MetaGenerator },
   { path: '/seo/keyword-density', name: 'KeywordDensity', component: KeywordDensity },
