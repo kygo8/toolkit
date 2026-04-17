@@ -5,6 +5,20 @@ const router = useRouter()
 
 const seoTools = [
   {
+    path: '/seo/batch-url',
+    icon: '🌐',
+    title: '批量域名工具',
+    desc: '批量提取主域名和打开URL',
+    color: '#8b5cf6'
+  },
+  {
+    path: '/seo/site-crawler',
+    icon: '🕷️',
+    title: '全站链接爬取',
+    desc: '爬取全站链接并检查状态码，发现死链和404页面',
+    color: '#06b6d4'
+  },
+  {
     path: '/seo/meta',
     icon: '📝',
     title: 'Meta标签生成器',
@@ -19,11 +33,18 @@ const seoTools = [
     color: '#7c3aed'
   },
   {
-    path: '/seo/character-counter',
-    icon: '🔢',
-    title: '字符计数器',
-    desc: '统计标题、描述等字符长度是否符合SEO标准',
-    color: '#10b981'
+    path: '/seo/sitemap',
+    icon: '🗺️',
+    title: 'Sitemap生成',
+    desc: '生成 XML 网站地图',
+    color: '#ec4899'
+  },
+  {
+    path: '/seo/404-checker',
+    icon: '🔍',
+    title: '404页面检查',
+    desc: '批量检查URL是否返回404状态码',
+    color: '#f43f5e'
   },
   {
     path: '/seo/dead-link',
@@ -40,13 +61,6 @@ const seoTools = [
     color: '#ef4444'
   },
   {
-    path: '/seo/sitemap',
-    icon: '🗺️',
-    title: 'Sitemap生成',
-    desc: '生成 XML 网站地图',
-    color: '#ec4899'
-  },
-  {
     path: '/seo/htag',
     icon: '#',
     title: 'H标签检查',
@@ -54,11 +68,11 @@ const seoTools = [
     color: '#14b8a6'
   },
   {
-    path: '/seo/batch-url',
-    icon: '🌐',
-    title: '批量域名工具',
-    desc: '批量提取主域名和打开URL',
-    color: '#8b5cf6'
+    path: '/seo/character-counter',
+    icon: '🔢',
+    title: '字符计数器',
+    desc: '统计标题、描述等字符长度是否符合SEO标准',
+    color: '#10b981'
   }
 ]
 

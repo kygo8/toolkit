@@ -1,11 +1,11 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 
-const length = ref(16)
+const length = ref(12)
 const includeUppercase = ref(true)
 const includeLowercase = ref(true)
 const includeNumbers = ref(true)
-const includeSpecial = ref(true)
+const includeSpecial = ref(false)
 
 const password = ref('')
 const copied = ref(false)
