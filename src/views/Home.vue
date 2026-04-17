@@ -19,6 +19,13 @@ const tools = [
     color: '#00d9ff'
   },
   {
+    path: '/qrcode',
+    icon: '📱',
+    title: '二维码工具',
+    desc: '二维码生成、解码识别、自定义美化样式',
+    color: '#ec4899'
+  },
+  {
     path: '/seo',
     icon: '📊',
     title: 'SEO工具集',
@@ -37,7 +44,7 @@ const tools = [
     icon: '{}',
     title: 'JSON格式化',
     desc: '格式化、压缩JSON，支持语法高亮',
-    color: '#ec4899'
+    color: '#14b8a6'
   }
 ]
 

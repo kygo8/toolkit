@@ -28,6 +28,10 @@ import HTagChecker from '../views/seo/HTagChecker.vue'
 import BatchUrlOpener from '../views/seo/BatchUrlOpener.vue'
 import Page404Checker from '../views/seo/Page404Checker.vue'
 import SiteCrawler from '../views/seo/SiteCrawler.vue'
+import QrcodeTools from '../views/QrcodeTools.vue'
+import QrGenerator from '../views/qrcode/QrGenerator.vue'
+import QrDecoder from '../views/qrcode/QrDecoder.vue'
+import QrBeautify from '../views/qrcode/QrBeautify.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -58,7 +62,11 @@ const routes = [
   { path: '/seo/htag', name: 'HTagChecker', component: HTagChecker },
   { path: '/seo/batch-url', name: 'BatchUrlOpener', component: BatchUrlOpener },
   { path: '/seo/404-checker', name: 'Page404Checker', component: Page404Checker },
-  { path: '/seo/site-crawler', name: 'SiteCrawler', component: SiteCrawler }
+  { path: '/seo/site-crawler', name: 'SiteCrawler', component: SiteCrawler },
+  { path: '/qrcode', name: 'QrcodeTools', component: QrcodeTools },
+  { path: '/qrcode/generate', name: 'QrGenerator', component: QrGenerator },
+  { path: '/qrcode/decode', name: 'QrDecoder', component: QrDecoder },
+  { path: '/qrcode/beautify', name: 'QrBeautify', component: QrBeautify }
 ]
 
 const router = createRouter({
