@@ -64,9 +64,9 @@ const navigateTo = (path) => {
   <div class="home">
     <section class="hero">
       <h1 class="hero-title">
-        <span class="gradient-text">开发者工具站</span>
+        <span class="gradient-text">ToolX</span>
       </h1>
-      <p class="hero-subtitle">高效的在线开发工具集合</p>
+      <p class="hero-subtitle">高效的在线工具集合</p>
     </section>
 
     <section class="tools-grid">

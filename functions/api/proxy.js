@@ -101,7 +101,10 @@ export async function onRequestPost(context) {
     const contentType = (resp.headers.get('content-type') || '').toLowerCase()
     if (contentType.includes('image') || contentType.includes('octet-stream') || contentType.includes('pdf') || contentType.includes('zip')) {
       const buf = await resp.arrayBuffer()
-      respBody = btoa(String.fromCharCode(...new Uint8Array(buf)))
+      const bytes = new Uint8Array(buf)
+      let binary = ''
+      for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i])
+      respBody = btoa(binary)
     } else {
       respBody = await resp.text()
     }
