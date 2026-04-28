@@ -1,5 +1,5 @@
 import { setHeader } from 'h3'
-import { seoRoutes, siteUrl } from '../../src/seo/routes.js'
+import { seoRoutes, siteUrl } from '~/src/seo/routes.js'
 
 export default defineEventHandler((event) => {
   setHeader(event, 'Content-Type', 'application/xml; charset=utf-8')
