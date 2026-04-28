@@ -92,7 +92,14 @@ const sendRequest = async () => {
       })
     })
 
-    const result = await resp.json()
+    const respText = await resp.text()
+
+    let result
+    try {
+      result = JSON.parse(respText)
+    } catch {
+      throw new Error(resp.status ? `代理返回非 JSON 响应 (HTTP ${resp.status})` : '代理服务器无响应')
+    }
     
     if (result.error) {
       requestError.value = '请求失败: ' + result.error
