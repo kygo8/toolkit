@@ -2,7 +2,7 @@
 
 > Website: https://toolx.app
 
-A Vue 3 + Vite based online developer tools website.
+A Nuxt 4 + Vue 3 SSR developer tools website optimized for Cloudflare Pages.
 
 ## Features
 
@@ -63,32 +63,35 @@ A Vue 3 + Vite based online developer tools website.
 
 ## Tech Stack
 
-- **Frontend**: Vue 3 (Composition API) + Vue Router + Vite
+- **Frontend**: Nuxt 4 + Vue 3 (Composition API)
+- **Deployment**: Cloudflare Pages SSR (Nitro `cloudflare_pages`)
+- **SEO**: SSR pages, route-level meta/canonical, `/sitemap.xml`, `/robots.txt`
 
 ## Project Structure
 
 ```
+pages/
+├── codec/        # Codec pages
+├── dev/          # Developer tool pages
+├── seo/          # SEO tool pages
+├── qrcode/       # QR code pages
+├── curl/         # cURL pages
+├── index.vue
+├── password.vue
+└── json.vue
 src/
 ├── views/
-│   ├── codec/        # 7 codec tools
-│   ├── dev/          # 6 dev tools
-│   ├── seo/          # 10 SEO tools
-│   ├── qrcode/       # 3 QR code tools
-│   ├── curl/         # 3 cURL tools
-│   ├── CodecTools.vue
-│   ├── DevTools.vue
-│   ├── SeoTools.vue
-│   ├── QrcodeTools.vue
-│   ├── CurlTools.vue
-│   ├── Home.vue
-│   ├── PasswordGenerator.vue
-│   └── JsonFormatter.vue
-├── router/
-├── App.vue
-└── main.js
-functions/
-├── api/proxy.js      # API proxy
-└── _routes.json     # Route config
+│   ├── codec/        # 7 codec tool components
+│   ├── dev/          # 6 dev tool components
+│   ├── seo/          # 10 SEO tool components
+│   ├── qrcode/       # 3 QR code components
+│   └── curl/         # 3 cURL components
+├── seo/              # Route SEO metadata
+server/
+├── api/proxy.post.js # API proxy
+└── routes/           # sitemap.xml / robots.txt
+app.vue
+nuxt.config.js
 ```
 
 ## License

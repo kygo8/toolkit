@@ -1,8 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 
-const router = useRouter()
 const route = useRoute()
 const isMenuOpen = ref(false)
 
@@ -28,18 +27,18 @@ const closeMenu = () => {
   <div class="app">
     <header class="header">
       <div class="header-content">
-        <router-link to="/" class="logo">
+        <NuxtLink to="/" class="logo" @click="closeMenu">
           <span class="logo-icon">⚡</span>
           <span class="logo-text">ToolX</span>
-        </router-link>
-        
+        </NuxtLink>
+
         <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
           <span class="hamburger" :class="{ open: isMenuOpen }"></span>
         </button>
 
         <nav class="nav" :class="{ open: isMenuOpen }">
-          <router-link 
-            v-for="item in navItems" 
+          <NuxtLink
+            v-for="item in navItems"
             :key="item.path"
             :to="item.path"
             class="nav-link"
@@ -48,17 +47,13 @@ const closeMenu = () => {
           >
             <span class="nav-icon">{{ item.icon }}</span>
             <span class="nav-label">{{ item.label }}</span>
-          </router-link>
+          </NuxtLink>
         </nav>
       </div>
     </header>
 
     <main class="main">
-      <router-view v-slot="{ Component }">
-        <transition name="fade" mode="out-in">
-          <component :is="Component" />
-        </transition>
-      </router-view>
+      <NuxtPage />
     </main>
 
     <footer class="footer">
@@ -208,16 +203,6 @@ const closeMenu = () => {
   color: var(--text-muted);
   font-size: 0.875rem;
   border-top: 1px solid var(--border-color);
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 
 @media (max-width: 768px) {

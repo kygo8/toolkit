@@ -4,8 +4,8 @@
 
 [**中文版**](README-zh.md) | [**English**](README-en.md)
 
-一个基于 Vue 3 + Vite 的在线工具站。
-A Vue 3 + Vite based online developer tools website.
+一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare Pages 部署优化。
+A Nuxt 4 + Vue 3 SSR developer tools website optimized for Cloudflare Pages.
 
 ## 功能列表 | Features
 
@@ -66,32 +66,35 @@ A Vue 3 + Vite based online developer tools website.
 
 ## 技术栈 | Tech Stack
 
-- **前端 | Frontend**: Vue 3 (Composition API) + Vue Router + Vite
+- **前端 | Frontend**: Nuxt 4 + Vue 3 (Composition API)
+- **部署 | Deployment**: Cloudflare Pages SSR (Nitro `cloudflare_pages`)
+- **SEO**: SSR 页面、独立 meta/canonical、`/sitemap.xml`、`/robots.txt`
 
 ## 项目结构 | Project Structure
 
 ```
+pages/
+├── codec/            # 编码解码页面 Codec pages
+├── dev/              # 开发者工具页面 Dev tool pages
+├── seo/              # SEO工具页面 SEO tool pages
+├── qrcode/           # 二维码页面 QR code pages
+├── curl/             # cURL页面 cURL pages
+├── index.vue
+├── password.vue
+└── json.vue
 src/
 ├── views/
-│   ├── codec/        # 7个编码解码工具 7 codec tools
-│   ├── dev/          # 6个开发者工具 6 dev tools
-│   ├── seo/          # 10个SEO工具 10 SEO tools
-│   ├── qrcode/       # 3个二维码工具 3 QR code tools
-│   ├── curl/         # 3个cURL工具 3 cURL tools
-│   ├── CodecTools.vue
-│   ├── DevTools.vue
-│   ├── SeoTools.vue
-│   ├── QrcodeTools.vue
-│   ├── CurlTools.vue
-│   ├── Home.vue
-│   ├── PasswordGenerator.vue
-│   └── JsonFormatter.vue
-├── router/
-├── App.vue
-└── main.js
-functions/
-├── api/proxy.js      # API代理 API proxy
-└── _routes.json     # 路由配置 Route config
+│   ├── codec/        # 7个编码解码工具组件 7 codec tool components
+│   ├── dev/          # 6个开发者工具组件 6 dev tool components
+│   ├── seo/          # 10个SEO工具组件 10 SEO tool components
+│   ├── qrcode/       # 3个二维码工具组件 3 QR code components
+│   └── curl/         # 3个cURL工具组件 3 cURL components
+├── seo/              # 路由SEO元数据 Route SEO metadata
+server/
+├── api/proxy.post.js # API代理 API proxy
+└── routes/           # sitemap.xml / robots.txt
+app.vue
+nuxt.config.js
 ```
 
 ## License

@@ -2,7 +2,7 @@
 
 > 官网: https://toolx.app
 
-一个基于 Vue 3 + Vite 的在线工具站。
+一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare Pages 部署优化。
 
 ## 功能列表
 
@@ -63,32 +63,35 @@
 
 ## 技术栈
 
-- **前端**: Vue 3 (Composition API) + Vue Router + Vite
+- **前端**: Nuxt 4 + Vue 3 (Composition API)
+- **部署**: Cloudflare Pages SSR (Nitro `cloudflare_pages`)
+- **SEO**: SSR 页面、独立 meta/canonical、`/sitemap.xml`、`/robots.txt`
 
 ## 项目结构
 
 ```
+pages/
+├── codec/        # 编码解码页面
+├── dev/          # 开发者工具页面
+├── seo/          # SEO工具页面
+├── qrcode/       # 二维码页面
+├── curl/         # cURL页面
+├── index.vue
+├── password.vue
+└── json.vue
 src/
 ├── views/
-│   ├── codec/        # 7个编码解码工具
-│   ├── dev/          # 6个开发者工具
-│   ├── seo/          # 10个SEO工具
-│   ├── qrcode/       # 3个二维码工具
-│   ├── curl/         # 3个cURL工具
-│   ├── CodecTools.vue
-│   ├── DevTools.vue
-│   ├── SeoTools.vue
-│   ├── QrcodeTools.vue
-│   ├── CurlTools.vue
-│   ├── Home.vue
-│   ├── PasswordGenerator.vue
-│   └── JsonFormatter.vue
-├── router/
-├── App.vue
-└── main.js
-functions/
-├── api/proxy.js      # API代理
-└── _routes.json     # 路由配置
+│   ├── codec/        # 7个编码解码工具组件
+│   ├── dev/          # 6个开发者工具组件
+│   ├── seo/          # 10个SEO工具组件
+│   ├── qrcode/       # 3个二维码工具组件
+│   └── curl/         # 3个cURL工具组件
+├── seo/              # 路由SEO元数据
+server/
+├── api/proxy.post.js # API代理
+└── routes/           # sitemap.xml / robots.txt
+app.vue
+nuxt.config.js
 ```
 
 ## License
