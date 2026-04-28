@@ -1,5 +1,5 @@
 import { setHeader } from 'h3'
-import { siteUrl } from '../../src/seo/routes.js'
+import { siteUrl } from '~/src/seo/routes.js'
 
 export default defineEventHandler((event) => {
   setHeader(event, 'Content-Type', 'text/plain; charset=utf-8')
