@@ -147,9 +147,8 @@ watch([locale, () => route.path], ([nextLocale]) => {
               </option>
             </select>
           </label>
-          <button class="theme-toggle" type="button" :aria-label="themeLabel" @click="toggleTheme">
+          <button class="theme-toggle" type="button" :aria-label="themeLabel" :title="themeLabel" @click="toggleTheme">
             <span>{{ themeIcon }}</span>
-            <span class="theme-label">{{ themeLabel }}</span>
           </button>
         </div>
       </div>
@@ -324,13 +323,15 @@ watch([locale, () => route.path], ([nextLocale]) => {
 .theme-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
   border: 1px solid var(--border-color);
-  border-radius: 999px;
+  border-radius: 50%;
   background: var(--card-bg);
   color: var(--text-color);
   cursor: pointer;
-  padding: 0.54rem 0.78rem;
+  padding: 0;
   transition: all 0.25s ease;
   white-space: nowrap;
 }
@@ -339,11 +340,6 @@ watch([locale, () => route.path], ([nextLocale]) => {
   border-color: var(--primary-color);
   color: var(--primary-color);
   box-shadow: 0 6px 18px var(--shadow-color);
-}
-
-.theme-label {
-  font-size: 0.8rem;
-  white-space: nowrap;
 }
 
 .nav-strip {
@@ -474,13 +470,13 @@ watch([locale, () => route.path], ([nextLocale]) => {
     padding-inline: 1rem;
   }
 
-  .logo-text,
-  .theme-label {
+  .logo-text {
     display: none;
   }
 
   .theme-toggle {
-    padding-inline: 0.65rem;
+    width: 2.25rem;
+    height: 2.25rem;
   }
 
   .nav-scroll {
