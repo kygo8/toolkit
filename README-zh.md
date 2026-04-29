@@ -1,10 +1,26 @@
-# ToolX - 开发者工具站
+# ToolX - 开发者在线工具站
 
 > 官网: https://toolx.app
 
-一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare Pages 部署优化。
+ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare Pages 部署优化，提供开发者工具、图片转换、网络检测、二维码和 SEO 工具。
 
 ## 功能列表
+
+### 图片工具 (`/image`)
+| 工具 | 说明 |
+|------|------|
+| 🖼️ 图片格式转换 | PNG、JPG、WebP 本地转换 |
+| 📉 图片压缩 | 调整质量和尺寸，压缩图片体积 |
+| 🔤 图片转 Base64 | 生成 Base64 和 Data URL |
+
+### 网络工具 (`/network`)
+| 工具 | 说明 |
+|------|------|
+| 📡 网络检测 | 检测联网状态、网络信息、本站连通性和延迟 |
+| 🌍 域名检测 | 解析域名并查询常见 DNS 记录 |
+| 🚀 cURL 测试 | 解析 cURL，发送请求并查看响应 |
+| 🔄 cURL 转代码 | cURL 命令转为 Python/JavaScript/Go/PHP/Java 代码 |
+| 🛠️ cURL 构建器 | 可视化表单构建 cURL 命令 |
 
 ### 编码/解码工具 (`/codec`)
 | 工具 | 说明 |
@@ -12,89 +28,77 @@
 | ↔ Base64 | Base64 编码与解码 |
 | 🔗 URL | URL 编码与解码 |
 | <> HTML | HTML 实体编码与解码 |
-| 🌐 Unicode | Unicode 编码 (`\uXXXX` 格式) |
+| 🌐 Unicode | Unicode 编码转换 |
 | 🔢 HEX | 十六进制编码与解码 |
-| 🔑 JWT | JWT Token 解码 (Header/Payload) |
+| 🔑 JWT | JWT Token 解码 |
 | # Hash | MD5 / SHA-1 / SHA-256 / SHA-512 |
 
 ### 开发者工具 (`/dev`)
 | 工具 | 说明 |
 |------|------|
-| 🕐 时间戳 | Unix 时间戳 ↔ 日期时间，秒/毫秒互转 |
-| 🎨 颜色转换 | HEX / RGB / HSL 实时联动，颜色选择器 |
-| 🔍 正则测试 | 正则表达式匹配高亮、分组捕获、替换预览 |
+| 🕒 时间戳 | Unix 时间戳与日期时间互转 |
+| 🎨 颜色转换 | HEX / RGB / HSL 实时转换 |
+| 🔍 正则测试 | 匹配高亮、分组捕获、替换预览 |
 | 🔢 进制转换 | 二/八/十/十六进制互转 |
-| 🆔 UUID | 批量生成 UUID v4，支持大写 |
-| 📄 文本对比 | 逐行差异高亮显示 |
+| 🆔 UUID | 批量生成 UUID v4 |
+| 📋 文本对比 | 逐行差异高亮显示 |
 
 ### 二维码工具 (`/qrcode`)
 | 工具 | 说明 |
 |------|------|
-| 📱 生成 | 输入文本/URL 生成二维码，支持尺寸/容错/颜色 |
-| 🔍 解码 | 上传/拖拽/粘贴图片识别二维码 |
-| 🎨 美化 | 渐变色/圆角/圆点样式/定位点配色/嵌入Logo |
-
-### 网络工具 (`/network`)
-| 工具 | 说明 |
-|------|------|
-| 📡 网络检测 | 检测浏览器联网状态、网络信息、本站连通性和响应延迟 |
-| 🌍 域名检测 | 解析域名结构，查询 A/AAAA/CNAME/MX/NS/TXT 等 DNS 记录 |
-| 🚀 cURL 测试 | 解析 cURL 命令，发送请求并查看响应状态、Headers 和 Body |
-| 🔄 转代码 | cURL 命令转为 Python/JavaScript/Go/PHP/Java 代码 |
-| 🛠️ 构建器 | 可视化表单构建 cURL 命令 |
+| 📱 生成 | 输入文本/URL 生成二维码 |
+| 🔍 解码 | 上传图片识别二维码 |
+| 🎨 美化 | 自定义颜色、圆角和 Logo |
 
 ### SEO 工具 (`/seo`)
 | 工具 | 说明 |
 |------|------|
-| 🌐 批量域名 | 批量提取主域名和打开URL |
-| 🕷️ 全站爬取 | 递归爬取站内链接，CORS代理，发现死链和404 |
-| 📝 Meta标签 | 生成 title/description/keywords 等 |
-| 📊 关键词密度 | 分析关键词出现频率和密度 |
-| 🗺️ Sitemap | 生成 XML 网站地图 |
-| 🔍 404检查 | 批量检查URL是否返回404 |
+| 🏷️ Meta 标签 | 生成 title/description/keywords |
+| 📊 关键词密度 | 分析关键词频率和密度 |
+| 🗺️ Sitemap | 生成 XML 站点地图 |
+| 🤖 Robots.txt | 生成 robots.txt |
 | 🔗 死链检测 | 检测网页中的无效链接 |
-| 🤖 Robots.txt | 生成符合标准的 robots.txt |
-| # H标签 | 检查网页H1-H6标签结构 |
+| # H 标签 | 检查 H1-H6 标题结构 |
 | 🔢 字符计数 | 统计标题/描述字符长度 |
+| 🕷️ 全站爬取 | 爬取站内链接并发现问题 |
+| 🌐 批量 URL | 批量提取域名和打开 URL |
+| 🔍 404 检查 | 批量检查 URL 状态码 |
 
 ### 首页工具
-| 工具 | 说明 |
-|------|------|
-| 🔑 密码生成 | 随机密码，支持长度/字符类型，密码强度检测 |
-| {} JSON | JSON 格式化/压缩，语法高亮 |
+首页重点展示图片格式转换、图片压缩、cURL 测试、域名检测、JSON 格式化和 Meta 标签生成等高频入口。
 
 ## 技术栈
 
-- **前端**: Nuxt 4 + Vue 3 (Composition API)
-- **部署**: Cloudflare Pages SSR (Nitro `cloudflare_pages`)
+- **前端**: Nuxt 4 + Vue 3 Composition API
+- **部署**: Cloudflare Pages SSR, Nitro `cloudflare_pages`
 - **SEO**: SSR 页面、独立 meta/canonical、`/sitemap.xml`、`/robots.txt`
 
 ## 项目结构
 
-```
+```text
 pages/
+├── image/        # 图片工具页面
+├── network/      # 网络工具页面
 ├── codec/        # 编码解码页面
 ├── dev/          # 开发者工具页面
-├── seo/          # SEO工具页面
 ├── qrcode/       # 二维码页面
-├── network/      # 网络工具页面
+├── seo/          # SEO 工具页面
 ├── index.vue
 ├── password.vue
 └── json.vue
 src/
 ├── views/
-│   ├── codec/        # 7个编码解码工具组件
-│   ├── dev/          # 6个开发者工具组件
-│   ├── seo/          # 10个SEO工具组件
-│   ├── qrcode/       # 3个二维码工具组件
-│   ├── network/      # 网络检测和域名检测组件
-│   └── curl/         # 3个cURL工具组件
-├── seo/              # 路由SEO元数据
+│   ├── image/    # 图片工具组件
+│   ├── network/  # 网络检测和域名检测组件
+│   ├── curl/     # cURL 工具组件
+│   ├── codec/    # 编码解码组件
+│   ├── dev/      # 开发者工具组件
+│   ├── qrcode/   # 二维码组件
+│   └── seo/      # SEO 工具组件
+└── seo/          # 路由 SEO 元数据
 server/
-├── api/proxy.post.js # API代理
-└── routes/           # sitemap.xml / robots.txt
-app.vue
-nuxt.config.js
+├── api/proxy.post.js
+└── routes/
 ```
 
 ## License

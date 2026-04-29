@@ -7,6 +7,7 @@ const isMenuOpen = ref(false)
 
 const navItems = [
   { path: '/', label: '首页', icon: '⌂' },
+  { path: '/image', label: '图片工具', icon: '🖼️' },
   { path: '/codec', label: '编码解码', icon: '↔' },
   { path: '/dev', label: '开发工具', icon: '🛠' },
   { path: '/network', label: '网络工具', icon: '🌐' },
@@ -165,11 +166,11 @@ const closeMenu = () => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.625rem 1rem;
+  padding: 0.625rem 0.82rem;
   border-radius: 8px;
   text-decoration: none;
   color: var(--text-color);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   transition: all 0.3s ease;
   border: 1px solid transparent;
 }
@@ -205,7 +206,7 @@ const closeMenu = () => {
   border-top: 1px solid var(--border-color);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .menu-toggle {
     display: block;
   }
