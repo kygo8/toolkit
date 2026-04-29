@@ -1,26 +1,20 @@
 <script setup>
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { categoryCatalog, featuredToolKeys } from '../i18n/catalog.js'
+import { useI18n } from '../i18n/useI18n.js'
 
 const router = useRouter()
+const { t, tool, category } = useI18n()
 
-const featuredTools = [
-  { path: '/image/convert', icon: '🖼️', title: '图片格式转换', desc: 'PNG、JPG、WebP 在线本地转换', color: '#38bdf8' },
-  { path: '/network/curl/test', icon: '🚀', title: 'cURL 测试', desc: '解析 cURL 并通过代理发送请求', color: '#f97316' },
-  { path: '/json', icon: '{}', title: 'JSON 格式化', desc: '格式化、压缩和校验 JSON', color: '#14b8a6' },
-  { path: '/password', icon: '🔑', title: '随机密码生成', desc: '生成安全随机密码并检测强度', color: '#7c3aed' },
-  { path: '/image/compress', icon: '📉', title: '图片压缩', desc: '压缩图片体积，优化网页加载速度', color: '#22c55e' },
-  { path: '/network/domain', icon: '🌍', title: '域名检测', desc: '查询 DNS 记录并解析域名结构', color: '#10b981' }
-]
+const featuredTools = computed(() => featuredToolKeys.map((key) => tool(key)))
 
-const categories = [
-  { path: '/image', icon: '🖼️', title: '图片工具', desc: '图片格式转换、图片压缩、图片转 Base64', color: '#38bdf8' },
-  { path: '/network', icon: '🌐', title: '网络工具', desc: '网络检测、域名检测、cURL 测试与转代码', color: '#f97316' },
-  { path: '/codec', icon: '↔', title: '编码解码', desc: 'Base64、URL、HTML、Unicode、HEX、JWT、Hash', color: '#10b981' },
-  { path: '/dev', icon: '🛠️', title: '开发者工具', desc: '时间戳、颜色、正则、进制、UUID、文本对比', color: '#00d9ff' },
-  { path: '/qrcode', icon: '📱', title: '二维码工具', desc: '二维码生成、解码识别、自定义美化样式', color: '#ec4899' },
-  { path: '/seo', icon: '📊', title: 'SEO 工具', desc: 'Meta、关键词密度、Sitemap、Robots、死链检测', color: '#f59e0b' },
-  { path: '/other', icon: '✨', title: '其他工具', desc: '随机密码生成、JSON 格式化等通用小工具', color: '#a78bfa' }
-]
+const categories = computed(() => (
+  ['image', 'network', 'codec', 'dev', 'qrcode', 'seo', 'other'].map((key) => ({
+    ...categoryCatalog[key],
+    ...category(key)
+  }))
+))
 
 const navigateTo = (path) => {
   router.push(path)
@@ -31,23 +25,23 @@ const navigateTo = (path) => {
   <div class="home">
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Developer & SEO Toolkit</p>
-        <h1 class="hero-title">ToolX 在线工具箱</h1>
+        <p class="eyebrow">{{ t('home.eyebrow') }}</p>
+        <h1 class="hero-title">{{ t('home.title') }}</h1>
         <p class="hero-subtitle">
-          ToolX 提供在线开发者工具、图片转换工具、网络检测工具和 SEO 工具，覆盖 JSON 格式化、图片压缩、图片转 Base64、cURL 测试、域名检测、编码解码、二维码生成等高频场景。
+          {{ t('home.subtitle') }}
         </p>
       </div>
       <div class="hero-panel">
-        <span class="panel-label">快速入口</span>
+        <span class="panel-label">{{ t('home.panelLabel') }}</span>
         <strong>35+</strong>
-        <p>无需安装，浏览器直接使用。图片处理在本地完成，文本工具支持 SSR 页面结构，便于搜索引擎收录。</p>
+        <p>{{ t('home.panelBody') }}</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-header">
-        <h2>常用工具</h2>
-        <p>把最高频的工具放在首页第一屏，减少点击路径。</p>
+        <h2>{{ t('home.featuredTitle') }}</h2>
+        <p>{{ t('home.featuredDesc') }}</p>
       </div>
       <div class="featured-grid">
         <button
@@ -69,8 +63,8 @@ const navigateTo = (path) => {
 
     <section class="section">
       <div class="section-header">
-        <h2>全部工具分类</h2>
-        <p>按图片、网络、编码、开发、二维码、SEO 和其他工具场景整理，页面标题和描述均可被搜索引擎读取。</p>
+        <h2>{{ t('home.categoriesTitle') }}</h2>
+        <p>{{ t('home.categoriesDesc') }}</p>
       </div>
       <div class="tools-grid">
         <article
@@ -91,9 +85,9 @@ const navigateTo = (path) => {
     </section>
 
     <section class="seo-copy">
-      <h2>为什么选择 ToolX 在线工具？</h2>
+      <h2>{{ t('home.seoTitle') }}</h2>
       <p>
-        ToolX 面向开发者、站长和内容运营人员，提供常用在线工具集合。你可以使用图片格式转换工具把 PNG、JPG、WebP 互转，用图片压缩工具降低网页图片体积，用网络检测和域名检测工具排查连接问题，用随机密码生成器创建安全密码，也可以在其他工具中找到 JSON 格式化等通用小工具。
+        {{ t('home.seoBody') }}
       </p>
     </section>
   </div>

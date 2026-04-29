@@ -1,52 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { useCategoryTools } from '../i18n/useToolList.js'
 
 const router = useRouter()
-
-const devTools = [
-  {
-    path: '/dev/timestamp',
-    icon: '🕐',
-    title: '时间戳转换',
-    desc: 'Unix 时间戳与日期时间互转',
-    color: '#00d9ff'
-  },
-  {
-    path: '/dev/color',
-    icon: '🎨',
-    title: '颜色转换',
-    desc: 'HEX、RGB、HSL 颜色格式互转',
-    color: '#7c3aed'
-  },
-  {
-    path: '/dev/regex',
-    icon: '🔍',
-    title: '正则测试',
-    desc: '正则表达式在线测试与匹配',
-    color: '#10b981'
-  },
-  {
-    path: '/dev/number-base',
-    icon: '🔢',
-    title: '进制转换',
-    desc: '二进制、八进制、十进制、十六进制互转',
-    color: '#f59e0b'
-  },
-  {
-    path: '/dev/uuid',
-    icon: '🆔',
-    title: 'UUID 生成',
-    desc: '批量生成 UUID v4',
-    color: '#ec4899'
-  },
-  {
-    path: '/dev/text-diff',
-    icon: '📄',
-    title: '文本对比',
-    desc: '对比两段文本的差异',
-    color: '#14b8a6'
-  }
-]
+const { categoryInfo, tools } = useCategoryTools('dev')
 
 const navigateTo = (path) => {
   router.push(path)
@@ -55,11 +12,11 @@ const navigateTo = (path) => {
 
 <template>
   <div class="tool-page">
-    <h1 class="page-title">🛠️ 开发者工具</h1>
+    <h1 class="page-title">{{ categoryInfo.icon }} {{ categoryInfo.title }}</h1>
 
     <div class="tools-grid">
       <div
-        v-for="tool in devTools"
+        v-for="tool in tools"
         :key="tool.path"
         class="tool-card"
         @click="navigateTo(tool.path)"

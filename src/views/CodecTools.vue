@@ -1,59 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { useCategoryTools } from '../i18n/useToolList.js'
 
 const router = useRouter()
-
-const codecTools = [
-  {
-    path: '/codec/base64',
-    icon: '↔',
-    title: 'Base64 编解码',
-    desc: 'Base64 编码与解码转换',
-    color: '#00d9ff'
-  },
-  {
-    path: '/codec/url',
-    icon: '🔗',
-    title: 'URL 编解码',
-    desc: 'URL 编码与解码转换',
-    color: '#7c3aed'
-  },
-  {
-    path: '/codec/html',
-    icon: '<>',
-    title: 'HTML 编解码',
-    desc: 'HTML 实体编码与解码转换',
-    color: '#10b981'
-  },
-  {
-    path: '/codec/unicode',
-    icon: '🌐',
-    title: 'Unicode 编解码',
-    desc: 'Unicode 编码与解码，支持 \\uXXXX 格式',
-    color: '#f59e0b'
-  },
-  {
-    path: '/codec/hex',
-    icon: '🔢',
-    title: 'HEX 编解码',
-    desc: '十六进制编码与解码转换',
-    color: '#ec4899'
-  },
-  {
-    path: '/codec/jwt',
-    icon: '🔑',
-    title: 'JWT 解码',
-    desc: '解析 JWT Token 的 Header、Payload 内容',
-    color: '#14b8a6'
-  },
-  {
-    path: '/codec/hash',
-    icon: '#',
-    title: 'MD5/Hash',
-    desc: '计算文本的 MD5、SHA-1、SHA-256 哈希值',
-    color: '#ef4444'
-  }
-]
+const { categoryInfo, tools } = useCategoryTools('codec')
 
 const navigateTo = (path) => {
   router.push(path)
@@ -62,11 +12,11 @@ const navigateTo = (path) => {
 
 <template>
   <div class="tool-page">
-    <h1 class="page-title">↔ 编码/解码工具</h1>
+    <h1 class="page-title">{{ categoryInfo.icon }} {{ categoryInfo.title }}</h1>
 
     <div class="tools-grid">
       <div
-        v-for="tool in codecTools"
+        v-for="tool in tools"
         :key="tool.path"
         class="tool-card"
         @click="navigateTo(tool.path)"

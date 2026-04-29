@@ -1,31 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { useCategoryTools } from '../i18n/useToolList.js'
 
 const router = useRouter()
-
-const tools = [
-  {
-    path: '/image/convert',
-    icon: '🖼️',
-    title: '图片格式转换',
-    desc: '在浏览器本地将图片转换为 PNG、JPG、WebP 格式',
-    color: '#38bdf8'
-  },
-  {
-    path: '/image/compress',
-    icon: '📉',
-    title: '图片压缩',
-    desc: '调整质量和最大宽度，快速压缩图片体积',
-    color: '#22c55e'
-  },
-  {
-    path: '/image/base64',
-    icon: '🔤',
-    title: '图片转 Base64',
-    desc: '将图片转换为 Base64 或 Data URL，适合 CSS、HTML 和接口调试',
-    color: '#f97316'
-  }
-]
+const { categoryInfo, tools } = useCategoryTools('image')
 
 const navigateTo = (path) => {
   router.push(path)
@@ -35,10 +13,10 @@ const navigateTo = (path) => {
 <template>
   <div class="tool-page">
     <section class="hero">
-      <p class="eyebrow">Image Toolkit</p>
-      <h1 class="page-title">🖼️ 图片工具</h1>
+      <p class="eyebrow">{{ categoryInfo.eyebrow }}</p>
+      <h1 class="page-title">{{ categoryInfo.icon }} {{ categoryInfo.title }}</h1>
       <p class="page-desc">
-        ToolX 图片工具支持图片格式转换、图片压缩和图片转 Base64，所有处理都在浏览器本地完成，不上传文件。
+        {{ categoryInfo.desc }}
       </p>
     </section>
 

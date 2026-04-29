@@ -1,24 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { useCategoryTools } from '../i18n/useToolList.js'
 
 const router = useRouter()
-
-const tools = [
-  {
-    path: '/password',
-    icon: '🔑',
-    title: '随机密码生成',
-    desc: '生成安全随机密码，支持长度、字符类型和密码强度检测',
-    color: '#7c3aed'
-  },
-  {
-    path: '/json',
-    icon: '{}',
-    title: 'JSON 格式化',
-    desc: '格式化、压缩和校验 JSON，适合接口调试和配置文件整理',
-    color: '#14b8a6'
-  }
-]
+const { categoryInfo, tools } = useCategoryTools('other')
 
 const navigateTo = (path) => {
   router.push(path)
@@ -28,10 +13,10 @@ const navigateTo = (path) => {
 <template>
   <div class="tool-page">
     <section class="hero">
-      <p class="eyebrow">Misc Toolkit</p>
-      <h1 class="page-title">✨ 其他工具</h1>
+      <p class="eyebrow">{{ categoryInfo.eyebrow }}</p>
+      <h1 class="page-title">{{ categoryInfo.icon }} {{ categoryInfo.title }}</h1>
       <p class="page-desc">
-        收纳不适合归入图片、网络、编码、开发、二维码或 SEO 分类的常用小工具，例如随机密码生成和 JSON 格式化。
+        {{ categoryInfo.desc }}
       </p>
     </section>
 
