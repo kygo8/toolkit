@@ -18,6 +18,8 @@ test('image watermark tool is registered in pages, catalog and SEO metadata', ()
 
 test('image watermark supports text, image, stamp, tiled, position and opacity controls', () => {
   const component = readFileSync(file('src/views/image/ImageWatermark.vue'), 'utf8')
+  const runtimeI18n = readFileSync(file('src/i18n/useRuntimeTextI18n.js'), 'utf8')
+  const watermarkI18n = readFileSync(file('src/i18n/runtime-text/watermark.js'), 'utf8')
 
   assert.match(component, /watermarkType/)
   assert.match(component, /Text watermark/)
@@ -31,4 +33,9 @@ test('image watermark supports text, image, stamp, tiled, position and opacity c
   assert.match(component, /drawImageWatermark/)
   assert.match(component, /drawTextWatermark/)
   assert.match(component, /canvasToBlob/)
+  assert.match(runtimeI18n, /'alt'/)
+  assert.match(watermarkI18n, /图片水印/)
+  assert.match(watermarkI18n, /画像ウォーターマーク/)
+  assert.match(watermarkI18n, /Thêm watermark ảnh/)
+  assert.match(watermarkI18n, /Base image preview/)
 })

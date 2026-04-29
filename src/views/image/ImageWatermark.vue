@@ -319,7 +319,7 @@ async function applyWatermark() {
             </label>
           </div>
           <label class="field">
-            Font size {{ fontSize }}px
+            <span>Font size <output>{{ fontSize }}px</output></span>
             <input v-model.number="fontSize" type="range" min="18" max="120" step="2" />
           </label>
         </template>
@@ -330,7 +330,7 @@ async function applyWatermark() {
             <input class="file-input" type="file" accept="image/*" @change="handleWatermarkFile" />
           </label>
           <label class="field">
-            Image scale {{ Math.round(scale * 100) }}%
+            <span>Image scale <output>{{ Math.round(scale * 100) }}%</output></span>
             <input v-model.number="scale" type="range" min="0.05" max="0.8" step="0.01" />
           </label>
         </template>
@@ -354,17 +354,17 @@ async function applyWatermark() {
         </div>
 
         <label class="field">
-          Opacity {{ Math.round(opacity * 100) }}%
+          <span>Opacity <output>{{ Math.round(opacity * 100) }}%</output></span>
           <input v-model.number="opacity" type="range" min="0.05" max="1" step="0.05" />
         </label>
 
         <label class="field">
-          Rotation {{ rotation }}°
+          <span>Rotation <output>{{ rotation }}°</output></span>
           <input v-model.number="rotation" type="range" min="-45" max="45" step="1" />
         </label>
 
         <label class="field">
-          Margin {{ margin }}px
+          <span>Margin <output>{{ margin }}px</output></span>
           <input v-model.number="margin" type="range" min="0" max="160" step="4" />
         </label>
 
