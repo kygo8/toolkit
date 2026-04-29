@@ -13,13 +13,17 @@ const isProcessing = ref(false)
 const errorText = ref('')
 
 const formatOptions = [
-  { label: 'WebP', value: 'image/webp', ext: 'webp' },
+  { label: 'JPG', value: 'image/jpeg', ext: 'jpg', lossy: true },
   { label: 'PNG', value: 'image/png', ext: 'png' },
-  { label: 'JPG', value: 'image/jpeg', ext: 'jpg' }
+  { label: 'WebP', value: 'image/webp', ext: 'webp', lossy: true },
+  { label: 'ICO', value: 'image/x-icon', ext: 'ico' },
+  { label: 'SVG', value: 'image/svg+xml', ext: 'svg' }
 ]
 
 const sourceSize = computed(() => sourceFile.value ? formatBytes(sourceFile.value.size) : '-')
 const convertedSize = computed(() => resultSize.value ? formatBytes(resultSize.value) : '-')
+const selectedFormat = computed(() => formatOptions.find((item) => item.value === targetFormat.value) || formatOptions[0])
+const supportsQuality = computed(() => Boolean(selectedFormat.value.lossy))
 
 function formatBytes(bytes) {
   if (!bytes) return '0 B'
@@ -79,6 +83,57 @@ function canvasToBlob(canvas, type, imageQuality) {
   })
 }
 
+function blobToDataUrl(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => resolve(reader.result)
+    reader.onerror = () => reject(new Error('Image read failed'))
+    reader.readAsDataURL(blob)
+  })
+}
+
+async function createSvgBlob(canvas) {
+  const pngBlob = await canvasToBlob(canvas, 'image/png')
+  const dataUrl = await blobToDataUrl(pngBlob)
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}" viewBox="0 0 ${canvas.width} ${canvas.height}"><image href="${dataUrl}" width="${canvas.width}" height="${canvas.height}" preserveAspectRatio="xMidYMid meet"/></svg>`
+  return new Blob([svg], { type: 'image/svg+xml' })
+}
+
+async function createIcoBlob(canvas) {
+  const pngBlob = await canvasToBlob(canvas, 'image/png')
+  const pngBytes = new Uint8Array(await pngBlob.arrayBuffer())
+  const headerSize = 22
+  const icoBytes = new Uint8Array(headerSize + pngBytes.length)
+  const view = new DataView(icoBytes.buffer)
+
+  view.setUint16(0, 0, true)
+  view.setUint16(2, 1, true)
+  view.setUint16(4, 1, true)
+  icoBytes[6] = canvas.width >= 256 ? 0 : canvas.width
+  icoBytes[7] = canvas.height >= 256 ? 0 : canvas.height
+  icoBytes[8] = 0
+  icoBytes[9] = 0
+  view.setUint16(10, 1, true)
+  view.setUint16(12, 32, true)
+  view.setUint32(14, pngBytes.length, true)
+  view.setUint32(18, headerSize, true)
+  icoBytes.set(pngBytes, headerSize)
+
+  return new Blob([icoBytes], { type: 'image/x-icon' })
+}
+
+async function convertCanvas(canvas) {
+  if (targetFormat.value === 'image/svg+xml') {
+    return createSvgBlob(canvas)
+  }
+
+  if (targetFormat.value === 'image/x-icon') {
+    return createIcoBlob(canvas)
+  }
+
+  return canvasToBlob(canvas, targetFormat.value, supportsQuality.value ? quality.value : undefined)
+}
+
 async function convertImage() {
   if (!sourceFile.value) {
     errorText.value = '请先选择图片'
@@ -95,10 +150,9 @@ async function convertImage() {
     const ctx = canvas.getContext('2d')
     ctx.drawImage(image, 0, 0)
 
-    const selected = formatOptions.find((item) => item.value === targetFormat.value)
-    const blob = await canvasToBlob(canvas, targetFormat.value, targetFormat.value === 'image/png' ? undefined : quality.value)
+    const blob = await convertCanvas(canvas)
     resultUrl.value = URL.createObjectURL(blob)
-    resultName.value = `${sourceFile.value.name.replace(/\.[^.]+$/, '')}.${selected.ext}`
+    resultName.value = `${sourceFile.value.name.replace(/\.[^.]+$/, '')}.${selectedFormat.value.ext}`
     resultSize.value = blob.size
   } catch (error) {
     errorText.value = error.message
@@ -114,7 +168,7 @@ async function convertImage() {
     <p class="intro">上传图片后可在本地转换为 WebP、PNG 或 JPG，适合网页图片优化和格式兼容处理。</p>
 
     <div class="card">
-      <input ref="fileInput" class="file-input" type="file" accept="image/*" @change="handleFile" />
+      <input ref="fileInput" class="file-input" type="file" accept="image/*,.jpg,.jpeg,.png,.webp,.ico,.svg,.gif,.bmp,.avif" @change="handleFile" />
 
       <div class="controls">
         <label>
@@ -125,7 +179,7 @@ async function convertImage() {
         </label>
         <label>
           图片质量 {{ Math.round(quality * 100) }}%
-          <input v-model.number="quality" type="range" min="0.1" max="1" step="0.05" :disabled="targetFormat === 'image/png'" />
+          <input v-model.number="quality" type="range" min="0.1" max="1" step="0.05" :disabled="!supportsQuality" />
         </label>
         <button class="action-btn primary" :disabled="isProcessing" @click="convertImage">
           {{ isProcessing ? '转换中...' : '转换图片' }}
