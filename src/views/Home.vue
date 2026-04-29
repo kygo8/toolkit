@@ -7,7 +7,7 @@ const featuredTools = [
   { path: '/image/convert', icon: '🖼️', title: '图片格式转换', desc: 'PNG、JPG、WebP 在线本地转换', color: '#38bdf8' },
   { path: '/network/curl/test', icon: '🚀', title: 'cURL 测试', desc: '解析 cURL 并通过代理发送请求', color: '#f97316' },
   { path: '/json', icon: '{}', title: 'JSON 格式化', desc: '格式化、压缩和校验 JSON', color: '#14b8a6' },
-  { path: '/seo/meta', icon: '🏷️', title: 'Meta 标签生成', desc: '生成搜索引擎友好的标题和描述', color: '#f59e0b' },
+  { path: '/password', icon: '🔑', title: '随机密码生成', desc: '生成安全随机密码并检测强度', color: '#7c3aed' },
   { path: '/image/compress', icon: '📉', title: '图片压缩', desc: '压缩图片体积，优化网页加载速度', color: '#22c55e' },
   { path: '/network/domain', icon: '🌍', title: '域名检测', desc: '查询 DNS 记录并解析域名结构', color: '#10b981' }
 ]
@@ -19,8 +19,7 @@ const categories = [
   { path: '/dev', icon: '🛠️', title: '开发者工具', desc: '时间戳、颜色、正则、进制、UUID、文本对比', color: '#00d9ff' },
   { path: '/qrcode', icon: '📱', title: '二维码工具', desc: '二维码生成、解码识别、自定义美化样式', color: '#ec4899' },
   { path: '/seo', icon: '📊', title: 'SEO 工具', desc: 'Meta、关键词密度、Sitemap、Robots、死链检测', color: '#f59e0b' },
-  { path: '/password', icon: '🔑', title: '密码生成', desc: '生成安全随机密码并检测强度', color: '#7c3aed' },
-  { path: '/json', icon: '{}', title: 'JSON 工具', desc: 'JSON 格式化、压缩、校验和语法高亮', color: '#14b8a6' }
+  { path: '/other', icon: '✨', title: '其他工具', desc: '随机密码生成、JSON 格式化等通用小工具', color: '#a78bfa' }
 ]
 
 const navigateTo = (path) => {
@@ -71,7 +70,7 @@ const navigateTo = (path) => {
     <section class="section">
       <div class="section-header">
         <h2>全部工具分类</h2>
-        <p>按图片、网络、编码、开发、二维码和 SEO 场景整理，页面标题和描述均可被搜索引擎读取。</p>
+        <p>按图片、网络、编码、开发、二维码、SEO 和其他工具场景整理，页面标题和描述均可被搜索引擎读取。</p>
       </div>
       <div class="tools-grid">
         <article
@@ -94,7 +93,7 @@ const navigateTo = (path) => {
     <section class="seo-copy">
       <h2>为什么选择 ToolX 在线工具？</h2>
       <p>
-        ToolX 面向开发者、站长和内容运营人员，提供常用在线工具集合。你可以使用图片格式转换工具把 PNG、JPG、WebP 互转，用图片压缩工具降低网页图片体积，用网络检测和域名检测工具排查连接问题，用 SEO 工具生成 Meta 标签、检查关键词密度、生成 Sitemap 和 Robots.txt。
+        ToolX 面向开发者、站长和内容运营人员，提供常用在线工具集合。你可以使用图片格式转换工具把 PNG、JPG、WebP 互转，用图片压缩工具降低网页图片体积，用网络检测和域名检测工具排查连接问题，用随机密码生成器创建安全密码，也可以在其他工具中找到 JSON 格式化等通用小工具。
       </p>
     </section>
   </div>

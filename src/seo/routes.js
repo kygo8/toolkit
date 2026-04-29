@@ -17,6 +17,11 @@ export const seoRoutes = [
     description: '在线格式化、压缩和校验 JSON 内容，适合接口调试和配置文件整理。'
   },
   {
+    path: '/other',
+    title: '其他工具合集 - ToolX',
+    description: '收纳随机密码生成、JSON 格式化等不好归类但高频使用的在线小工具。'
+  },
+  {
     path: '/codec',
     title: '编码解码工具合集 - ToolX',
     description: '提供 Base64、URL、HTML、Unicode、HEX、JWT 和 Hash 等常用编码解码工具。'
