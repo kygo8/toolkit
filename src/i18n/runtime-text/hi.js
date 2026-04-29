@@ -1,0 +1,43 @@
+export default {
+  text: {
+    'Encode': 'एन्कोड',
+    'Decode': 'डीकोड',
+    'Clear': 'साफ करें',
+    'Clear all': 'सब साफ करें',
+    'Copy': 'कॉपी',
+    'Copy code': 'कोड कॉपी करें',
+    'Copied': 'कॉपी हो गया',
+    'Generate': 'जनरेट',
+    'Regenerate': 'फिर जनरेट करें',
+    'Convert': 'कन्वर्ट',
+    'Input text': 'इनपुट टेक्स्ट',
+    'Output': 'आउटपुट',
+    'Input JSON': 'JSON इनपुट',
+    'Source text': 'मूल टेक्स्ट',
+    'Modified text': 'बदला हुआ टेक्स्ट',
+    'Check results': 'जांच परिणाम',
+    'Analysis results': 'विश्लेषण परिणाम',
+    'Generated result': 'जनरेटेड परिणाम',
+    'Status': 'स्थिति',
+    'Format': 'फॉर्मेट',
+    'Compress': 'कंप्रेस',
+    'Base64 Encode/Decode': 'Base64 एन्कोड/डीकोड',
+    'URL Encode/Decode': 'URL एन्कोड/डीकोड',
+    'HTML Encode/Decode': 'HTML एन्कोड/डीकोड',
+    'JWT Decoder': 'JWT डीकोडर',
+    'cURL Test': 'cURL टेस्ट',
+    'Network Check': 'नेटवर्क जांच',
+    'Domain Check': 'डोमेन जांच',
+    'Image Format Converter': 'इमेज फॉर्मेट कन्वर्टर',
+    'Image Compressor': 'इमेज कंप्रेसर',
+    'Random Password Generator': 'रैंडम पासवर्ड जनरेटर',
+    'JSON Formatter': 'JSON फॉर्मेटर'
+  },
+  attributes: {
+    'Enter text to encode...': 'एन्कोड करने के लिए टेक्स्ट दर्ज करें...',
+    'The result will appear here': 'परिणाम यहां दिखाई देगा',
+    'Click generate password': 'पासवर्ड जनरेट करने के लिए क्लिक करें',
+    'Enter text or URL': 'टेक्स्ट या URL दर्ज करें',
+    'Swap input and output': 'इनपुट और आउटपुट बदलें'
+  }
+}

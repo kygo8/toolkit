@@ -1,0 +1,43 @@
+export default {
+  text: {
+    'Encode': 'एन्कोड',
+    'Decode': 'डीकोड',
+    'Clear': 'साफ करा',
+    'Clear all': 'सर्व साफ करा',
+    'Copy': 'कॉपी',
+    'Copy code': 'कोड कॉपी करा',
+    'Copied': 'कॉपी झाले',
+    'Generate': 'तयार करा',
+    'Regenerate': 'पुन्हा तयार करा',
+    'Convert': 'रूपांतरित करा',
+    'Input text': 'इनपुट मजकूर',
+    'Output': 'आउटपुट',
+    'Input JSON': 'JSON इनपुट',
+    'Source text': 'मूळ मजकूर',
+    'Modified text': 'बदललेला मजकूर',
+    'Check results': 'तपासणी निकाल',
+    'Analysis results': 'विश्लेषण निकाल',
+    'Generated result': 'तयार निकाल',
+    'Status': 'स्थिती',
+    'Format': 'फॉरमॅट',
+    'Compress': 'कंप्रेस',
+    'Base64 Encode/Decode': 'Base64 एन्कोड/डीकोड',
+    'URL Encode/Decode': 'URL एन्कोड/डीकोड',
+    'HTML Encode/Decode': 'HTML एन्कोड/डीकोड',
+    'JWT Decoder': 'JWT डीकोडर',
+    'cURL Test': 'cURL चाचणी',
+    'Network Check': 'नेटवर्क तपासणी',
+    'Domain Check': 'डोमेन तपासणी',
+    'Image Format Converter': 'प्रतिमा फॉरमॅट कन्व्हर्टर',
+    'Image Compressor': 'प्रतिमा कंप्रेसर',
+    'Random Password Generator': 'यादृच्छिक पासवर्ड जनरेटर',
+    'JSON Formatter': 'JSON फॉरमॅटर'
+  },
+  attributes: {
+    'Enter text to encode...': 'एन्कोड करण्यासाठी मजकूर द्या...',
+    'The result will appear here': 'निकाल येथे दिसेल',
+    'Click generate password': 'पासवर्ड तयार करण्यासाठी क्लिक करा',
+    'Enter text or URL': 'मजकूर किंवा URL द्या',
+    'Swap input and output': 'इनपुट आणि आउटपुट बदला'
+  }
+}

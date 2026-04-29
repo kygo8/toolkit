@@ -1,0 +1,43 @@
+export default {
+  text: {
+    'Encode': 'انکوڈ',
+    'Decode': 'ڈی کوڈ',
+    'Clear': 'صاف کریں',
+    'Clear all': 'سب صاف کریں',
+    'Copy': 'کاپی',
+    'Copy code': 'کوڈ کاپی کریں',
+    'Copied': 'کاپی ہو گیا',
+    'Generate': 'بنائیں',
+    'Regenerate': 'دوبارہ بنائیں',
+    'Convert': 'تبدیل کریں',
+    'Input text': 'ان پٹ متن',
+    'Output': 'آؤٹ پٹ',
+    'Input JSON': 'JSON ان پٹ',
+    'Source text': 'اصل متن',
+    'Modified text': 'تبدیل شدہ متن',
+    'Check results': 'جانچ کے نتائج',
+    'Analysis results': 'تجزیہ کے نتائج',
+    'Generated result': 'بنایا گیا نتیجہ',
+    'Status': 'حالت',
+    'Format': 'فارمیٹ',
+    'Compress': 'کمپریس',
+    'Base64 Encode/Decode': 'Base64 انکوڈ/ڈی کوڈ',
+    'URL Encode/Decode': 'URL انکوڈ/ڈی کوڈ',
+    'HTML Encode/Decode': 'HTML انکوڈ/ڈی کوڈ',
+    'JWT Decoder': 'JWT ڈی کوڈر',
+    'cURL Test': 'cURL ٹیسٹ',
+    'Network Check': 'نیٹ ورک چیک',
+    'Domain Check': 'ڈومین چیک',
+    'Image Format Converter': 'تصویر فارمیٹ کنورٹر',
+    'Image Compressor': 'تصویر کمپریسر',
+    'Random Password Generator': 'رینڈم پاس ورڈ جنریٹر',
+    'JSON Formatter': 'JSON فارمیٹر'
+  },
+  attributes: {
+    'Enter text to encode...': 'انکوڈ کرنے کے لیے متن درج کریں...',
+    'The result will appear here': 'نتیجہ یہاں ظاہر ہوگا',
+    'Click generate password': 'پاس ورڈ بنانے کے لیے کلک کریں',
+    'Enter text or URL': 'متن یا URL درج کریں',
+    'Swap input and output': 'ان پٹ اور آؤٹ پٹ بدلیں'
+  }
+}

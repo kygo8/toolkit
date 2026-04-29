@@ -1,0 +1,43 @@
+export default {
+  text: {
+    'Encode': 'เข้ารหัส',
+    'Decode': 'ถอดรหัส',
+    'Clear': 'ล้าง',
+    'Clear all': 'ล้างทั้งหมด',
+    'Copy': 'คัดลอก',
+    'Copy code': 'คัดลอกโค้ด',
+    'Copied': 'คัดลอกแล้ว',
+    'Generate': 'สร้าง',
+    'Regenerate': 'สร้างใหม่',
+    'Convert': 'แปลง',
+    'Input text': 'ข้อความนำเข้า',
+    'Output': 'ผลลัพธ์',
+    'Input JSON': 'JSON นำเข้า',
+    'Source text': 'ข้อความต้นฉบับ',
+    'Modified text': 'ข้อความที่แก้ไข',
+    'Check results': 'ผลการตรวจสอบ',
+    'Analysis results': 'ผลการวิเคราะห์',
+    'Generated result': 'ผลลัพธ์ที่สร้าง',
+    'Status': 'สถานะ',
+    'Format': 'จัดรูปแบบ',
+    'Compress': 'บีบอัด',
+    'Base64 Encode/Decode': 'เข้ารหัส/ถอดรหัส Base64',
+    'URL Encode/Decode': 'เข้ารหัส/ถอดรหัส URL',
+    'HTML Encode/Decode': 'เข้ารหัส/ถอดรหัส HTML',
+    'JWT Decoder': 'ตัวถอดรหัส JWT',
+    'cURL Test': 'ทดสอบ cURL',
+    'Network Check': 'ตรวจสอบเครือข่าย',
+    'Domain Check': 'ตรวจสอบโดเมน',
+    'Image Format Converter': 'แปลงรูปแบบรูปภาพ',
+    'Image Compressor': 'บีบอัดรูปภาพ',
+    'Random Password Generator': 'สร้างรหัสผ่านสุ่ม',
+    'JSON Formatter': 'จัดรูปแบบ JSON'
+  },
+  attributes: {
+    'Enter text to encode...': 'ป้อนข้อความเพื่อเข้ารหัส...',
+    'The result will appear here': 'ผลลัพธ์จะแสดงที่นี่',
+    'Click generate password': 'คลิกเพื่อสร้างรหัสผ่าน',
+    'Enter text or URL': 'ป้อนข้อความหรือ URL',
+    'Swap input and output': 'สลับอินพุตและเอาต์พุต'
+  }
+}

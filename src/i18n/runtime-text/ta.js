@@ -1,0 +1,43 @@
+export default {
+  text: {
+    'Encode': 'குறியாக்கு',
+    'Decode': 'குறிநீக்கு',
+    'Clear': 'அழி',
+    'Clear all': 'அனைத்தையும் அழி',
+    'Copy': 'நகலெடு',
+    'Copy code': 'குறியீட்டை நகலெடு',
+    'Copied': 'நகலெடுக்கப்பட்டது',
+    'Generate': 'உருவாக்கு',
+    'Regenerate': 'மீண்டும் உருவாக்கு',
+    'Convert': 'மாற்று',
+    'Input text': 'உள்ளீட்டு உரை',
+    'Output': 'வெளியீடு',
+    'Input JSON': 'JSON உள்ளீடு',
+    'Source text': 'மூல உரை',
+    'Modified text': 'மாற்றிய உரை',
+    'Check results': 'சோதனை முடிவுகள்',
+    'Analysis results': 'பகுப்பாய்வு முடிவுகள்',
+    'Generated result': 'உருவாக்கிய முடிவு',
+    'Status': 'நிலை',
+    'Format': 'வடிவமை',
+    'Compress': 'சுருக்கு',
+    'Base64 Encode/Decode': 'Base64 குறியாக்கு/குறிநீக்கு',
+    'URL Encode/Decode': 'URL குறியாக்கு/குறிநீக்கு',
+    'HTML Encode/Decode': 'HTML குறியாக்கு/குறிநீக்கு',
+    'JWT Decoder': 'JWT குறிநீக்கி',
+    'cURL Test': 'cURL சோதனை',
+    'Network Check': 'நெட்வொர்க் சோதனை',
+    'Domain Check': 'டொமைன் சோதனை',
+    'Image Format Converter': 'பட வடிவ மாற்றி',
+    'Image Compressor': 'பட சுருக்கி',
+    'Random Password Generator': 'சீரற்ற கடவுச்சொல் உருவாக்கி',
+    'JSON Formatter': 'JSON வடிவமைப்பான்'
+  },
+  attributes: {
+    'Enter text to encode...': 'குறியாக்க உரையை உள்ளிடவும்...',
+    'The result will appear here': 'முடிவு இங்கு தோன்றும்',
+    'Click generate password': 'கடவுச்சொல் உருவாக்க கிளிக் செய்யவும்',
+    'Enter text or URL': 'உரை அல்லது URL உள்ளிடவும்',
+    'Swap input and output': 'உள்ளீடு மற்றும் வெளியீட்டை மாற்று'
+  }
+}

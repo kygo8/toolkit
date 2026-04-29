@@ -1,0 +1,43 @@
+export default {
+  text: {
+    'Encode': 'ఎన్‌కోడ్',
+    'Decode': 'డీకోడ్',
+    'Clear': 'తొలగించు',
+    'Clear all': 'అన్నీ తొలగించు',
+    'Copy': 'కాపీ',
+    'Copy code': 'కోడ్ కాపీ',
+    'Copied': 'కాపీ అయింది',
+    'Generate': 'సృష్టించు',
+    'Regenerate': 'మళ్లీ సృష్టించు',
+    'Convert': 'మార్చు',
+    'Input text': 'ఇన్‌పుట్ టెక్స్ట్',
+    'Output': 'అవుట్‌పుట్',
+    'Input JSON': 'JSON ఇన్‌పుట్',
+    'Source text': 'మూల టెక్స్ట్',
+    'Modified text': 'మార్చిన టెక్స్ట్',
+    'Check results': 'పరీక్ష ఫలితాలు',
+    'Analysis results': 'విశ్లేషణ ఫలితాలు',
+    'Generated result': 'సృష్టించిన ఫలితం',
+    'Status': 'స్థితి',
+    'Format': 'ఫార్మాట్',
+    'Compress': 'కంప్రెస్',
+    'Base64 Encode/Decode': 'Base64 ఎన్‌కోడ్/డీకోడ్',
+    'URL Encode/Decode': 'URL ఎన్‌కోడ్/డీకోడ్',
+    'HTML Encode/Decode': 'HTML ఎన్‌కోడ్/డీకోడ్',
+    'JWT Decoder': 'JWT డీకోడర్',
+    'cURL Test': 'cURL పరీక్ష',
+    'Network Check': 'నెట్‌వర్క్ పరీక్ష',
+    'Domain Check': 'డొమైన్ పరీక్ష',
+    'Image Format Converter': 'చిత్ర ఫార్మాట్ మార్పిడి',
+    'Image Compressor': 'చిత్ర కంప్రెసర్',
+    'Random Password Generator': 'యాదృచ్ఛిక పాస్‌వర్డ్ జనరేటర్',
+    'JSON Formatter': 'JSON ఫార్మాటర్'
+  },
+  attributes: {
+    'Enter text to encode...': 'ఎన్‌కోడ్ చేయాల్సిన టెక్స్ట్ ఇవ్వండి...',
+    'The result will appear here': 'ఫలితం ఇక్కడ కనిపిస్తుంది',
+    'Click generate password': 'పాస్‌వర్డ్ సృష్టించడానికి క్లిక్ చేయండి',
+    'Enter text or URL': 'టెక్స్ట్ లేదా URL ఇవ్వండి',
+    'Swap input and output': 'ఇన్‌పుట్ మరియు అవుట్‌పుట్ మార్చు'
+  }
+}

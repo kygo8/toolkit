@@ -1,0 +1,43 @@
+export default {
+  text: {
+    'Encode': 'এনকোড',
+    'Decode': 'ডিকোড',
+    'Clear': 'মুছুন',
+    'Clear all': 'সব মুছুন',
+    'Copy': 'কপি',
+    'Copy code': 'কোড কপি',
+    'Copied': 'কপি হয়েছে',
+    'Generate': 'তৈরি করুন',
+    'Regenerate': 'আবার তৈরি করুন',
+    'Convert': 'রূপান্তর',
+    'Input text': 'ইনপুট টেক্সট',
+    'Output': 'আউটপুট',
+    'Input JSON': 'JSON ইনপুট',
+    'Source text': 'মূল টেক্সট',
+    'Modified text': 'পরিবর্তিত টেক্সট',
+    'Check results': 'পরীক্ষার ফল',
+    'Analysis results': 'বিশ্লেষণ ফল',
+    'Generated result': 'তৈরি ফল',
+    'Status': 'অবস্থা',
+    'Format': 'ফরম্যাট',
+    'Compress': 'কম্প্রেস',
+    'Base64 Encode/Decode': 'Base64 এনকোড/ডিকোড',
+    'URL Encode/Decode': 'URL এনকোড/ডিকোড',
+    'HTML Encode/Decode': 'HTML এনকোড/ডিকোড',
+    'JWT Decoder': 'JWT ডিকোডার',
+    'cURL Test': 'cURL টেস্ট',
+    'Network Check': 'নেটওয়ার্ক পরীক্ষা',
+    'Domain Check': 'ডোমেইন পরীক্ষা',
+    'Image Format Converter': 'ছবির ফরম্যাট রূপান্তর',
+    'Image Compressor': 'ছবি কম্প্রেসর',
+    'Random Password Generator': 'র্যান্ডম পাসওয়ার্ড জেনারেটর',
+    'JSON Formatter': 'JSON ফরম্যাটার'
+  },
+  attributes: {
+    'Enter text to encode...': 'এনকোড করার টেক্সট লিখুন...',
+    'The result will appear here': 'ফল এখানে দেখা যাবে',
+    'Click generate password': 'পাসওয়ার্ড তৈরি করতে ক্লিক করুন',
+    'Enter text or URL': 'টেক্সট বা URL লিখুন',
+    'Swap input and output': 'ইনপুট ও আউটপুট বদলান'
+  }
+}
