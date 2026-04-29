@@ -16,12 +16,15 @@ test('image watermark tool is registered in pages, catalog and SEO metadata', ()
   assert.equal(getToolMessage('en', 'imageWatermark').title, 'Image Watermark')
 })
 
-test('image watermark supports text, image, stamp, tiled, position and opacity controls', () => {
+test('image watermark supports live preview, text, image, stamp, tiled, position and opacity controls', () => {
   const component = readFileSync(file('src/views/image/ImageWatermark.vue'), 'utf8')
   const runtimeI18n = readFileSync(file('src/i18n/useRuntimeTextI18n.js'), 'utf8')
   const watermarkI18n = readFileSync(file('src/i18n/runtime-text/watermark.js'), 'utf8')
 
   assert.match(component, /watermarkType/)
+  assert.match(component, /watch\(/)
+  assert.match(component, /schedulePreviewRender/)
+  assert.match(component, /live-preview-card/)
   assert.match(component, /Text watermark/)
   assert.match(component, /Image watermark/)
   assert.match(component, /circle-stamp/)
@@ -33,6 +36,7 @@ test('image watermark supports text, image, stamp, tiled, position and opacity c
   assert.match(component, /drawImageWatermark/)
   assert.match(component, /drawTextWatermark/)
   assert.match(component, /canvasToBlob/)
+  assert.doesNotMatch(component, /Apply watermark<\/button>/)
   assert.match(runtimeI18n, /'alt'/)
   assert.match(watermarkI18n, /图片水印/)
   assert.match(watermarkI18n, /画像ウォーターマーク/)

@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 
 const baseFile = ref(null)
 const watermarkFile = ref(null)
@@ -25,6 +25,8 @@ const margin = ref(32)
 const offsetX = ref(0)
 const offsetY = ref(0)
 const outputType = ref('image/png')
+let previewTimer = null
+let renderToken = 0
 
 const positionOptions = [
   { label: 'Top left', value: 'top-left' },
@@ -73,6 +75,14 @@ function clearResult() {
   resultUrl.value = ''
   resultName.value = ''
   resultSize.value = 0
+}
+
+function setResult(blob) {
+  const nextUrl = URL.createObjectURL(blob)
+  if (resultUrl.value) URL.revokeObjectURL(resultUrl.value)
+  resultUrl.value = nextUrl
+  resultName.value = `${baseFile.value.name.replace(/\.[^.]+$/, '')}-watermarked.${selectedOutput.value.ext}`
+  resultSize.value = blob.size
 }
 
 function setPreview(targetRef, file) {
@@ -236,19 +246,26 @@ function drawImageWatermark(ctx, canvas, image) {
   ctx.restore()
 }
 
+function schedulePreviewRender() {
+  if (previewTimer) window.clearTimeout(previewTimer)
+  previewTimer = window.setTimeout(() => {
+    applyWatermark()
+  }, 180)
+}
+
 async function applyWatermark() {
+  const currentToken = ++renderToken
   if (!baseFile.value) {
-    errorText.value = 'Please upload a base image first.'
+    clearResult()
     return
   }
   if (canUseImageWatermark.value && !watermarkFile.value) {
-    errorText.value = 'Please upload a watermark image.'
+    clearResult()
     return
   }
 
   isProcessing.value = true
   errorText.value = ''
-  clearResult()
 
   try {
     const baseImage = await loadImage(baseFile.value)
@@ -266,15 +283,46 @@ async function applyWatermark() {
     }
 
     const blob = await canvasToBlob(canvas, outputType.value)
-    resultUrl.value = URL.createObjectURL(blob)
-    resultName.value = `${baseFile.value.name.replace(/\.[^.]+$/, '')}-watermarked.${selectedOutput.value.ext}`
-    resultSize.value = blob.size
+    if (currentToken === renderToken) setResult(blob)
   } catch (error) {
-    errorText.value = error.message
+    if (currentToken === renderToken) {
+      clearResult()
+      errorText.value = error.message
+    }
   } finally {
-    isProcessing.value = false
+    if (currentToken === renderToken) isProcessing.value = false
   }
 }
+
+watch(
+  [
+    baseFile,
+    watermarkFile,
+    watermarkType,
+    watermarkText,
+    textStyle,
+    position,
+    opacity,
+    scale,
+    rotation,
+    fontSize,
+    color,
+    strokeColor,
+    margin,
+    offsetX,
+    offsetY,
+    outputType
+  ],
+  schedulePreviewRender,
+  { flush: 'post' }
+)
+
+onBeforeUnmount(() => {
+  if (previewTimer) window.clearTimeout(previewTimer)
+  if (basePreview.value) URL.revokeObjectURL(basePreview.value)
+  if (watermarkPreview.value) URL.revokeObjectURL(watermarkPreview.value)
+  clearResult()
+})
 </script>
 
 <template>
@@ -375,37 +423,24 @@ async function applyWatermark() {
           </select>
         </label>
 
-        <button class="action-btn primary" :disabled="isProcessing" type="button" @click="applyWatermark">
-          {{ isProcessing ? 'Processing...' : 'Apply watermark' }}
-        </button>
-
         <div v-if="errorText" class="error-msg">{{ errorText }}</div>
       </section>
 
-      <section class="card preview-card">
-        <div class="preview-grid">
-          <div class="preview-box">
-            <h2>Base preview</h2>
-            <img v-if="basePreview" :src="basePreview" alt="Base image preview" />
-            <p v-else>Upload a base image to start.</p>
-          </div>
-          <div class="preview-box">
-            <h2>Watermark preview</h2>
-            <img v-if="watermarkPreview && watermarkType === 'image'" :src="watermarkPreview" alt="Watermark image preview" />
-            <p v-else>{{ watermarkType === 'text' ? watermarkText : 'Upload a watermark image.' }}</p>
-          </div>
-        </div>
-
+      <section class="card preview-card live-preview-card">
         <div class="result-box">
           <div class="result-header">
             <div>
               <h2>Result</h2>
-              <span>{{ resultSizeText }}</span>
+              <span>{{ isProcessing ? 'Processing...' : resultSizeText }}</span>
             </div>
             <a v-if="resultUrl" class="download-link" :href="resultUrl" :download="resultName">Download</a>
           </div>
-          <img v-if="resultUrl" :src="resultUrl" alt="Watermarked result preview" />
-          <p v-else>Generated image will appear here.</p>
+          <div class="result-preview">
+            <img v-if="resultUrl" :src="resultUrl" alt="Watermarked result preview" />
+            <p v-else-if="!baseFile">Upload a base image to start.</p>
+            <p v-else-if="canUseImageWatermark && !watermarkFile">Upload a watermark image.</p>
+            <p v-else>Generated image will appear here.</p>
+          </div>
         </div>
       </section>
     </div>
@@ -431,7 +466,7 @@ async function applyWatermark() {
 .field input[type="color"] { width: 100%; height: 2.7rem; border: 1px solid var(--border-color); border-radius: 10px; background: var(--bg-color); padding: 0.2rem; }
 .field input[type="range"] { width: 100%; }
 .segmented { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
-.segmented button, .action-btn {
+.segmented button {
   border: 1px solid var(--border-color);
   border-radius: 10px;
   background: transparent;
@@ -441,18 +476,20 @@ async function applyWatermark() {
 }
 .segmented button.active { border-color: var(--primary-color); color: var(--primary-color); background: rgba(0, 217, 255, 0.08); }
 .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
-.action-btn.primary { background: var(--primary-color); border-color: var(--primary-color); color: var(--bg-color); font-weight: 800; }
-.action-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 .preview-card { display: grid; gap: 1rem; }
-.preview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-.preview-box, .result-box { border: 1px solid var(--border-color); background: var(--bg-color); border-radius: 14px; padding: 1rem; min-height: 210px; }
-.preview-box h2, .result-box h2 { font-size: 1rem; margin-bottom: 0.7rem; }
-.preview-box img, .result-box img { width: 100%; max-height: 520px; object-fit: contain; border-radius: 10px; background: rgba(255, 255, 255, 0.04); }
-.preview-box p, .result-box p, .result-box span { color: var(--text-muted); font-size: 0.88rem; overflow-wrap: anywhere; }
+.live-preview-card { position: sticky; top: 1rem; }
+.result-box { border: 1px solid var(--border-color); background: var(--bg-color); border-radius: 14px; padding: 1rem; min-height: 640px; display: grid; grid-template-rows: auto 1fr; }
+.result-box h2 { font-size: 1rem; margin-bottom: 0.7rem; }
+.result-preview { min-height: 560px; display: grid; place-items: center; border-radius: 12px; background: rgba(255, 255, 255, 0.04); overflow: hidden; }
+.result-preview img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 10px; }
+.result-box p, .result-box span { color: var(--text-muted); font-size: 0.88rem; overflow-wrap: anywhere; }
 .result-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
 .download-link { color: var(--primary-color); text-decoration: none; font-weight: 800; }
 .error-msg { color: #ef4444; background: rgba(239, 68, 68, 0.1); border-radius: 10px; padding: 0.75rem; }
 @media (max-width: 900px) {
-  .layout-grid, .preview-grid { grid-template-columns: 1fr; }
+  .layout-grid { grid-template-columns: 1fr; }
+  .live-preview-card { position: static; }
+  .result-box { min-height: 380px; }
+  .result-preview { min-height: 320px; }
 }
 </style>
