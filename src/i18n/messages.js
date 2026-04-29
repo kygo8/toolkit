@@ -5,6 +5,8 @@ const common = {
   themeLight: 'Light mode',
   themeDark: 'Dark mode',
   menuToggle: 'Toggle menu',
+  recentTools: 'Recent',
+  toolCount: '{count} tools',
   footerText: 'ToolX | Developer Tools'
 }
 
@@ -97,6 +99,8 @@ const zhCN = {
     themeLight: '亮色模式',
     themeDark: '暗色模式',
     menuToggle: '切换菜单',
+    recentTools: '最近',
+    toolCount: '{count} 个工具',
     footerText: 'ToolX | 开发者工具'
   },
   nav: {

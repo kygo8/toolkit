@@ -1,24 +1,52 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
-import { navItems } from './src/i18n/catalog.js'
+import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { categoryCatalog, navItems, routeKeyByPath, toolCatalog } from './src/i18n/catalog.js'
 import { useI18n } from './src/i18n/useI18n.js'
 
 const route = useRoute()
-const isMenuOpen = ref(false)
+const router = useRouter()
 const theme = ref('dark')
+const recentToolKeys = ref(['json', 'password'])
 const { locale, locales, initLocale, setLocale, t } = useI18n()
-
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
-}
-
-const closeMenu = () => {
-  isMenuOpen.value = false
-}
+const recentToolsStorageKey = 'toolx-recent-tools'
 
 const themeLabel = computed(() => theme.value === 'dark' ? t('common.themeLight') : t('common.themeDark'))
 const themeIcon = computed(() => theme.value === 'dark' ? '☀️' : '🌙')
+const activeNavItem = computed(() => {
+  if (route.path === '/') return navItems[0]
+  return navItems.find((item) => item.path !== '/' && route.path.startsWith(item.path)) || navItems[0]
+})
+const recentTools = computed(() => recentToolKeys.value.map((key) => ({ key, ...toolCatalog[key] })).filter((tool) => tool.path))
+const activeToolCount = computed(() => categoryCatalog[activeNavItem.value.key]?.tools?.length || recentTools.value.length)
+
+const normalizeRecentToolKeys = (keys) => (
+  [...new Set(keys)].filter((key) => toolCatalog[key]).slice(0, 10)
+)
+
+const loadRecentToolKeys = () => {
+  try {
+    const savedKeys = JSON.parse(localStorage.getItem(recentToolsStorageKey) || '[]')
+    return Array.isArray(savedKeys) ? savedKeys : []
+  } catch {
+    return []
+  }
+}
+
+const saveRecentTool = (path) => {
+  if (!process.client) return
+
+  const routeMeta = routeKeyByPath[path]
+  if (routeMeta?.type !== 'tool') return
+
+  const nextKeys = normalizeRecentToolKeys([routeMeta.key, ...recentToolKeys.value])
+  recentToolKeys.value = nextKeys
+  localStorage.setItem(recentToolsStorageKey, JSON.stringify(nextKeys))
+}
+
+const openRecentTool = (path) => {
+  if (path) router.push(path)
+}
 
 const applyTheme = (value) => {
   if (!process.client) return
@@ -42,7 +70,15 @@ onMounted(() => {
   initLocale()
   const savedTheme = localStorage.getItem('toolx-theme')
   const prefersLight = window.matchMedia?.('(prefers-color-scheme: light)').matches
+  const savedRecentTools = loadRecentToolKeys()
+
+  recentToolKeys.value = normalizeRecentToolKeys(savedRecentTools.length ? savedRecentTools : recentToolKeys.value)
   setTheme(savedTheme || (prefersLight ? 'light' : 'dark'))
+  saveRecentTool(route.path)
+})
+
+watch(() => route.path, (path) => {
+  saveRecentTool(path)
 })
 </script>
 
@@ -50,31 +86,65 @@ onMounted(() => {
   <div class="app">
     <header class="header">
       <div class="header-content">
-        <NuxtLink to="/" class="logo" @click="closeMenu">
+        <NuxtLink to="/" class="logo">
           <span class="logo-icon">⚡</span>
-          <span class="logo-text">ToolX</span>
+          <span class="logo-copy">
+            <span class="logo-text">ToolX</span>
+            <span class="logo-tagline">{{ t('home.eyebrow') }}</span>
+          </span>
         </NuxtLink>
 
-        <div class="header-actions">
-          <button class="menu-toggle" type="button" @click="toggleMenu" :aria-label="t('common.menuToggle')">
-            <span class="hamburger" :class="{ open: isMenuOpen }"></span>
-          </button>
+        <div class="header-center" aria-live="polite">
+          <span class="section-pill">{{ t(`nav.${activeNavItem.key}`) }}</span>
+          <span class="tool-count">{{ t('common.toolCount', { count: activeToolCount }) }}</span>
+        </div>
 
-          <nav class="nav" :class="{ open: isMenuOpen }">
-            <NuxtLink
-              v-for="item in navItems"
-              :key="item.path"
-              :to="item.path"
-              class="nav-link"
-              :class="{ active: route.path === item.path }"
-              @click="closeMenu"
+        <div class="header-actions">
+          <label class="recent-tools">
+            <span>{{ t('common.recentTools') }}</span>
+            <select
+              :value="recentTools[0]?.path || ''"
+              :title="recentTools[0] ? t(`tools.${recentTools[0].key}.title`) : t('common.recentTools')"
+              @change="openRecentTool($event.target.value)"
             >
-              <span class="nav-icon">{{ item.icon }}</span>
-              <span class="nav-label">{{ t(`nav.${item.key}`) }}</span>
-            </NuxtLink>
-          </nav>
+              <option
+                v-for="item in recentTools"
+                :key="item.path"
+                :value="item.path"
+                :title="t(`tools.${item.key}.title`)"
+              >
+                {{ t(`tools.${item.key}.title`) }}
+              </option>
+            </select>
+          </label>
+          <label class="language-picker">
+            <select :value="locale" @change="setLocale($event.target.value)">
+              <option v-for="item in locales" :key="item.code" :value="item.code">
+                {{ item.nativeName }}
+              </option>
+            </select>
+          </label>
+          <button class="theme-toggle" type="button" :aria-label="themeLabel" @click="toggleTheme">
+            <span>{{ themeIcon }}</span>
+            <span class="theme-label">{{ themeLabel }}</span>
+          </button>
         </div>
       </div>
+
+      <nav class="nav-strip" aria-label="Tool categories">
+        <div class="nav-scroll">
+          <NuxtLink
+            v-for="item in navItems"
+            :key="item.path"
+            :to="item.path"
+            class="nav-link"
+            :class="{ active: route.path === item.path }"
+          >
+            <span class="nav-icon">{{ item.icon }}</span>
+            <span class="nav-label">{{ t(`nav.${item.key}`) }}</span>
+          </NuxtLink>
+        </div>
+      </nav>
     </header>
 
     <main class="main">
@@ -83,20 +153,6 @@ onMounted(() => {
 
     <footer class="footer">
       <p>© 2026 {{ t('common.footerText') }}</p>
-      <div class="footer-actions">
-        <label class="language-picker">
-          <span>{{ t('common.language') }}</span>
-          <select :value="locale" @change="setLocale($event.target.value)">
-            <option v-for="item in locales" :key="item.code" :value="item.code">
-              {{ item.nativeName }}
-            </option>
-          </select>
-        </label>
-        <button class="theme-toggle" type="button" :aria-label="themeLabel" @click="toggleTheme">
-          <span>{{ themeIcon }}</span>
-          <span class="theme-label">{{ themeLabel }}</span>
-        </button>
-      </div>
     </footer>
   </div>
 </template>
@@ -120,10 +176,11 @@ onMounted(() => {
 .header-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 1.5rem;
+  padding: 0.85rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .logo {
@@ -132,6 +189,7 @@ onMounted(() => {
   gap: 0.5rem;
   text-decoration: none;
   font-family: var(--font-mono);
+  min-width: 0;
 }
 
 .logo-icon {
@@ -147,18 +205,97 @@ onMounted(() => {
   background-clip: text;
 }
 
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
+.logo-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+  line-height: 1.05;
+}
+
+.logo-tagline {
+  max-width: 12rem;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.header-center {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  margin-inline: auto;
+}
+
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  max-width: 11rem;
+  padding: 0.48rem 0.75rem;
+  border: 1px solid rgba(0, 217, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(0, 217, 255, 0.08);
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tool-count {
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  white-space: nowrap;
 }
 
 .header-actions {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.recent-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  min-width: 0;
+}
+
+.recent-tools span {
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.recent-tools select {
+  max-width: 8.2rem;
+  min-width: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--card-bg) 78%, transparent);
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.recent-tools select:hover,
+.recent-tools select:focus {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: 0 6px 18px var(--shadow-color);
 }
 
 .theme-toggle {
@@ -172,6 +309,7 @@ onMounted(() => {
   cursor: pointer;
   padding: 0.54rem 0.78rem;
   transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
 .theme-toggle:hover {
@@ -185,60 +323,48 @@ onMounted(() => {
   white-space: nowrap;
 }
 
-.hamburger {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text-color);
-  position: relative;
-  transition: background 0.3s;
+.nav-strip {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.05), transparent);
 }
 
-.hamburger::before,
-.hamburger::after {
-  content: '';
-  position: absolute;
-  width: 24px;
-  height: 2px;
-  background: var(--text-color);
-  left: 0;
-  transition: transform 0.3s;
+.nav-scroll {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem 0.6rem;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+  -webkit-overflow-scrolling: touch;
 }
 
-.hamburger::before {
-  top: -8px;
+.nav-scroll::-webkit-scrollbar {
+  height: 6px;
 }
 
-.hamburger::after {
-  bottom: -8px;
-}
-
-.hamburger.open {
+.nav-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.hamburger.open::before {
-  transform: rotate(45deg) translate(5px, 6px);
-}
-
-.hamburger.open::after {
-  transform: rotate(-45deg) translate(5px, -6px);
-}
-
-.nav {
-  display: flex;
-  gap: 0.5rem;
+.nav-scroll::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 999px;
 }
 
 .nav-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.625rem 0.82rem;
-  border-radius: 8px;
+  justify-content: center;
+  gap: 0.45rem;
+  flex: 0 0 auto;
+  padding: 0.58rem 0.85rem;
+  border-radius: 999px;
   text-decoration: none;
   color: var(--text-color);
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   transition: all 0.3s ease;
   border: 1px solid transparent;
 }
@@ -255,7 +381,12 @@ onMounted(() => {
 }
 
 .nav-icon {
+  flex: 0 0 auto;
   font-size: 1rem;
+}
+
+.nav-label {
+  white-space: nowrap;
 }
 
 .main {
@@ -278,19 +409,12 @@ onMounted(() => {
   border-top: 1px solid var(--border-color);
 }
 
-.footer-actions {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .language-picker {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   color: var(--text-muted);
+  min-width: 0;
 }
 
 .language-picker select {
@@ -300,6 +424,7 @@ onMounted(() => {
   color: var(--text-color);
   cursor: pointer;
   padding: 0.5rem 0.75rem;
+  max-width: 9.5rem;
   outline: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -309,42 +434,34 @@ onMounted(() => {
   box-shadow: 0 0 0 3px var(--shadow-color);
 }
 
-@media (max-width: 900px) {
-  .menu-toggle {
-    display: block;
+@media (max-width: 640px) {
+  .header-center,
+  .recent-tools,
+  .logo-tagline {
+    display: none;
   }
 
-  .nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    background: var(--header-bg);
-    border-bottom: 1px solid var(--border-color);
-    padding: 1rem;
-    gap: 0.5rem;
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-  }
-
-  .nav.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .nav-link {
-    justify-content: center;
+  .language-picker select {
+    max-width: 6.8rem;
   }
 }
 
 @media (max-width: 520px) {
-  .theme-label,
-  .language-picker span {
+  .header-content {
+    padding-inline: 1rem;
+  }
+
+  .logo-text,
+  .theme-label {
     display: none;
+  }
+
+  .theme-toggle {
+    padding-inline: 0.65rem;
+  }
+
+  .nav-scroll {
+    padding-inline: 1rem;
   }
 }
 </style>
