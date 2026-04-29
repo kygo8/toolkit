@@ -1,9 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const isMenuOpen = ref(false)
+const theme = ref('dark')
 
 const navItems = [
   { path: '/', label: '首页', icon: '⌂' },
@@ -23,6 +24,33 @@ const toggleMenu = () => {
 const closeMenu = () => {
   isMenuOpen.value = false
 }
+
+const themeLabel = computed(() => theme.value === 'dark' ? '亮色模式' : '暗色模式')
+const themeIcon = computed(() => theme.value === 'dark' ? '☀️' : '🌙')
+
+const applyTheme = (value) => {
+  if (!process.client) return
+  document.documentElement.setAttribute('data-theme', value)
+  document.documentElement.style.colorScheme = value
+}
+
+const setTheme = (value) => {
+  theme.value = value
+  applyTheme(value)
+  if (process.client) {
+    localStorage.setItem('toolx-theme', value)
+  }
+}
+
+const toggleTheme = () => {
+  setTheme(theme.value === 'dark' ? 'light' : 'dark')
+}
+
+onMounted(() => {
+  const savedTheme = localStorage.getItem('toolx-theme')
+  const prefersLight = window.matchMedia?.('(prefers-color-scheme: light)').matches
+  setTheme(savedTheme || (prefersLight ? 'light' : 'dark'))
+})
 </script>
 
 <template>
@@ -34,23 +62,25 @@ const closeMenu = () => {
           <span class="logo-text">ToolX</span>
         </NuxtLink>
 
-        <button class="menu-toggle" @click="toggleMenu" aria-label="Toggle menu">
-          <span class="hamburger" :class="{ open: isMenuOpen }"></span>
-        </button>
+        <div class="header-actions">
+          <button class="menu-toggle" type="button" @click="toggleMenu" aria-label="Toggle menu">
+            <span class="hamburger" :class="{ open: isMenuOpen }"></span>
+          </button>
 
-        <nav class="nav" :class="{ open: isMenuOpen }">
-          <NuxtLink
-            v-for="item in navItems"
-            :key="item.path"
-            :to="item.path"
-            class="nav-link"
-            :class="{ active: route.path === item.path }"
-            @click="closeMenu"
-          >
-            <span class="nav-icon">{{ item.icon }}</span>
-            <span class="nav-label">{{ item.label }}</span>
-          </NuxtLink>
-        </nav>
+          <nav class="nav" :class="{ open: isMenuOpen }">
+            <NuxtLink
+              v-for="item in navItems"
+              :key="item.path"
+              :to="item.path"
+              class="nav-link"
+              :class="{ active: route.path === item.path }"
+              @click="closeMenu"
+            >
+              <span class="nav-icon">{{ item.icon }}</span>
+              <span class="nav-label">{{ item.label }}</span>
+            </NuxtLink>
+          </nav>
+        </div>
       </div>
     </header>
 
@@ -60,6 +90,12 @@ const closeMenu = () => {
 
     <footer class="footer">
       <p>© 2026 ToolX | Developer Tools</p>
+      <div class="footer-actions">
+        <button class="theme-toggle" type="button" :aria-label="themeLabel" @click="toggleTheme">
+          <span>{{ themeIcon }}</span>
+          <span class="theme-label">{{ themeLabel }}</span>
+        </button>
+      </div>
     </footer>
   </div>
 </template>
@@ -75,7 +111,7 @@ const closeMenu = () => {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(15, 15, 35, 0.95);
+  background: var(--header-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
 }
@@ -116,6 +152,36 @@ const closeMenu = () => {
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.54rem 0.78rem;
+  transition: all 0.25s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: 0 6px 18px var(--shadow-color);
+}
+
+.theme-label {
+  font-size: 0.8rem;
+  white-space: nowrap;
 }
 
 .hamburger {
@@ -200,11 +266,20 @@ const closeMenu = () => {
 }
 
 .footer {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
   padding: 1.5rem;
   color: var(--text-muted);
   font-size: 0.875rem;
   border-top: 1px solid var(--border-color);
+}
+
+.footer-actions {
+  display: inline-flex;
+  align-items: center;
 }
 
 @media (max-width: 900px) {
@@ -218,7 +293,7 @@ const closeMenu = () => {
     left: 0;
     right: 0;
     flex-direction: column;
-    background: rgba(15, 15, 35, 0.98);
+    background: var(--header-bg);
     border-bottom: 1px solid var(--border-color);
     padding: 1rem;
     gap: 0.5rem;
@@ -236,6 +311,12 @@ const closeMenu = () => {
 
   .nav-link {
     justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .theme-label {
+    display: none;
   }
 }
 </style>
