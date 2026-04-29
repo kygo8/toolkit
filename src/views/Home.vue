@@ -2,17 +2,25 @@
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { categoryCatalog, featuredToolKeys } from '../i18n/catalog.js'
+import { withLocalePath } from '../i18n/paths.js'
 import { useI18n } from '../i18n/useI18n.js'
 
 const router = useRouter()
-const { t, tool, category } = useI18n()
+const { locale, t, tool, category } = useI18n()
 
-const featuredTools = computed(() => featuredToolKeys.map((key) => tool(key)))
+const featuredTools = computed(() => featuredToolKeys.map((key) => {
+  const info = tool(key)
+  return {
+    ...info,
+    path: withLocalePath(info.path, locale.value)
+  }
+}))
 
 const categories = computed(() => (
   ['image', 'network', 'codec', 'dev', 'qrcode', 'seo', 'other'].map((key) => ({
     ...categoryCatalog[key],
-    ...category(key)
+    ...category(key),
+    path: withLocalePath(categoryCatalog[key].path, locale.value)
   }))
 ))
 

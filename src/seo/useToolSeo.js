@@ -1,29 +1,33 @@
 import { computed } from 'vue'
+import { useRoute } from '#imports'
 import { routeKeyByPath } from '../i18n/catalog.js'
+import { alternateLinksForPath, getLocaleFromPath, stripLocaleFromPath, withLocalePath } from '../i18n/paths.js'
 import { useI18n } from '../i18n/useI18n.js'
 import { siteUrl } from './routes.js'
 
-const normalizePath = (path) => {
-  if (!path || path === '/') return '/'
-  return path.endsWith('/') ? path.slice(0, -1) : path
-}
-
 export const useToolSeo = (path) => {
-  const { category, tool, t } = useI18n()
-  const normalizedPath = normalizePath(path)
-  const routeInfo = routeKeyByPath[normalizedPath] || routeKeyByPath['/']
-  const canonical = `${siteUrl}${normalizedPath === '/' ? '' : normalizedPath}`
+  const route = useRoute()
+  const { category, locale, tool, t } = useI18n()
+  const cleanPath = computed(() => stripLocaleFromPath(path || route.path))
+  const currentLocale = computed(() => getLocaleFromPath(route.path) || locale.value)
+  const routeInfo = computed(() => routeKeyByPath[cleanPath.value] || routeKeyByPath['/'])
+  const canonicalPath = computed(() => withLocalePath(cleanPath.value, currentLocale.value))
+  const canonical = computed(() => `${siteUrl}${canonicalPath.value}`)
+  const alternateLinks = computed(() => alternateLinksForPath(cleanPath.value).map((link) => ({
+    ...link,
+    href: `${siteUrl}${link.href}`
+  })))
   const routeSeo = computed(() => {
-    if (routeInfo.type === 'tool') {
-      const toolInfo = tool(routeInfo.key)
+    if (routeInfo.value.type === 'tool') {
+      const toolInfo = tool(routeInfo.value.key)
       return {
         title: t('seo.toolTitle', { title: toolInfo.title }),
         description: t('seo.toolDescription', { description: toolInfo.desc })
       }
     }
 
-    if (routeInfo.type === 'category') {
-      const categoryInfo = category(routeInfo.key)
+    if (routeInfo.value.type === 'category') {
+      const categoryInfo = category(routeInfo.value.key)
       return {
         title: t('seo.categoryTitle', { title: categoryInfo.title }),
         description: t('seo.categoryDescription', { description: categoryInfo.desc })
@@ -41,7 +45,7 @@ export const useToolSeo = (path) => {
     description: () => routeSeo.value.description,
     ogTitle: () => routeSeo.value.title,
     ogDescription: () => routeSeo.value.description,
-    ogUrl: canonical,
+    ogUrl: () => canonical.value,
     ogType: 'website',
     twitterCard: 'summary',
     twitterTitle: () => routeSeo.value.title,
@@ -49,8 +53,9 @@ export const useToolSeo = (path) => {
   })
 
   useHead({
-    link: [
-      { rel: 'canonical', href: canonical }
+    link: () => [
+      { rel: 'canonical', href: canonical.value },
+      ...alternateLinks.value
     ],
     script: [
       {
@@ -60,7 +65,7 @@ export const useToolSeo = (path) => {
           '@type': 'WebApplication',
           name: routeSeo.value.title,
           description: routeSeo.value.description,
-          url: canonical,
+          url: canonical.value,
           applicationCategory: 'DeveloperApplication',
           operatingSystem: 'Web'
         })
