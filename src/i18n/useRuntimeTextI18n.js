@@ -1,0 +1,297 @@
+import { nextTick, onBeforeUnmount } from 'vue'
+
+const enText = {
+  '编码 (Encode)': 'Encode',
+  '解码 (Decode)': 'Decode',
+  '→ 编码': 'Encode',
+  '→ 解码': 'Decode',
+  '✕ 清空': 'Clear',
+  '✕ 清空全部': 'Clear all',
+  '清空': 'Clear',
+  '复制': 'Copy',
+  '📋 复制': 'Copy',
+  '📋 复制代码': 'Copy code',
+  '📋 复制图片': 'Copy image',
+  '📋 复制响应': 'Copy response',
+  '📋 复制 k:v 格式': 'Copy k:v format',
+  '✓ 已复制': 'Copied',
+  '生成': 'Generate',
+  '生成二维码': 'Generate QR code',
+  '🔄 生成': 'Generate',
+  '🔄 重新生成': 'Regenerate',
+  '转换': 'Convert',
+  '当前时间': 'Now',
+  '全部打开': 'Open all',
+  '导出CSV': 'Export CSV',
+  '📥 导出CSV': 'Export CSV',
+  '下载 PNG': 'Download PNG',
+  '📥 下载 PNG': 'Download PNG',
+  '添加页面': 'Add page',
+  '+ 添加页面': 'Add page',
+  '+ 添加Header': 'Add header',
+  '+ 添加字段': 'Add field',
+  '+ 禁止': 'Add disallow rule',
+  '+ 允许': 'Add allow rule',
+  '输入文本': 'Input text',
+  '输出结果': 'Output',
+  '输入HTML内容': 'Input HTML',
+  '输入 JWT Token': 'Input JWT token',
+  '输入 cURL 命令': 'Input cURL command',
+  '输入URL或域名（每行一个）': 'Input URLs or domains, one per line',
+  '输入要检测的URL（每行一个）': 'Input URLs to check, one per line',
+  '输入要检查的URL（每行一个）': 'Input URLs to check, one per line',
+  '输入 JSON': 'Input JSON',
+  '粘贴或输入 JSON 字符串': 'Paste or input a JSON string',
+  '原始文本': 'Source text',
+  '修改后的文本': 'Modified text',
+  '检查结果': 'Check results',
+  '分析结果': 'Analysis results',
+  '生成结果': 'Generated result',
+  '生成的 cURL 命令': 'Generated cURL command',
+  '连接详情': 'Connection details',
+  '转换结果': 'Converted result',
+  '原图': 'Original image',
+  '状态': 'Status',
+  '等待上传': 'Waiting for upload',
+  '转换中...': 'Converting...',
+  '已生成': 'Generated',
+  '格式化': 'Format',
+  '▶ 格式化': 'Format',
+  '压缩': 'Compress',
+  '二维码生成': 'QR Code Generator',
+  '二维码解码': 'QR Code Decoder',
+  '二维码美化': 'QR Code Beautifier',
+  '随机密码生成': 'Random Password Generator',
+  'JSON格式化': 'JSON Formatter',
+  '{} JSON格式化': 'JSON Formatter',
+  'Base64 编解码': 'Base64 Encode/Decode',
+  '↔ Base64 编解码': 'Base64 Encode/Decode',
+  'URL 编解码': 'URL Encode/Decode',
+  '🔗 URL 编解码': 'URL Encode/Decode',
+  'HTML 编解码': 'HTML Encode/Decode',
+  '<> HTML 编解码': 'HTML Encode/Decode',
+  'Unicode 编解码': 'Unicode Encode/Decode',
+  '🌐 Unicode 编解码': 'Unicode Encode/Decode',
+  'HEX 编解码': 'HEX Encode/Decode',
+  '🔢 HEX 编解码': 'HEX Encode/Decode',
+  'JWT 解码': 'JWT Decoder',
+  '🔑 JWT 解码': 'JWT Decoder',
+  'MD5 / Hash': 'MD5 / Hash',
+  '# MD5 / Hash': 'MD5 / Hash',
+  'cURL 测试': 'cURL Test',
+  '🚀 cURL 测试': 'cURL Test',
+  'cURL 转代码': 'cURL to Code',
+  '🔄 cURL 转代码': 'cURL to Code',
+  'cURL 构建器': 'cURL Builder',
+  '🛠️ cURL 构建器': 'cURL Builder',
+  '网络检测': 'Network Check',
+  '📡 网络检测': 'Network Check',
+  '域名检测': 'Domain Check',
+  '🌍 域名检测': 'Domain Check',
+  '图片格式转换': 'Image Format Converter',
+  '🖼️ 图片格式转换': 'Image Format Converter',
+  '图片压缩': 'Image Compressor',
+  '📉 图片压缩': 'Image Compressor',
+  '图片转 Base64': 'Image to Base64',
+  '🔤 图片转 Base64': 'Image to Base64',
+  '时间戳转换': 'Timestamp Converter',
+  '🕐 时间戳转换': 'Timestamp Converter',
+  '颜色转换': 'Color Converter',
+  '🎨 颜色转换': 'Color Converter',
+  '正则测试': 'Regex Tester',
+  '🔍 正则测试': 'Regex Tester',
+  '进制转换': 'Number Base Converter',
+  '🔢 进制转换': 'Number Base Converter',
+  'UUID 生成': 'UUID Generator',
+  '🆔 UUID 生成': 'UUID Generator',
+  '文本对比': 'Text Diff',
+  '📄 文本对比': 'Text Diff',
+  '批量域名工具': 'Batch URL Tools',
+  '🌐 批量域名工具': 'Batch URL Tools',
+  '死链检测': 'Dead Link Checker',
+  '🔗 死链检测': 'Dead Link Checker',
+  '404页面检查': '404 Status Checker',
+  '🔍 404页面检查': '404 Status Checker',
+  '关键词密度分析': 'Keyword Density Analyzer',
+  '📊 关键词密度分析': 'Keyword Density Analyzer',
+  '字符计数器': 'Character Counter',
+  '🔢 字符计数器': 'Character Counter',
+  'Meta标签生成器': 'Meta Tag Generator',
+  '📝 Meta标签生成器': 'Meta Tag Generator',
+  'Robots.txt 生成器': 'Robots.txt Generator',
+  '🤖 Robots.txt 生成器': 'Robots.txt Generator',
+  'Sitemap 生成器': 'Sitemap Generator',
+  '🗺️ Sitemap 生成器': 'Sitemap Generator',
+  'H标签结构检查': 'H Tag Structure Checker',
+  '# H标签结构检查': 'H Tag Structure Checker',
+  '全站链接爬取检查': 'Site Crawler',
+  '🕷️ 全站链接爬取检查': 'Site Crawler',
+  '时间戳 → 日期时间': 'Timestamp to date time',
+  '日期时间 → 时间戳': 'Date time to timestamp',
+  '无效输入': 'Invalid input',
+  '请输入有效数字': 'Please enter a valid number',
+  '请输入有效域名，例如 example.com': 'Please enter a valid domain, for example example.com',
+  '解码失败，输入不是有效的 Base64 字符串': 'Decode failed. The input is not valid Base64.',
+  '解码失败，请检查输入是否正确 URL 编码': 'Decode failed. Please check whether the input is URL encoded.',
+  '编码失败': 'Encode failed'
+}
+
+const enAttributes = {
+  '输入要编码的文本...': 'Enter text to encode...',
+  '输入要解码的 Base64 字符串...': 'Enter a Base64 string to decode...',
+  '输入要解码的 URL 编码字符串...': 'Enter a URL-encoded string to decode...',
+  '输入要编码的 URL 或文本...': 'Enter a URL or text to encode...',
+  '输入 &amp;lt;div&amp;gt; 等HTML实体...': 'Enter HTML entities such as &lt;div&gt;...',
+  '输入中文或特殊字符...': 'Enter text or special characters...',
+  '输入 \\u4f60\\u597d 格式...': 'Enter Unicode escapes such as \\u4f60\\u597d...',
+  '输入十六进制，如 48 65 6c 6c 6f': 'Enter hex, such as 48 65 6c 6c 6f',
+  '结果将显示在这里': 'The result will appear here',
+  '格式化结果将显示在这里': 'Formatted result will appear here',
+  '点击生成密码': 'Click generate password',
+  '输入文本、URL、WiFi信息等...': 'Enter text, URL, Wi-Fi info, and more...',
+  '输入内容后点击生成': 'Enter content, then click generate',
+  '输入文本或URL': 'Enter text or URL',
+  '输入原始文本...': 'Enter original text...',
+  '输入修改后的文本...': 'Enter modified text...',
+  '输入数值': 'Enter a number',
+  '输入时间戳': 'Enter timestamp',
+  '输入正则表达式': 'Enter regular expression',
+  '输入要匹配的文本...': 'Enter text to match...',
+  '替换字符串 ($1, $2...)': 'Replacement string ($1, $2...)',
+  '输入要计算哈希值的文本...': 'Enter text to hash...',
+  '输入要统计的文本...': 'Enter text to count...',
+  '输入要分析的关键词': 'Enter keyword to analyze',
+  '粘贴文章内容...': 'Paste article content...',
+  '输入页面标题，建议30-60个字符': 'Enter page title, ideally 30-60 characters',
+  '输入页面描述，建议120-160个字符': 'Enter page description, ideally 120-160 characters',
+  '输入关键词，用逗号分隔': 'Enter keywords separated by commas',
+  '输入作者名称': 'Enter author name',
+  '请在上方填写内容': 'Fill in the fields above',
+  '请添加规则': 'Add rules first',
+  '请填写网站URL': 'Enter website URL',
+  '上传图片后生成完整 Data URL': 'Upload an image to generate a full Data URL',
+  '上传图片后生成纯 Base64': 'Upload an image to generate raw Base64',
+  '用户名': 'Username',
+  '密码': 'Password',
+  'Header名': 'Header name',
+  'Header值': 'Header value',
+  '字段名': 'Field name',
+  '字段值': 'Field value',
+  '交换输入输出': 'Swap input and output'
+}
+
+export const runtimeTextTranslations = {
+  en: enText
+}
+
+export const runtimeAttributeTranslations = {
+  en: enAttributes
+}
+
+const textNodeSources = new WeakMap()
+const attributeSources = new WeakMap()
+let observer
+
+const targetLocale = (locale) => (locale === 'zh-CN' ? 'zh-CN' : 'en')
+
+const translateValue = (value, locale, dictionary) => {
+  const original = value.trim()
+  if (!original) return value
+  if (locale === 'zh-CN') return original
+
+  const translated = dictionary[locale]?.[original] || dictionary.en?.[original]
+  if (!translated) return value
+  return value.replace(original, translated)
+}
+
+const translateTextNode = (node, locale) => {
+  if (!node.nodeValue?.trim()) return
+  const source = textNodeSources.get(node) || node.nodeValue
+  textNodeSources.set(node, source)
+  const nextValue = translateValue(source, locale, runtimeTextTranslations)
+  if (node.nodeValue !== nextValue) {
+    node.nodeValue = nextValue
+  }
+}
+
+const translateAttributes = (element, locale) => {
+  for (const attr of ['placeholder', 'title', 'aria-label']) {
+    if (!element.hasAttribute?.(attr)) continue
+
+    let sources = attributeSources.get(element)
+    if (!sources) {
+      sources = {}
+      attributeSources.set(element, sources)
+    }
+
+    sources[attr] ||= element.getAttribute(attr)
+    const nextValue = translateValue(sources[attr], locale, runtimeAttributeTranslations)
+    if (element.getAttribute(attr) !== nextValue) {
+      element.setAttribute(attr, nextValue)
+    }
+  }
+}
+
+const shouldSkipNode = (node) => {
+  const tag = node.nodeName
+  return tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT'
+}
+
+const walkAndTranslate = (root, locale) => {
+  if (!root || shouldSkipNode(root)) return
+
+  if (root.nodeType === Node.TEXT_NODE) {
+    translateTextNode(root, locale)
+    return
+  }
+
+  if (root.nodeType !== Node.ELEMENT_NODE && root.nodeType !== Node.DOCUMENT_NODE) return
+
+  if (root.nodeType === Node.ELEMENT_NODE) {
+    translateAttributes(root, locale)
+  }
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      return shouldSkipNode(node) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+    }
+  })
+
+  while (walker.nextNode()) {
+    const node = walker.currentNode
+    if (node.nodeType === Node.TEXT_NODE) translateTextNode(node, locale)
+    if (node.nodeType === Node.ELEMENT_NODE) translateAttributes(node, locale)
+  }
+}
+
+export const useRuntimeTextI18n = () => {
+  const applyRuntimeTextI18n = async (locale) => {
+    if (!process.client) return
+    await nextTick()
+    walkAndTranslate(document.querySelector('.main'), targetLocale(locale))
+  }
+
+  const observeRuntimeTextI18n = (localeRef) => {
+    if (!process.client || observer) return
+
+    observer = new MutationObserver(() => {
+      walkAndTranslate(document.querySelector('.main'), targetLocale(localeRef.value))
+    })
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    })
+  }
+
+  onBeforeUnmount(() => {
+    observer?.disconnect()
+    observer = undefined
+  })
+
+  return {
+    applyRuntimeTextI18n,
+    observeRuntimeTextI18n
+  }
+}
