@@ -1,12 +1,14 @@
 import { computed } from 'vue'
-import { useHead, useState } from '#imports'
+import { useHead, useRoute, useState } from '#imports'
 import { defaultLocale, localeByCode, normalizeLocale, supportedLocales } from './locales.js'
 import { formatMessage, getCategoryMessage, getMessage, getToolMessage } from './messages.js'
+import { getLocaleFromPath } from './paths.js'
 
 const storageKey = 'toolx-locale'
 
 export const useI18n = () => {
-  const locale = useState('toolx-locale', () => defaultLocale)
+  const route = useRoute()
+  const locale = useState('toolx-locale', () => getLocaleFromPath(route.path) || defaultLocale)
 
   const currentLocale = computed(() => localeByCode[locale.value] || localeByCode[defaultLocale])
   const dir = computed(() => currentLocale.value.dir)
@@ -25,9 +27,10 @@ export const useI18n = () => {
   const initLocale = () => {
     if (!process.client) return
 
+    const pathLocale = getLocaleFromPath(route.path)
     const savedLocale = localStorage.getItem(storageKey)
     const browserLocale = navigator.languages?.[0] || navigator.language
-    setLocale(savedLocale || normalizeLocale(browserLocale))
+    setLocale(pathLocale || savedLocale || normalizeLocale(browserLocale))
   }
 
   const t = (path, values = {}) => {

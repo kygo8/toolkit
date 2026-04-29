@@ -2,6 +2,7 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { categoryCatalog, navItems, routeKeyByPath, toolCatalog } from './src/i18n/catalog.js'
+import { stripLocaleFromPath, switchLocalePath, withLocalePath } from './src/i18n/paths.js'
 import { useI18n } from './src/i18n/useI18n.js'
 
 const route = useRoute()
@@ -14,11 +15,20 @@ const recentToolsStorageKey = 'toolx-recent-tools'
 const themeLabel = computed(() => theme.value === 'dark' ? t('common.themeLight') : t('common.themeDark'))
 const themeIcon = computed(() => theme.value === 'dark' ? '☀️' : '🌙')
 const activeNavItem = computed(() => {
-  if (route.path === '/') return navItems[0]
-  return navItems.find((item) => item.path !== '/' && route.path.startsWith(item.path)) || navItems[0]
+  const path = stripLocaleFromPath(route.path)
+  if (path === '/') return navItems[0]
+  return navItems.find((item) => item.path !== '/' && path.startsWith(item.path)) || navItems[0]
 })
 const recentTools = computed(() => recentToolKeys.value.map((key) => ({ key, ...toolCatalog[key] })).filter((tool) => tool.path))
 const activeToolCount = computed(() => categoryCatalog[activeNavItem.value.key]?.tools?.length || recentTools.value.length)
+const localizedNavItems = computed(() => navItems.map((item) => ({
+  ...item,
+  localizedPath: withLocalePath(item.path, locale.value)
+})))
+const localizedRecentTools = computed(() => recentTools.value.map((tool) => ({
+  ...tool,
+  localizedPath: withLocalePath(tool.path, locale.value)
+})))
 
 const normalizeRecentToolKeys = (keys) => (
   [...new Set(keys)].filter((key) => toolCatalog[key]).slice(0, 10)
@@ -36,7 +46,7 @@ const loadRecentToolKeys = () => {
 const saveRecentTool = (path) => {
   if (!process.client) return
 
-  const routeMeta = routeKeyByPath[path]
+  const routeMeta = routeKeyByPath[stripLocaleFromPath(path)]
   if (routeMeta?.type !== 'tool') return
 
   const nextKeys = normalizeRecentToolKeys([routeMeta.key, ...recentToolKeys.value])
@@ -45,7 +55,12 @@ const saveRecentTool = (path) => {
 }
 
 const openRecentTool = (path) => {
-  if (path) router.push(path)
+  if (path) router.push(withLocalePath(path, locale.value))
+}
+
+const changeLocale = (value) => {
+  setLocale(value)
+  router.push(switchLocalePath(route.path, value))
 }
 
 const applyTheme = (value) => {
@@ -86,7 +101,7 @@ watch(() => route.path, (path) => {
   <div class="app">
     <header class="header">
       <div class="header-content">
-        <NuxtLink to="/" class="logo">
+        <NuxtLink :to="withLocalePath('/', locale)" class="logo">
           <span class="logo-icon">⚡</span>
           <span class="logo-copy">
             <span class="logo-text">ToolX</span>
@@ -108,7 +123,7 @@ watch(() => route.path, (path) => {
               @change="openRecentTool($event.target.value)"
             >
               <option
-                v-for="item in recentTools"
+                v-for="item in localizedRecentTools"
                 :key="item.path"
                 :value="item.path"
                 :title="t(`tools.${item.key}.title`)"
@@ -118,7 +133,7 @@ watch(() => route.path, (path) => {
             </select>
           </label>
           <label class="language-picker">
-            <select :value="locale" @change="setLocale($event.target.value)">
+            <select :value="locale" @change="changeLocale($event.target.value)">
               <option v-for="item in locales" :key="item.code" :value="item.code">
                 {{ item.nativeName }}
               </option>
@@ -134,11 +149,11 @@ watch(() => route.path, (path) => {
       <nav class="nav-strip" aria-label="Tool categories">
         <div class="nav-scroll">
           <NuxtLink
-            v-for="item in navItems"
+            v-for="item in localizedNavItems"
             :key="item.path"
-            :to="item.path"
+            :to="item.localizedPath"
             class="nav-link"
-            :class="{ active: route.path === item.path }"
+            :class="{ active: stripLocaleFromPath(route.path) === item.path }"
           >
             <span class="nav-icon">{{ item.icon }}</span>
             <span class="nav-label">{{ t(`nav.${item.key}`) }}</span>
