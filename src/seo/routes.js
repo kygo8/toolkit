@@ -3,8 +3,8 @@ export const siteUrl = 'https://toolx.app'
 export const seoRoutes = [
   {
     path: '/',
-    title: 'ToolX - 在线开发者工具站',
-    description: 'ToolX 提供编码解码、JSON 格式化、密码生成、二维码、cURL、SEO 检测等在线开发者工具。'
+    title: 'ToolX 在线工具箱 - 开发者工具、图片转换、网络检测与 SEO 工具',
+    description: 'ToolX 提供在线开发者工具、图片转换、图片压缩、图片转 Base64、网络检测、域名检测、cURL 测试、JSON 格式化、编码解码、二维码和 SEO 工具。'
   },
   {
     path: '/password',
@@ -110,6 +110,26 @@ export const seoRoutes = [
     path: '/qrcode/beautify',
     title: '二维码美化工具 - ToolX',
     description: '在线定制二维码渐变色、圆角、圆点样式、定位点配色和 Logo。'
+  },
+  {
+    path: '/image',
+    title: '图片工具合集 - ToolX',
+    description: '提供图片格式转换、图片压缩、图片转 Base64 和 Data URL 等本地图片处理工具。'
+  },
+  {
+    path: '/image/convert',
+    title: '图片格式转换工具 - ToolX',
+    description: '在线将图片转换为 PNG、JPG、WebP 格式，所有图片处理均在浏览器本地完成。'
+  },
+  {
+    path: '/image/compress',
+    title: '图片压缩工具 - ToolX',
+    description: '在线压缩图片体积，支持调整图片质量和最大宽度，适合网页加载速度和 SEO 优化。'
+  },
+  {
+    path: '/image/base64',
+    title: '图片转 Base64 工具 - ToolX',
+    description: '在线将图片转换为 Base64 或完整 Data URL，适合 HTML、CSS、小图标内联和接口调试。'
   },
   {
     path: '/network',
