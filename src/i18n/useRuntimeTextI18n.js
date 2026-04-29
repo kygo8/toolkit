@@ -21,9 +21,10 @@ const resolveSemanticValue = (value, sourceDictionary) => {
 const translateValue = (value, locale, sourceDictionary, localeDictionary) => {
   const original = value.trim()
   if (!original) return value
-  if (locale === 'zh-CN') return value
 
   const semanticValue = resolveSemanticValue(original, sourceDictionary)
+  if (locale === 'zh-CN' && semanticValue !== original) return value
+
   const translated = localeDictionary[locale]?.[semanticValue] || localeDictionary.en?.[semanticValue] || semanticValue
   if (!translated || translated === original) return value
 
@@ -43,7 +44,7 @@ const translateTextNode = (node, locale) => {
 }
 
 const translateAttributes = (element, locale) => {
-  for (const attr of ['placeholder', 'title', 'aria-label']) {
+  for (const attr of ['placeholder', 'title', 'aria-label', 'alt']) {
     if (!element.hasAttribute?.(attr)) continue
 
     let sources = attributeSources.get(element)

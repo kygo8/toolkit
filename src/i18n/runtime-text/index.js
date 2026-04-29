@@ -22,6 +22,7 @@ import te from './te.js'
 import mr from './mr.js'
 import tl from './tl.js'
 import sw from './sw.js'
+import { watermarkAttributeTranslations, watermarkTextTranslations } from './watermark.js'
 
 export { default as en } from './en.js'
 export { default as zhCN } from './zh-CN.js'
@@ -50,7 +51,7 @@ export { default as sw } from './sw.js'
 
 export { sourceText, sourceAttributes }
 
-export const runtimeLocales = {
+const baseRuntimeLocales = {
   en,
   'zh-CN': zhCN,
   ja,
@@ -76,6 +77,22 @@ export const runtimeLocales = {
   tl,
   sw
 }
+
+export const runtimeLocales = Object.fromEntries(
+  Object.entries(baseRuntimeLocales).map(([locale, config]) => [
+    locale,
+    {
+      text: {
+        ...(config.text || {}),
+        ...(watermarkTextTranslations[locale] || {})
+      },
+      attributes: {
+        ...(config.attributes || {}),
+        ...(watermarkAttributeTranslations[locale] || {})
+      }
+    }
+  ])
+)
 
 export const runtimeTextTranslations = Object.fromEntries(
   Object.entries(runtimeLocales).map(([locale, config]) => [locale, config.text || {}])
