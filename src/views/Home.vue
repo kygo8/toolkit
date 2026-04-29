@@ -26,10 +26,10 @@ const tools = [
     color: '#ec4899'
   },
   {
-    path: '/curl',
+    path: '/network',
     icon: '🌐',
-    title: 'cURL 工具',
-    desc: 'cURL 转代码、可视化构建、命令解析',
+    title: '网络工具',
+    desc: '网络检测、域名检测、cURL 测试与转代码',
     color: '#f97316'
   },
   {

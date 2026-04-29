@@ -131,7 +131,7 @@ const clearAll = () => {
 
 <template>
   <div class="tool-page">
-    <h1 class="page-title">🔍 cURL 解析器</h1>
+    <h1 class="page-title">🚀 cURL 测试</h1>
     <div class="card">
       <div class="form-group">
         <label class="form-label">输入 cURL 命令</label>

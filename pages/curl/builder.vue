@@ -1,10 +1,3 @@
 <script setup>
-import CurlBuilder from '~/src/views/curl/CurlBuilder.vue'
-import { useToolSeo } from '~/src/seo/useToolSeo.js'
-
-useToolSeo('/curl/builder')
+await navigateTo('/network/curl/builder', { redirectCode: 301 })
 </script>
-
-<template>
-  <CurlBuilder />
-</template>

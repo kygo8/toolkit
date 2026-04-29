@@ -112,23 +112,38 @@ export const seoRoutes = [
     description: '在线定制二维码渐变色、圆角、圆点样式、定位点配色和 Logo。'
   },
   {
-    path: '/curl',
-    title: 'cURL 工具合集 - ToolX',
-    description: '提供 cURL 转代码、可视化 cURL 构建和 cURL 命令解析发送工具。'
+    path: '/network',
+    title: '网络工具合集 - ToolX',
+    description: '提供网络检测、域名检测、DNS 查询、cURL 测试、cURL 构建和 cURL 转代码工具。'
   },
   {
-    path: '/curl/to-code',
+    path: '/network/check',
+    title: '网络检测工具 - ToolX',
+    description: '在线检测浏览器联网状态、网络连接信息、本站连通性和响应延迟。'
+  },
+  {
+    path: '/network/domain',
+    title: '域名检测工具 - ToolX',
+    description: '在线解析域名结构并查询 A、AAAA、CNAME、MX、NS、TXT 等 DNS 记录。'
+  },
+  {
+    path: '/network/curl',
+    title: 'cURL 工具合集 - ToolX',
+    description: '提供 cURL 测试、cURL 转代码和可视化 cURL 构建工具。'
+  },
+  {
+    path: '/network/curl/to-code',
     title: 'cURL 转代码 - ToolX',
     description: '将 cURL 命令转换为 Python、JavaScript、Go、PHP、Java 等代码。'
   },
   {
-    path: '/curl/builder',
+    path: '/network/curl/builder',
     title: 'cURL 可视化构建器 - ToolX',
     description: '通过表单配置请求方法、URL、Headers、认证和 Body，生成 cURL 命令。'
   },
   {
-    path: '/curl/parser',
-    title: 'cURL 解析器与请求测试 - ToolX',
+    path: '/network/curl/test',
+    title: 'cURL 测试 - ToolX',
     description: '在线解析 cURL 命令，提取 URL、Headers、Body，并通过 Cloudflare 代理发送请求。'
   },
   {

@@ -9,8 +9,8 @@ const navItems = [
   { path: '/', label: '首页', icon: '⌂' },
   { path: '/codec', label: '编码解码', icon: '↔' },
   { path: '/dev', label: '开发工具', icon: '🛠' },
+  { path: '/network', label: '网络工具', icon: '🌐' },
   { path: '/qrcode', label: '二维码', icon: '📱' },
-  { path: '/curl', label: 'cURL', icon: '🌐' },
   { path: '/seo', label: 'SEO工具', icon: '📊' }
 ]
 

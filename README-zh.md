@@ -34,12 +34,14 @@
 | 🔍 解码 | 上传/拖拽/粘贴图片识别二维码 |
 | 🎨 美化 | 渐变色/圆角/圆点样式/定位点配色/嵌入Logo |
 
-### cURL 工具 (`/curl`)
+### 网络工具 (`/network`)
 | 工具 | 说明 |
 |------|------|
+| 📡 网络检测 | 检测浏览器联网状态、网络信息、本站连通性和响应延迟 |
+| 🌍 域名检测 | 解析域名结构，查询 A/AAAA/CNAME/MX/NS/TXT 等 DNS 记录 |
+| 🚀 cURL 测试 | 解析 cURL 命令，发送请求并查看响应状态、Headers 和 Body |
 | 🔄 转代码 | cURL 命令转为 Python/JavaScript/Go/PHP/Java 代码 |
 | 🛠️ 构建器 | 可视化表单构建 cURL 命令 |
-| 🔍 解析器 | 解析 cURL 命令，提取 Headers(k:v)，直接发送请求获取响应 |
 
 ### SEO 工具 (`/seo`)
 | 工具 | 说明 |
@@ -75,7 +77,7 @@ pages/
 ├── dev/          # 开发者工具页面
 ├── seo/          # SEO工具页面
 ├── qrcode/       # 二维码页面
-├── curl/         # cURL页面
+├── network/      # 网络工具页面
 ├── index.vue
 ├── password.vue
 └── json.vue
@@ -85,6 +87,7 @@ src/
 │   ├── dev/          # 6个开发者工具组件
 │   ├── seo/          # 10个SEO工具组件
 │   ├── qrcode/       # 3个二维码工具组件
+│   ├── network/      # 网络检测和域名检测组件
 │   └── curl/         # 3个cURL工具组件
 ├── seo/              # 路由SEO元数据
 server/

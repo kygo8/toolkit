@@ -2,9 +2,9 @@
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const tools = [
-  { path: '/curl/to-code', icon: '🔄', title: 'cURL 转代码', desc: '将 cURL 命令转为 Python、JavaScript、Go、PHP 等代码', color: '#00d9ff' },
-  { path: '/curl/builder', icon: '🛠️', title: 'cURL 构建器', desc: '可视化表单构建 cURL 命令', color: '#7c3aed' },
-  { path: '/curl/parser', icon: '🔍', title: 'cURL 解析器', desc: '解析 cURL 命令，展示请求方法、URL、Header、Body', color: '#10b981' }
+  { path: '/network/curl/test', icon: '🚀', title: 'cURL 测试', desc: '解析 cURL 命令并发送请求，查看响应状态、Header、Body', color: '#10b981' },
+  { path: '/network/curl/to-code', icon: '🔄', title: 'cURL 转代码', desc: '将 cURL 命令转为 Python、JavaScript、Go、PHP 等代码', color: '#00d9ff' },
+  { path: '/network/curl/builder', icon: '🛠️', title: 'cURL 构建器', desc: '可视化表单构建 cURL 命令', color: '#7c3aed' }
 ]
 const navigateTo = (path) => { router.push(path) }
 </script>
