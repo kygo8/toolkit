@@ -1,45 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { useCategoryTools } from '../i18n/useToolList.js'
 
 const router = useRouter()
-
-const tools = [
-  {
-    path: '/network/check',
-    icon: '📡',
-    title: '网络检测',
-    desc: '检测浏览器联网状态、当前网络信息、本站连通性和响应延迟',
-    color: '#00d9ff'
-  },
-  {
-    path: '/network/domain',
-    icon: '🌍',
-    title: '域名检测',
-    desc: '解析域名结构，查询 A、AAAA、CNAME、MX、NS、TXT 等 DNS 记录',
-    color: '#10b981'
-  },
-  {
-    path: '/network/curl/test',
-    icon: '🚀',
-    title: 'cURL 测试',
-    desc: '解析 cURL 命令并通过代理发送请求，查看响应状态、Headers 和 Body',
-    color: '#f97316'
-  },
-  {
-    path: '/network/curl/builder',
-    icon: '🛠️',
-    title: 'cURL 构建器',
-    desc: '通过可视化表单构建 cURL 命令，支持 Header、认证和 Body',
-    color: '#7c3aed'
-  },
-  {
-    path: '/network/curl/to-code',
-    icon: '🔄',
-    title: 'cURL 转代码',
-    desc: '将 cURL 命令转换为 Python、JavaScript、Go、PHP、Java 代码',
-    color: '#ec4899'
-  }
-]
+const { categoryInfo, tools } = useCategoryTools('network')
 
 const navigateTo = (path) => {
   router.push(path)
@@ -49,10 +13,10 @@ const navigateTo = (path) => {
 <template>
   <div class="tool-page">
     <section class="hero">
-      <p class="eyebrow">Network Toolkit</p>
-      <h1 class="page-title">🌐 网络工具</h1>
+      <p class="eyebrow">{{ categoryInfo.eyebrow }}</p>
+      <h1 class="page-title">{{ categoryInfo.icon }} {{ categoryInfo.title }}</h1>
       <p class="page-desc">
-        面向开发、运维和 SEO 排查的网络诊断工具集合，覆盖连通性、域名 DNS 和 HTTP 请求测试。
+        {{ categoryInfo.desc }}
       </p>
     </section>
 

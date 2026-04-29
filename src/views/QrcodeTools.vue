@@ -1,31 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { useCategoryTools } from '../i18n/useToolList.js'
 
 const router = useRouter()
-
-const tools = [
-  {
-    path: '/qrcode/generate',
-    icon: '📱',
-    title: '二维码生成',
-    desc: '输入文本或URL生成二维码，支持自定义尺寸',
-    color: '#00d9ff'
-  },
-  {
-    path: '/qrcode/decode',
-    icon: '🔍',
-    title: '二维码解码',
-    desc: '上传二维码图片，识别并提取内容',
-    color: '#7c3aed'
-  },
-  {
-    path: '/qrcode/beautify',
-    icon: '🎨',
-    title: '二维码美化',
-    desc: '自定义颜色、渐变、圆角、Logo等样式',
-    color: '#ec4899'
-  }
-]
+const { categoryInfo, tools } = useCategoryTools('qrcode')
 
 const navigateTo = (path) => {
   router.push(path)
@@ -34,7 +12,7 @@ const navigateTo = (path) => {
 
 <template>
   <div class="tool-page">
-    <h1 class="page-title">📱 二维码工具</h1>
+    <h1 class="page-title">{{ categoryInfo.icon }} {{ categoryInfo.title }}</h1>
     <div class="tools-grid">
       <div v-for="tool in tools" :key="tool.path" class="tool-card" @click="navigateTo(tool.path)">
         <div class="tool-icon" :style="{ '--tool-color': tool.color }">{{ tool.icon }}</div>

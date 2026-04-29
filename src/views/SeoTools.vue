@@ -1,80 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { useCategoryTools } from '../i18n/useToolList.js'
 
 const router = useRouter()
-
-const seoTools = [
-  {
-    path: '/seo/batch-url',
-    icon: '🌐',
-    title: '批量域名工具',
-    desc: '批量提取主域名和打开URL',
-    color: '#8b5cf6'
-  },
-  {
-    path: '/seo/site-crawler',
-    icon: '🕷️',
-    title: '全站链接爬取',
-    desc: '爬取全站链接并检查状态码，发现死链和404页面',
-    color: '#06b6d4'
-  },
-  {
-    path: '/seo/meta',
-    icon: '📝',
-    title: 'Meta标签生成器',
-    desc: '生成网页 title、description、keywords 等Meta标签',
-    color: '#00d9ff'
-  },
-  {
-    path: '/seo/keyword-density',
-    icon: '📊',
-    title: '关键词密度分析',
-    desc: '分析网页内容中关键词的出现频率和密度',
-    color: '#7c3aed'
-  },
-  {
-    path: '/seo/sitemap',
-    icon: '🗺️',
-    title: 'Sitemap生成',
-    desc: '生成 XML 网站地图',
-    color: '#ec4899'
-  },
-  {
-    path: '/seo/404-checker',
-    icon: '🔍',
-    title: '404页面检查',
-    desc: '批量检查URL是否返回404状态码',
-    color: '#f43f5e'
-  },
-  {
-    path: '/seo/dead-link',
-    icon: '🔗',
-    title: '死链检测',
-    desc: '检测网页中的死链和无效链接',
-    color: '#f59e0b'
-  },
-  {
-    path: '/seo/robots',
-    icon: '🤖',
-    title: 'Robots.txt生成',
-    desc: '生成符合标准的 robots.txt 文件',
-    color: '#ef4444'
-  },
-  {
-    path: '/seo/htag',
-    icon: '#',
-    title: 'H标签检查',
-    desc: '检查网页H1-H6标签结构是否合理',
-    color: '#14b8a6'
-  },
-  {
-    path: '/seo/character-counter',
-    icon: '🔢',
-    title: '字符计数器',
-    desc: '统计标题、描述等字符长度是否符合SEO标准',
-    color: '#10b981'
-  }
-]
+const { categoryInfo, tools } = useCategoryTools('seo')
 
 const navigateTo = (path) => {
   router.push(path)
@@ -83,11 +12,11 @@ const navigateTo = (path) => {
 
 <template>
   <div class="tool-page">
-    <h1 class="page-title">📊 SEO工具集</h1>
+    <h1 class="page-title">{{ categoryInfo.icon }} {{ categoryInfo.title }}</h1>
     
     <div class="tools-grid">
       <div 
-        v-for="tool in seoTools" 
+        v-for="tool in tools"
         :key="tool.path"
         class="tool-card"
         @click="navigateTo(tool.path)"

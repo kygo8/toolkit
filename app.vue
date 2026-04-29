@@ -1,21 +1,13 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { navItems } from './src/i18n/catalog.js'
+import { useI18n } from './src/i18n/useI18n.js'
 
 const route = useRoute()
 const isMenuOpen = ref(false)
 const theme = ref('dark')
-
-const navItems = [
-  { path: '/', label: '首页', icon: '⌂' },
-  { path: '/image', label: '图片工具', icon: '🖼️' },
-  { path: '/codec', label: '编码解码', icon: '↔' },
-  { path: '/dev', label: '开发工具', icon: '🛠' },
-  { path: '/network', label: '网络工具', icon: '🌐' },
-  { path: '/qrcode', label: '二维码', icon: '📱' },
-  { path: '/seo', label: 'SEO工具', icon: '📊' },
-  { path: '/other', label: '其他工具', icon: '✨' }
-]
+const { locale, locales, initLocale, setLocale, t } = useI18n()
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
@@ -25,7 +17,7 @@ const closeMenu = () => {
   isMenuOpen.value = false
 }
 
-const themeLabel = computed(() => theme.value === 'dark' ? '亮色模式' : '暗色模式')
+const themeLabel = computed(() => theme.value === 'dark' ? t('common.themeLight') : t('common.themeDark'))
 const themeIcon = computed(() => theme.value === 'dark' ? '☀️' : '🌙')
 
 const applyTheme = (value) => {
@@ -47,6 +39,7 @@ const toggleTheme = () => {
 }
 
 onMounted(() => {
+  initLocale()
   const savedTheme = localStorage.getItem('toolx-theme')
   const prefersLight = window.matchMedia?.('(prefers-color-scheme: light)').matches
   setTheme(savedTheme || (prefersLight ? 'light' : 'dark'))
@@ -63,7 +56,7 @@ onMounted(() => {
         </NuxtLink>
 
         <div class="header-actions">
-          <button class="menu-toggle" type="button" @click="toggleMenu" aria-label="Toggle menu">
+          <button class="menu-toggle" type="button" @click="toggleMenu" :aria-label="t('common.menuToggle')">
             <span class="hamburger" :class="{ open: isMenuOpen }"></span>
           </button>
 
@@ -77,7 +70,7 @@ onMounted(() => {
               @click="closeMenu"
             >
               <span class="nav-icon">{{ item.icon }}</span>
-              <span class="nav-label">{{ item.label }}</span>
+              <span class="nav-label">{{ t(`nav.${item.key}`) }}</span>
             </NuxtLink>
           </nav>
         </div>
@@ -89,8 +82,16 @@ onMounted(() => {
     </main>
 
     <footer class="footer">
-      <p>© 2026 ToolX | Developer Tools</p>
+      <p>© 2026 {{ t('common.footerText') }}</p>
       <div class="footer-actions">
+        <label class="language-picker">
+          <span>{{ t('common.language') }}</span>
+          <select :value="locale" @change="setLocale($event.target.value)">
+            <option v-for="item in locales" :key="item.code" :value="item.code">
+              {{ item.nativeName }}
+            </option>
+          </select>
+        </label>
         <button class="theme-toggle" type="button" :aria-label="themeLabel" @click="toggleTheme">
           <span>{{ themeIcon }}</span>
           <span class="theme-label">{{ themeLabel }}</span>
@@ -280,6 +281,32 @@ onMounted(() => {
 .footer-actions {
   display: inline-flex;
   align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.language-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-muted);
+}
+
+.language-picker select {
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.language-picker select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--shadow-color);
 }
 
 @media (max-width: 900px) {
@@ -315,7 +342,8 @@ onMounted(() => {
 }
 
 @media (max-width: 520px) {
-  .theme-label {
+  .theme-label,
+  .language-picker span {
     display: none;
   }
 }

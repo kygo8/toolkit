@@ -1,17 +1,14 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { useCategoryTools } from '../i18n/useToolList.js'
 const router = useRouter()
-const tools = [
-  { path: '/network/curl/test', icon: '🚀', title: 'cURL 测试', desc: '解析 cURL 命令并发送请求，查看响应状态、Header、Body', color: '#10b981' },
-  { path: '/network/curl/to-code', icon: '🔄', title: 'cURL 转代码', desc: '将 cURL 命令转为 Python、JavaScript、Go、PHP 等代码', color: '#00d9ff' },
-  { path: '/network/curl/builder', icon: '🛠️', title: 'cURL 构建器', desc: '可视化表单构建 cURL 命令', color: '#7c3aed' }
-]
+const { categoryInfo, tools } = useCategoryTools('curl')
 const navigateTo = (path) => { router.push(path) }
 </script>
 
 <template>
   <div class="tool-page">
-    <h1 class="page-title">🌐 cURL 工具</h1>
+    <h1 class="page-title">{{ categoryInfo.icon }} {{ categoryInfo.title }}</h1>
     <div class="tools-grid">
       <div v-for="tool in tools" :key="tool.path" class="tool-card" @click="navigateTo(tool.path)">
         <div class="tool-icon" :style="{ '--tool-color': tool.color }">{{ tool.icon }}</div>
