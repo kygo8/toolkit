@@ -13,6 +13,7 @@ export const toolCatalog = {
   imageConvert: { path: '/image/convert', icon: '🖼️', color: '#38bdf8', category: 'image' },
   imageCompress: { path: '/image/compress', icon: '📉', color: '#22c55e', category: 'image' },
   imageBase64: { path: '/image/base64', icon: '🔤', color: '#f97316', category: 'image' },
+  imageWatermark: { path: '/image/watermark', icon: '印', color: '#ef4444', category: 'image' },
   networkCheck: { path: '/network/check', icon: '📗', color: '#00d9ff', category: 'network' },
   domainCheck: { path: '/network/domain', icon: '🌍', color: '#10b981', category: 'network' },
   curlTest: { path: '/network/curl/test', icon: '🚀', color: '#f97316', category: 'curl' },
@@ -49,7 +50,7 @@ export const toolCatalog = {
 }
 
 export const categoryCatalog = {
-  image: { path: '/image', icon: '🖼️', color: '#38bdf8', tools: ['imageConvert', 'imageCompress', 'imageBase64'] },
+  image: { path: '/image', icon: '🖼️', color: '#38bdf8', tools: ['imageConvert', 'imageCompress', 'imageBase64', 'imageWatermark'] },
   network: { path: '/network', icon: '🌐', color: '#f97316', tools: ['networkCheck', 'domainCheck', 'curlTest', 'curlBuilder', 'curlToCode'] },
   codec: { path: '/codec', icon: '↔', color: '#10b981', tools: ['base64', 'url', 'html', 'unicode', 'hex', 'jwt', 'hash'] },
   dev: { path: '/dev', icon: '🛠️', color: '#00d9ff', tools: ['timestamp', 'color', 'regex', 'numberBase', 'uuid', 'textDiff'] },

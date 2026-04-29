@@ -36,7 +36,7 @@ const en = {
     seoBody: 'ToolX is built for developers, site owners and content operators. Convert PNG, JPG and WebP images, compress web assets, check networks and domains, generate strong passwords, format JSON and handle common SEO tasks without installing desktop software.'
   },
   categories: {
-    image: { title: 'Image Tools', eyebrow: 'Image Toolkit', desc: 'Image format conversion, compression and image to Base64 tools that run locally in your browser.' },
+    image: { title: 'Image Tools', eyebrow: 'Image Toolkit', desc: 'Image format conversion, compression, watermarking and image to Base64 tools that run locally in your browser.' },
     network: { title: 'Network Tools', eyebrow: 'Network Toolkit', desc: 'Network diagnostics for developers, operations and SEO troubleshooting, covering connectivity, DNS, domains and HTTP request testing.' },
     codec: { title: 'Codec Tools', eyebrow: 'Codec Toolkit', desc: 'Base64, URL, HTML, Unicode, HEX, JWT and hash encoding or decoding tools.' },
     dev: { title: 'Developer Tools', eyebrow: 'Developer Toolkit', desc: 'Timestamp, color, regular expression, number base, UUID and text diff utilities.' },
@@ -49,6 +49,7 @@ const en = {
     imageConvert: { title: 'Image Format Converter', desc: 'Convert PNG, JPG and WebP images locally in the browser.' },
     imageCompress: { title: 'Image Compressor', desc: 'Adjust quality and width to reduce image size quickly.' },
     imageBase64: { title: 'Image to Base64', desc: 'Convert images to Base64 or Data URL for CSS, HTML and API debugging.' },
+    imageWatermark: { title: 'Image Watermark', desc: 'Add text watermarks, image logos, circle stamps, square stamps and tiled marks to images locally.' },
     networkCheck: { title: 'Network Check', desc: 'Check browser online status, current network information, site reachability and latency.' },
     domainCheck: { title: 'Domain Check', desc: 'Parse domain structure and query A, AAAA, CNAME, MX, NS and TXT DNS records.' },
     curlTest: { title: 'cURL Test', desc: 'Parse cURL commands and send requests through a proxy to inspect status, headers and body.' },
