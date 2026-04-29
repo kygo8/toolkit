@@ -4,12 +4,14 @@ import { useRoute, useRouter } from 'vue-router'
 import { categoryCatalog, navItems, routeKeyByPath, toolCatalog } from './src/i18n/catalog.js'
 import { stripLocaleFromPath, switchLocalePath, withLocalePath } from './src/i18n/paths.js'
 import { useI18n } from './src/i18n/useI18n.js'
+import { useRuntimeTextI18n } from './src/i18n/useRuntimeTextI18n.js'
 
 const route = useRoute()
 const router = useRouter()
 const theme = ref('dark')
 const recentToolKeys = ref(['json', 'password'])
 const { locale, locales, initLocale, setLocale, t } = useI18n()
+const { applyRuntimeTextI18n, observeRuntimeTextI18n } = useRuntimeTextI18n()
 const recentToolsStorageKey = 'toolx-recent-tools'
 
 const themeLabel = computed(() => theme.value === 'dark' ? t('common.themeLight') : t('common.themeDark'))
@@ -90,10 +92,16 @@ onMounted(() => {
   recentToolKeys.value = normalizeRecentToolKeys(savedRecentTools.length ? savedRecentTools : recentToolKeys.value)
   setTheme(savedTheme || (prefersLight ? 'light' : 'dark'))
   saveRecentTool(route.path)
+  observeRuntimeTextI18n(locale)
+  applyRuntimeTextI18n(locale.value)
 })
 
 watch(() => route.path, (path) => {
   saveRecentTool(path)
+})
+
+watch([locale, () => route.path], ([nextLocale]) => {
+  applyRuntimeTextI18n(nextLocale)
 })
 </script>
 
