@@ -1,10 +1,3 @@
 <script setup>
-import CurlParser from '~/src/views/curl/CurlParser.vue'
-import { useToolSeo } from '~/src/seo/useToolSeo.js'
-
-useToolSeo('/curl/parser')
+await navigateTo('/network/curl/test', { redirectCode: 301 })
 </script>
-
-<template>
-  <CurlParser />
-</template>

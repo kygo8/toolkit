@@ -1,10 +1,3 @@
 <script setup>
-import CurlToCode from '~/src/views/curl/CurlToCode.vue'
-import { useToolSeo } from '~/src/seo/useToolSeo.js'
-
-useToolSeo('/curl/to-code')
+await navigateTo('/network/curl/to-code', { redirectCode: 301 })
 </script>
-
-<template>
-  <CurlToCode />
-</template>

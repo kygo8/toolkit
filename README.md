@@ -37,12 +37,14 @@ A Nuxt 4 + Vue 3 SSR developer tools website optimized for Cloudflare Pages.
 | 🔍 解码 | 上传/拖拽/粘贴图片识别二维码 | Upload/drag/paste image to decode QR |
 | 🎨 美化 | 渐变色/圆角/圆点样式/定位点配色/嵌入Logo | Gradient color/rounded/dot style/logo embed |
 
-### cURL 工具 | cURL Tools (`/curl`)
+### 网络工具 | Network Tools (`/network`)
 | 工具 | 说明 | Description |
 |------|------|-------------|
+| 📡 网络检测 | 检测联网状态、网络信息、本站连通性和延迟 | Check online status, connection info, reachability and latency |
+| 🌍 域名检测 | 解析域名并查询常见 DNS 记录 | Parse domains and query DNS records |
+| 🚀 cURL 测试 | 解析 cURL 并发送请求查看响应 | Parse cURL, send request and inspect response |
 | 🔄 转代码 | cURL 命令转为 Python/JavaScript/Go/PHP/Java 代码 | Convert cURL to Python/JavaScript/Go/PHP/Java code |
 | 🛠️ 构建器 | 可视化表单构建 cURL 命令 | Visual form to build cURL command |
-| 🔍 解析器 | 解析 cURL 命令，提取 Headers(k:v)，直接发送请求获取响应 | Parse cURL, extract Headers(k:v), send request and get response |
 
 ### SEO 工具 | SEO Tools (`/seo`)
 | 工具 | 说明 | Description |
@@ -78,7 +80,7 @@ pages/
 ├── dev/              # 开发者工具页面 Dev tool pages
 ├── seo/              # SEO工具页面 SEO tool pages
 ├── qrcode/           # 二维码页面 QR code pages
-├── curl/             # cURL页面 cURL pages
+├── network/          # 网络工具页面 Network tool pages
 ├── index.vue
 ├── password.vue
 └── json.vue
@@ -88,6 +90,7 @@ src/
 │   ├── dev/          # 6个开发者工具组件 6 dev tool components
 │   ├── seo/          # 10个SEO工具组件 10 SEO tool components
 │   ├── qrcode/       # 3个二维码工具组件 3 QR code components
+│   ├── network/      # 网络检测和域名检测组件 Network components
 │   └── curl/         # 3个cURL工具组件 3 cURL components
 ├── seo/              # 路由SEO元数据 Route SEO metadata
 server/

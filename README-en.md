@@ -34,12 +34,14 @@ A Nuxt 4 + Vue 3 SSR developer tools website optimized for Cloudflare Pages.
 | 🔍 Decode | Upload/drag/paste image to decode QR |
 | 🎨 Beautify | Gradient color/rounded/dot style/logo embed |
 
-### cURL Tools (`/curl`)
+### Network Tools (`/network`)
 | Tool | Description |
 |------|-------------|
+| 📡 Network Check | Check browser online status, connection information, site reachability and latency |
+| 🌍 Domain Check | Parse domains and query A/AAAA/CNAME/MX/NS/TXT DNS records |
+| 🚀 cURL Test | Parse cURL commands, send requests and inspect status, headers and body |
 | 🔄 To Code | Convert cURL to Python/JavaScript/Go/PHP/Java code |
 | 🛠️ Builder | Visual form to build cURL command |
-| 🔍 Parser | Parse cURL, extract Headers(k:v), send request and get response |
 
 ### SEO Tools (`/seo`)
 | Tool | Description |
@@ -75,7 +77,7 @@ pages/
 ├── dev/          # Developer tool pages
 ├── seo/          # SEO tool pages
 ├── qrcode/       # QR code pages
-├── curl/         # cURL pages
+├── network/      # Network tool pages
 ├── index.vue
 ├── password.vue
 └── json.vue
@@ -85,6 +87,7 @@ src/
 │   ├── dev/          # 6 dev tool components
 │   ├── seo/          # 10 SEO tool components
 │   ├── qrcode/       # 3 QR code components
+│   ├── network/      # Network check and domain check components
 │   └── curl/         # 3 cURL components
 ├── seo/              # Route SEO metadata
 server/

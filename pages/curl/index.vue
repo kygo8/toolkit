@@ -1,10 +1,3 @@
 <script setup>
-import CurlTools from '~/src/views/CurlTools.vue'
-import { useToolSeo } from '~/src/seo/useToolSeo.js'
-
-useToolSeo('/curl')
+await navigateTo('/network/curl', { redirectCode: 301 })
 </script>
-
-<template>
-  <CurlTools />
-</template>
