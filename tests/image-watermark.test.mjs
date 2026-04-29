@@ -4,6 +4,10 @@ import { join } from 'node:path'
 import { test } from 'node:test'
 import { categoryCatalog, routeKeyByPath, toolCatalog } from '../src/i18n/catalog.js'
 import { getToolMessage } from '../src/i18n/messages.js'
+import {
+  watermarkAttributeTranslations,
+  watermarkTextTranslations
+} from '../src/i18n/runtime-text/watermark.js'
 
 const root = process.cwd()
 const file = (...parts) => join(root, ...parts)
@@ -42,4 +46,22 @@ test('image watermark supports live preview, text, image, stamp, tiled, position
   assert.match(watermarkI18n, /画像ウォーターマーク/)
   assert.match(watermarkI18n, /Thêm watermark ảnh/)
   assert.match(watermarkI18n, /Base image preview/)
+})
+
+test('image watermark runtime i18n covers every supported locale', () => {
+  const textKeys = Object.keys(watermarkTextTranslations.en)
+  const attributeKeys = Object.keys(watermarkAttributeTranslations.en)
+
+  for (const locale of Object.keys(watermarkTextTranslations)) {
+    assert.deepEqual(
+      textKeys.filter((key) => !(key in (watermarkTextTranslations[locale] || {}))),
+      [],
+      `${locale} is missing image watermark text translations`
+    )
+    assert.deepEqual(
+      attributeKeys.filter((key) => !(key in (watermarkAttributeTranslations[locale] || {}))),
+      [],
+      `${locale} is missing image watermark attribute translations`
+    )
+  }
 })
