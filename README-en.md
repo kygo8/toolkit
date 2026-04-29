@@ -64,8 +64,14 @@ ToolX is a Nuxt 4 + Vue 3 SSR online toolkit optimized for Cloudflare Pages. It 
 | 🌐 Batch URL | Batch extract domains and open URLs |
 | 🔍 404 Check | Batch check URL status |
 
+### Other Tools (`/other`)
+| Tool | Description |
+|------|-------------|
+| 🔑 Random Password | Generate secure random passwords |
+| {} JSON Formatter | Format, minify, and validate JSON |
+
 ### Home Tools
-The homepage highlights common entry points such as image conversion, image compression, cURL testing, domain checks, JSON formatting, and Meta tag generation.
+The homepage highlights common entry points such as image conversion, image compression, cURL testing, domain checks, JSON formatting, and random password generation.
 
 ## Tech Stack
 
@@ -78,6 +84,7 @@ The homepage highlights common entry points such as image conversion, image comp
 ```text
 pages/
 ├── image/        # Image tool pages
+├── other/        # Other tool pages
 ├── network/      # Network tool pages
 ├── codec/        # Codec pages
 ├── dev/          # Developer tool pages
@@ -89,6 +96,7 @@ pages/
 src/
 ├── views/
 │   ├── image/    # Image tool components
+│   ├── OtherTools.vue # Other tools category
 │   ├── network/  # Network check and domain check components
 │   ├── curl/     # cURL components
 │   ├── codec/    # Codec components

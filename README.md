@@ -66,8 +66,14 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 🌐 批量 URL | 批量提取域名和打开 URL | Batch extract domains and open URLs |
 | 🔍 404 检查 | 批量检查 URL 状态码 | Batch check URL status |
 
+### 其他工具 | Other Tools (`/other`)
+| 工具 | 说明 | Description |
+|------|------|-------------|
+| 🔑 随机密码生成 | 生成安全随机密码并检测强度 | Generate secure random passwords |
+| {} JSON 格式化 | 格式化、压缩和校验 JSON | Format, minify and validate JSON |
+
 ### 首页工具 | Home Tools
-首页重点展示图片格式转换、图片压缩、cURL 测试、域名检测、JSON 格式化和 Meta 标签生成等高频入口。
+首页重点展示图片格式转换、图片压缩、cURL 测试、域名检测、JSON 格式化和随机密码生成等高频入口。
 
 ## 技术栈 | Tech Stack
 
@@ -80,6 +86,7 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 ```text
 pages/
 ├── image/            # 图片工具页面 Image tool pages
+├── other/            # 其他工具页面 Other tool pages
 ├── network/          # 网络工具页面 Network tool pages
 ├── codec/            # 编码解码页面 Codec pages
 ├── dev/              # 开发者工具页面 Dev tool pages
@@ -91,6 +98,7 @@ pages/
 src/
 ├── views/
 │   ├── image/        # 图片工具组件 Image tool components
+│   ├── OtherTools.vue # 其他工具合集 Other tools category
 │   ├── network/      # 网络检测和域名检测组件 Network components
 │   ├── curl/         # cURL 工具组件 cURL components
 │   ├── codec/        # 编码解码组件 Codec components
