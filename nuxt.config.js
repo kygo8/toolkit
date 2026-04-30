@@ -45,6 +45,12 @@ try {
 }
 })();`
 
+const googleAnalyticsId = 'G-XMMD0ZJ1PR'
+const googleAnalyticsInitScript = `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${googleAnalyticsId}');`
+
 export default defineNuxtConfig({
   ssr: true,
   compatibilityDate: '2026-04-28',
@@ -65,6 +71,15 @@ export default defineNuxtConfig({
       script: [
         {
           innerHTML: themeInitScript,
+          tagPosition: 'head'
+        },
+        {
+          async: true,
+          src: `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`,
+          tagPosition: 'head'
+        },
+        {
+          innerHTML: googleAnalyticsInitScript,
           tagPosition: 'head'
         }
       ],
