@@ -85,12 +85,12 @@ const toggleTheme = () => {
 
 onMounted(() => {
   initLocale()
-  const savedTheme = localStorage.getItem('toolx-theme')
-  const prefersLight = window.matchMedia?.('(prefers-color-scheme: light)').matches
   const savedRecentTools = loadRecentToolKeys()
+  const initialTheme = document.documentElement.getAttribute('data-theme') || 'dark'
 
   recentToolKeys.value = normalizeRecentToolKeys(savedRecentTools.length ? savedRecentTools : recentToolKeys.value)
-  setTheme(savedTheme || (prefersLight ? 'light' : 'dark'))
+  theme.value = initialTheme === 'light' ? 'light' : 'dark'
+  applyTheme(theme.value)
   saveRecentTool(route.path)
   observeRuntimeTextI18n(locale)
   applyRuntimeTextI18n(locale.value)

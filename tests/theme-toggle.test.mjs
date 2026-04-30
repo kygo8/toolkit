@@ -19,6 +19,7 @@ test('global styles define light and dark theme tokens', () => {
 
 test('app shell exposes a persistent theme toggle', () => {
   const app = readFileSync(file('app.vue'), 'utf8')
+  const config = readFileSync(file('nuxt.config.js'), 'utf8')
 
   assert.match(app, /theme-toggle/)
   assert.match(app, /header-actions/)
@@ -39,6 +40,12 @@ test('app shell exposes a persistent theme toggle', () => {
   assert.match(app, /common\.toolCount/)
   assert.match(app, /changeLocale/)
   assert.match(app, /switchLocalePath/)
+  assert.match(config, /themeInitScript/)
+  assert.match(config, /localStorage\.getItem\('toolx-theme'\)/)
+  assert.match(config, /document\.documentElement\.setAttribute\('data-theme', theme\)/)
+  assert.match(config, /tagPosition:\s*'head'/)
+  assert.match(app, /document\.documentElement\.getAttribute\('data-theme'\)/)
+  assert.doesNotMatch(app, /localStorage\.getItem\('toolx-theme'\)/)
 })
 
 test('navigation uses a scrollable tab strip for long translated labels', () => {

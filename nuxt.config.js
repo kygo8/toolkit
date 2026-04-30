@@ -32,6 +32,19 @@ const cloneLocalizedRoute = (route, locale) => ({
   children: route.children?.map((child) => cloneLocalizedRoute(child, locale))
 })
 
+const themeInitScript = `(function(){
+try {
+  var savedTheme = localStorage.getItem('toolx-theme');
+  var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  var theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : (prefersLight ? 'light' : 'dark');
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.style.colorScheme = theme;
+} catch (error) {
+  document.documentElement.setAttribute('data-theme', 'dark');
+  document.documentElement.style.colorScheme = 'dark';
+}
+})();`
+
 export default defineNuxtConfig({
   ssr: true,
   compatibilityDate: '2026-04-28',
@@ -48,6 +61,12 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
       meta: [
         { name: 'theme-color', content: '#0f0f23' }
+      ],
+      script: [
+        {
+          innerHTML: themeInitScript,
+          tagPosition: 'head'
+        }
       ],
       link: [
         {
