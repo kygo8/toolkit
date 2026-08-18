@@ -42,6 +42,12 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 🔢 进制转换 | 二/八/十/十六进制互转 |
 | 🆔 UUID | 批量生成 UUID v4 |
 | 📋 文本对比 | 逐行差异高亮显示 |
+| 🧾 JSON ↔ YAML | JSON 与 YAML 互转、格式化和校验 |
+| 🧩 JSON ↔ XML | JSON 与 XML 互转、格式化和校验 |
+| 📑 JSON ↔ CSV | 对象数组与 CSV 互转 |
+| 📘 TOML ↔ JSON | TOML 与 JSON 互转和格式化 |
+| 🗄️ SQL 格式化 | SQL 美化与压缩 |
+| 💻 代码格式化 | 格式化或压缩 JavaScript / CSS |
 
 ### 二维码工具 (`/qrcode`)
 | 工具 | 说明 |

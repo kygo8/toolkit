@@ -10,9 +10,13 @@
     "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
+    "js-beautify": "^2.0.3",
+    "js-yaml": "^5.3.0",
     "jsqr": "^1.4.0",
     "nuxt": "^4.4.2",
     "qrcode": "^1.5.4",
+    "smol-toml": "^1.8.0",
+    "sql-formatter": "^15.8.2",
     "vue": "^3.5.25",
     "vue-router": "^5.0.3"
   },
