@@ -259,7 +259,7 @@ export const sourceText = {
   '允许读取该响应的来源站点。': 'Which origins may read the response in the browser.',
   '限制页面可加载的脚本、图片等资源来源。': 'Restricts sources of scripts, images and other page assets.',
   '设为 nosniff 时可禁止 MIME 嗅探。': 'Prevents MIME type sniffing when set to nosniff.',
-  '控制页面是否允许被嵌入到 iframe。': 'Controls whether the page can be embedded in a frame.
+  '控制页面是否允许被嵌入到 iframe。': 'Controls whether the page can be embedded in a frame.'
 }
 
 export const sourceAttributes = {
