@@ -53,7 +53,7 @@ const minify = () => {
           <textarea
             v-model="input"
             class="editor-textarea"
-            :placeholder="language === 'css' ? '.card { color: #00d9ff; }' : 'function hello(name){return name}'"
+            :placeholder="language === 'css' ? '.card { color: #00d9ff; }' : 'function hello(name) { return name }'"
             @keydown.ctrl.enter="beautify"
             @keydown.meta.enter="beautify"
           ></textarea>

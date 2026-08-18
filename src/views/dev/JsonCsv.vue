@@ -4,6 +4,10 @@ import { csvToJson, jsonToCsv } from '../../utils/csv.js'
 import { useConvertTool } from '../../utils/useConvertTool.js'
 
 const mode = ref('json-to-csv')
+const placeholders = {
+  'json-to-csv': '[{"name": "Ada", "age": 36}]',
+  'csv-to-json': 'name,age\nAda,36'
+}
 const { input, output, error, copied, run, clearAll, swapInputOutput, copyResult } = useConvertTool()
 
 const convert = () => {
@@ -61,7 +65,7 @@ const swap = () => {
           <textarea
             v-model="input"
             class="converter-textarea"
-            :placeholder="mode === 'json-to-csv' ? '[{\"name\": \"Ada\", \"age\": 36}]' : 'name,age\nAda,36'"
+            :placeholder="placeholders[mode]"
             @keydown.ctrl.enter="convert"
             @keydown.meta.enter="convert"
           ></textarea>
