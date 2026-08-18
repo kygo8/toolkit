@@ -229,7 +229,7 @@ export const seoRoutes = [
   {
     path: '/image/exif',
     title: 'EXIF 查看与清除 - ToolX',
-    description: '在线查看图片 EXIF 信息（相机、GPS、拍摄时间），并导出去除元数据的副本，处理均在本地完成。
+    description: '在线查看图片 EXIF 信息（相机、GPS、拍摄时间），并导出去除元数据的副本，处理均在本地完成。'
   },
   {
     path: '/network',
