@@ -184,7 +184,7 @@ export const seoRoutes = [
   {
     path: '/image',
     title: '图片工具合集 - ToolX',
-    description: '提供图片格式转换、图片压缩、图片转 Base64 和 Data URL 等本地图片处理工具。'
+    description: '提供图片格式转换、图片压缩、图片转 Base64、裁剪缩放、SVG 转换和 EXIF 查看等本地图片处理工具。'
   },
   {
     path: '/image/convert',
@@ -205,6 +205,21 @@ export const seoRoutes = [
     path: '/image/watermark',
     title: '图片水印工具 - ToolX',
     description: '在线为图片添加文字水印、图片 Logo、圆形印章、方形印章和平铺水印，所有图片处理均在浏览器本地完成。'
+  },
+  {
+    path: '/image/resize',
+    title: '图片裁剪缩放工具 - ToolX',
+    description: '在线裁剪和缩放图片，支持宽高、锁定比例和常用尺寸预设，所有处理均在浏览器本地完成。'
+  },
+  {
+    path: '/image/svg',
+    title: 'SVG 转换工具 - ToolX',
+    description: '在线将 SVG 转为 PNG，或把 PNG/JPG 包装成简易 SVG，预览尺寸，全部在浏览器本地完成。'
+  },
+  {
+    path: '/image/exif',
+    title: 'EXIF 查看与清除 - ToolX',
+    description: '在线查看图片 EXIF 信息（相机、GPS、拍摄时间），并导出去除元数据的副本，处理均在本地完成。
   },
   {
     path: '/network',

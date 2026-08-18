@@ -13,6 +13,9 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 📉 图片压缩 | 调整质量和尺寸，压缩图片体积 |
 | 🔤 图片转 Base64 | 生成 Base64 和 Data URL |
 | 印 图片水印 | 本地添加文字、Logo、印章和平铺水印 |
+| 📐 图片裁剪缩放 | 裁剪、缩放并下载 PNG/JPG/WebP |
+| ✴️ SVG 转换 | SVG 转 PNG，或位图包装为 SVG |
+| 📷 EXIF 查看 | 查看并清除 EXIF 元数据 |
 
 ### 网络工具 (`/network`)
 | 工具 | 说明 |
