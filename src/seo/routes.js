@@ -69,7 +69,7 @@ export const seoRoutes = [
   {
     path: '/dev',
     title: '开发者工具合集 - ToolX',
-    description: '提供时间戳、颜色、正则、进制、UUID、文本对比、大小写、Cron、时区、Markdown、假数据和权限计算工具。'
+    description: '提供时间戳转换、颜色转换、正则测试、进制转换、UUID 生成、文本对比，JSON/YAML/XML/CSV/TOML/SQL 和代码格式化，以及大小写、Cron、时区、Markdown、假数据和权限计算工具。'
   },
   {
     path: '/dev/timestamp',
@@ -100,6 +100,36 @@ export const seoRoutes = [
     path: '/dev/text-diff',
     title: '文本对比工具 - ToolX',
     description: '在线对比两段文本内容，逐行查看差异。'
+  },
+  {
+    path: '/dev/json-yaml',
+    title: 'JSON YAML 转换工具 - ToolX',
+    description: '在线互转、格式化和校验 JSON 与 YAML，所有处理均在浏览器本地完成。'
+  },
+  {
+    path: '/dev/json-xml',
+    title: 'JSON XML 转换工具 - ToolX',
+    description: '在线互转、格式化和校验 JSON 与 XML，适合接口调试和配置文件整理。'
+  },
+  {
+    path: '/dev/json-csv',
+    title: 'JSON CSV 转换工具 - ToolX',
+    description: '在线将对象数组在 JSON 和 CSV 之间互相转换，支持引号和逗号字段。'
+  },
+  {
+    path: '/dev/toml',
+    title: 'TOML JSON 转换工具 - ToolX',
+    description: '在线互转并格式化 TOML 与 JSON，适合配置文件转换。'
+  },
+  {
+    path: '/dev/sql',
+    title: 'SQL 格式化工具 - ToolX',
+    description: '在线美化或压缩 SQL，支持 MySQL、PostgreSQL、SQLite 和 T-SQL 等方言。'
+  },
+  {
+    path: '/dev/code-format',
+    title: '代码格式化工具 - ToolX',
+    description: '在线格式化或压缩 JavaScript 和 CSS，支持空格或 Tab 缩进。'
   },
   {
     path: '/dev/case',
@@ -170,6 +200,11 @@ export const seoRoutes = [
     path: '/image/base64',
     title: '图片转 Base64 工具 - ToolX',
     description: '在线将图片转换为 Base64 或完整 Data URL，适合 HTML、CSS、小图标内联和接口调试。'
+  },
+  {
+    path: '/image/watermark',
+    title: '图片水印工具 - ToolX',
+    description: '在线为图片添加文字水印、图片 Logo、圆形印章、方形印章和平铺水印，所有图片处理均在浏览器本地完成。'
   },
   {
     path: '/network',

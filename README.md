@@ -14,6 +14,7 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 🖼️ 图片格式转换 | PNG、JPG、WebP 本地转换 | Convert PNG/JPG/WebP locally |
 | 📉 图片压缩 | 调整质量和尺寸，压缩图片体积 | Compress images by quality and size |
 | 🔤 图片转 Base64 | 生成 Base64 和 Data URL | Generate Base64 and Data URL |
+| 印 图片水印 | 本地添加文字、Logo、印章和平铺水印 | Add text, logo, stamp and tiled watermarks locally |
 
 ### 网络工具 | Network Tools (`/network`)
 | 工具 | 说明 | Description |
@@ -45,6 +46,12 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 🔢 进制转换 | 二/八/十/十六进制互转 | Binary/Octal/Decimal/Hex conversion |
 | 🆔 UUID | 批量生成 UUID v4 / v7 | Batch generate UUID v4 / v7 |
 | 📋 文本对比 | 逐行差异高亮显示 | Line-by-line diff highlight |
+| 🧾 JSON ↔ YAML | JSON 与 YAML 互转、格式化和校验 | Convert, format and validate JSON/YAML |
+| 🧩 JSON ↔ XML | JSON 与 XML 互转、格式化和校验 | Convert, format and validate JSON/XML |
+| 📑 JSON ↔ CSV | 对象数组与 CSV 互转 | Convert JSON object arrays and CSV |
+| 📘 TOML ↔ JSON | TOML 与 JSON 互转和格式化 | Convert and format TOML/JSON |
+| 🗄️ SQL 格式化 | SQL 美化与压缩 | Beautify or minify SQL |
+| 💻 代码格式化 | 格式化或压缩 JavaScript / CSS | Format or minify JavaScript/CSS |
 | Aa 大小写转换 | camelCase / snake_case / kebab-case 等互转 | Convert camelCase, snake_case, kebab-case and more |
 | ⏱ Cron 解析 | 解析 Cron 并给出下次运行时间 | Parse cron and show next run times |
 | 🌍 时区转换 | 跨时区转换，显示 ISO 与 Unix | Convert across timezones with ISO and Unix |

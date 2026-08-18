@@ -12,6 +12,7 @@ ToolX is a Nuxt 4 + Vue 3 SSR online toolkit optimized for Cloudflare Pages. It 
 | 🖼️ Image Convert | Convert PNG, JPG, and WebP locally |
 | 📉 Image Compress | Compress images by quality and size |
 | 🔤 Image to Base64 | Generate Base64 and Data URL output |
+| 印 Image Watermark | Add text, logo, stamp and tiled watermarks locally |
 
 ### Network Tools (`/network`)
 | Tool | Description |
@@ -43,6 +44,12 @@ ToolX is a Nuxt 4 + Vue 3 SSR online toolkit optimized for Cloudflare Pages. It 
 | 🔢 Base | Binary/Octal/Decimal/Hex conversion |
 | 🆔 UUID | Batch generate UUID v4 / v7 |
 | 📋 Diff | Line-by-line diff highlight |
+| 🧾 JSON ↔ YAML | Convert, format, and validate JSON/YAML |
+| 🧩 JSON ↔ XML | Convert, format, and validate JSON/XML |
+| 📑 JSON ↔ CSV | Convert JSON object arrays and CSV |
+| 📘 TOML ↔ JSON | Convert and format TOML/JSON |
+| 🗄️ SQL Formatter | Beautify or minify SQL |
+| 💻 Code Formatter | Format or minify JavaScript/CSS |
 | Aa Case | Convert camelCase, snake_case, kebab-case and more |
 | ⏱ Cron | Parse cron and show next run times |
 | 🌍 Timezone | Convert across timezones with ISO and Unix |
