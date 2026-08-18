@@ -36,7 +36,7 @@ const en = {
     seoBody: 'ToolX is built for developers, site owners and content operators. Convert PNG, JPG and WebP images, compress web assets, check networks and domains, generate strong passwords, format JSON and handle common SEO tasks without installing desktop software.'
   },
   categories: {
-    image: { title: 'Image Tools', eyebrow: 'Image Toolkit', desc: 'Image format conversion, compression, watermarking and image to Base64 tools that run locally in your browser.' },
+    image: { title: 'Image Tools', eyebrow: 'Image Toolkit', desc: 'Image format conversion, compression, watermarking, crop/resize, SVG conversion, EXIF inspection and image to Base64 tools that run locally in your browser.' },
     network: { title: 'Network Tools', eyebrow: 'Network Toolkit', desc: 'Network diagnostics for developers, operations and SEO troubleshooting, covering connectivity, DNS, domains and HTTP request testing.' },
     codec: { title: 'Codec Tools', eyebrow: 'Codec Toolkit', desc: 'Base64, URL, HTML, Unicode, HEX, JWT and hash encoding or decoding tools.' },
     dev: { title: 'Developer Tools', eyebrow: 'Developer Toolkit', desc: 'Timestamp, color, regular expression, number base, UUID and text diff utilities.' },
@@ -50,6 +50,9 @@ const en = {
     imageCompress: { title: 'Image Compressor', desc: 'Adjust quality and width to reduce image size quickly.' },
     imageBase64: { title: 'Image to Base64', desc: 'Convert images to Base64 or Data URL for CSS, HTML and API debugging.' },
     imageWatermark: { title: 'Image Watermark', desc: 'Add text watermarks, image logos, circle stamps, square stamps and tiled marks to images locally.' },
+    imageResize: { title: 'Image Crop & Resize', desc: 'Crop and resize images locally, then download PNG, JPG or WebP.' },
+    svgConvert: { title: 'SVG Converter', desc: 'Convert SVG to PNG, or wrap raster images in a simple SVG locally.' },
+    imageExif: { title: 'EXIF Viewer', desc: 'Inspect camera, GPS and date metadata, then export a stripped copy.' },
     networkCheck: { title: 'Network Check', desc: 'Check browser online status, current network information, site reachability and latency.' },
     domainCheck: { title: 'Domain Check', desc: 'Parse domain structure and query A, AAAA, CNAME, MX, NS and TXT DNS records.' },
     curlTest: { title: 'cURL Test', desc: 'Parse cURL commands and send requests through a proxy to inspect status, headers and body.' },
@@ -86,7 +89,7 @@ const en = {
   },
   seo: {
     homeTitle: 'ToolX Online Toolkit - Developer, Image, Network and SEO Tools',
-    homeDescription: 'ToolX provides online developer tools, image conversion, image compression, image to Base64, network checks, domain checks, cURL testing, JSON formatting, codec tools, QR code tools and SEO utilities.',
+    homeDescription: 'ToolX provides online developer tools, image conversion, image compression, image to Base64, crop and resize, SVG conversion, EXIF viewing, network checks, domain checks, cURL testing, JSON formatting, codec tools, QR code tools and SEO utilities.',
     categoryTitle: '{title} - ToolX',
     categoryDescription: '{description}',
     toolTitle: '{title} - ToolX',
@@ -128,7 +131,7 @@ const zhCN = {
     seoBody: 'ToolX 面向开发者、站长和内容运营人员，提供常用在线工具集合。你可以使用图片格式转换工具把 PNG、JPG、WebP 互转，用图片压缩工具降低网页图片体积，用网络检测和域名检测工具排查连接问题，用随机密码生成器创建安全密码，也可以在其他工具中找到 JSON 格式化等通用小工具。'
   },
   categories: {
-    image: { title: '图片工具', eyebrow: 'Image Toolkit', desc: '图片格式转换、图片压缩、图片转 Base64，所有处理都在浏览器本地完成。' },
+    image: { title: '图片工具', eyebrow: 'Image Toolkit', desc: '图片格式转换、压缩、水印、裁剪缩放、SVG 转换、EXIF 查看和图片转 Base64，所有处理都在浏览器本地完成。' },
     network: { title: '网络工具', eyebrow: 'Network Toolkit', desc: '面向开发、运维和 SEO 排查的网络诊断工具集合，覆盖连通性、DNS、域名和 HTTP 请求测试。' },
     codec: { title: '编码/解码工具', eyebrow: 'Codec Toolkit', desc: 'Base64、URL、HTML、Unicode、HEX、JWT 和 Hash 等常用编码解码工具。' },
     dev: { title: '开发者工具', eyebrow: 'Developer Toolkit', desc: '时间戳、颜色、正则、进制、UUID 和文本对比等开发辅助工具。' },
@@ -141,6 +144,10 @@ const zhCN = {
     imageConvert: { title: '图片格式转换', desc: 'PNG、JPG、WebP 在线本地转换。' },
     imageCompress: { title: '图片压缩', desc: '调整质量和最大宽度，快速压缩图片体积。' },
     imageBase64: { title: '图片转 Base64', desc: '将图片转换为 Base64 或 Data URL，适合 CSS、HTML 和接口调试。' },
+    imageWatermark: { title: '图片水印', desc: '在本地为图片添加文字水印、图片 Logo、圆形印章、方形印章和斜向平铺水印。' },
+    imageResize: { title: '图片裁剪缩放', desc: '在浏览器本地裁剪和缩放图片，并下载 PNG、JPG 或 WebP。' },
+    svgConvert: { title: 'SVG 转换', desc: '将 SVG 转为 PNG，或把位图包装成简易 SVG，全部在本地完成。' },
+    imageExif: { title: 'EXIF 查看', desc: '查看相机、GPS 和拍摄时间等元数据，并导出去除 EXIF 的副本。' },
     networkCheck: { title: '网络检测', desc: '检测浏览器联网状态、当前网络信息、本站连通性和响应延迟。' },
     domainCheck: { title: '域名检测', desc: '解析域名结构，查询 A、AAAA、CNAME、MX、NS、TXT 等 DNS 记录。' },
     curlTest: { title: 'cURL 测试', desc: '解析 cURL 命令并通过代理发送请求，查看响应状态、Header 和 Body。' },
@@ -177,7 +184,7 @@ const zhCN = {
   },
   seo: {
     homeTitle: 'ToolX 在线工具箱 - 开发者工具、图片转换、网络检测与 SEO 工具',
-    homeDescription: 'ToolX 提供在线开发者工具、图片转换、图片压缩、图片转 Base64、网络检测、域名检测、cURL 测试、JSON 格式化、编码解码、二维码和 SEO 工具。',
+    homeDescription: 'ToolX 提供在线开发者工具、图片转换、图片压缩、图片转 Base64、裁剪缩放、SVG 转换、EXIF 查看、网络检测、域名检测、cURL 测试、JSON 格式化、编码解码、二维码和 SEO 工具。',
     categoryTitle: '{title} - ToolX',
     categoryDescription: '{description}',
     toolTitle: '{title} - ToolX',
