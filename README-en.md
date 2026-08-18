@@ -31,8 +31,9 @@ ToolX is a Nuxt 4 + Vue 3 SSR online toolkit optimized for Cloudflare Pages. It 
 | <> HTML | HTML entity encode/decode |
 | 🌐 Unicode | Unicode encode/decode |
 | 🔢 HEX | Hex encode/decode |
-| 🔑 JWT | JWT Token decode |
+| 🔑 JWT | JWT encode/decode with HS256 signing |
 | # Hash | MD5 / SHA-1 / SHA-256 / SHA-512 |
+| 🔏 HMAC | HMAC-SHA1/256/512 with hex and Base64 |
 
 ### Developer Tools (`/dev`)
 | Tool | Description |
@@ -41,7 +42,7 @@ ToolX is a Nuxt 4 + Vue 3 SSR online toolkit optimized for Cloudflare Pages. It 
 | 🎨 Color | HEX / RGB / HSL conversion |
 | 🔍 Regex | Regex highlight, capture, and replace preview |
 | 🔢 Base | Binary/Octal/Decimal/Hex conversion |
-| 🆔 UUID | Batch generate UUID v4 |
+| 🆔 UUID | Batch generate UUID v4 / v7 |
 | 📋 Diff | Line-by-line diff highlight |
 | 🧾 JSON ↔ YAML | Convert, format, and validate JSON/YAML |
 | 🧩 JSON ↔ XML | Convert, format, and validate JSON/XML |
@@ -49,6 +50,12 @@ ToolX is a Nuxt 4 + Vue 3 SSR online toolkit optimized for Cloudflare Pages. It 
 | 📘 TOML ↔ JSON | Convert and format TOML/JSON |
 | 🗄️ SQL Formatter | Beautify or minify SQL |
 | 💻 Code Formatter | Format or minify JavaScript/CSS |
+| Aa Case | Convert camelCase, snake_case, kebab-case and more |
+| ⏱ Cron | Parse cron and show next run times |
+| 🌍 Timezone | Convert across timezones with ISO and Unix |
+| 📝 Markdown | Live preview and copy sanitized HTML |
+| 🎲 Fake Data | Names, emails, phones, addresses, UUIDs, lorem |
+| 🔐 chmod | Checkboxes ↔ octal ↔ symbolic permissions |
 
 ### QR Code Tools (`/qrcode`)
 | Tool | Description |

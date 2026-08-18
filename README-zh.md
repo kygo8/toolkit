@@ -31,8 +31,9 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | <> HTML | HTML 实体编码与解码 |
 | 🌐 Unicode | Unicode 编码转换 |
 | 🔢 HEX | 十六进制编码与解码 |
-| 🔑 JWT | JWT Token 解码 |
+| 🔑 JWT | JWT Token 编解码（含 HS256 签名） |
 | # Hash | MD5 / SHA-1 / SHA-256 / SHA-512 |
+| 🔏 HMAC | HMAC-SHA1/256/512，输出 HEX 和 Base64 |
 
 ### 开发者工具 (`/dev`)
 | 工具 | 说明 |
@@ -41,7 +42,7 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 🎨 颜色转换 | HEX / RGB / HSL 实时转换 |
 | 🔍 正则测试 | 匹配高亮、分组捕获、替换预览 |
 | 🔢 进制转换 | 二/八/十/十六进制互转 |
-| 🆔 UUID | 批量生成 UUID v4 |
+| 🆔 UUID | 批量生成 UUID v4 / v7 |
 | 📋 文本对比 | 逐行差异高亮显示 |
 | 🧾 JSON ↔ YAML | JSON 与 YAML 互转、格式化和校验 |
 | 🧩 JSON ↔ XML | JSON 与 XML 互转、格式化和校验 |
@@ -49,6 +50,12 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 📘 TOML ↔ JSON | TOML 与 JSON 互转和格式化 |
 | 🗄️ SQL 格式化 | SQL 美化与压缩 |
 | 💻 代码格式化 | 格式化或压缩 JavaScript / CSS |
+| Aa 大小写转换 | camelCase / snake_case / kebab-case 等互转 |
+| ⏱ Cron 解析 | 解析 Cron 并给出下次运行时间 |
+| 🌍 时区转换 | 跨时区转换，显示 ISO 与 Unix |
+| 📝 Markdown 预览 | 实时预览并复制消毒后的 HTML |
+| 🎲 假数据生成 | 姓名、邮箱、电话、地址、UUID、Lorem |
+| 🔐 权限计算 | 复选框 / 八进制 / rwxr-xr-x 互转 |
 
 ### 二维码工具 (`/qrcode`)
 | 工具 | 说明 |
