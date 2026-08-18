@@ -4,6 +4,10 @@ import { formatYaml, jsonToYaml, yamlToJson } from '../../utils/yaml-json.js'
 import { useConvertTool } from '../../utils/useConvertTool.js'
 
 const mode = ref('json-to-yaml')
+const placeholders = {
+  'json-to-yaml': '{"key": "value"}',
+  'yaml-to-json': 'key: value'
+}
 const { input, output, error, copied, run, clearAll, swapInputOutput, copyResult } = useConvertTool()
 
 const convert = () => {
@@ -60,7 +64,7 @@ const swap = () => {
           <textarea
             v-model="input"
             class="converter-textarea"
-            :placeholder="mode === 'json-to-yaml' ? '{\"key\": \"value\"}' : 'key: value'"
+            :placeholder="placeholders[mode]"
             @keydown.ctrl.enter="convert"
             @keydown.meta.enter="convert"
           ></textarea>

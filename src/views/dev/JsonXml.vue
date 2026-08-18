@@ -4,6 +4,10 @@ import { formatXml, jsonToXml, minifyXml, xmlToJson } from '../../utils/xml.js'
 import { useConvertTool } from '../../utils/useConvertTool.js'
 
 const mode = ref('json-to-xml')
+const placeholders = {
+  'json-to-xml': '{"name": "ToolX"}',
+  'xml-to-json': '<root><name>ToolX</name></root>'
+}
 const { input, output, error, copied, run, clearAll, swapInputOutput, copyResult } = useConvertTool()
 
 const convert = () => {
@@ -60,7 +64,7 @@ const swap = () => {
           <textarea
             v-model="input"
             class="converter-textarea"
-            :placeholder="mode === 'json-to-xml' ? '{\"name\": \"ToolX\"}' : '<root><name>ToolX</name></root>'"
+            :placeholder="placeholders[mode]"
             @keydown.ctrl.enter="convert"
             @keydown.meta.enter="convert"
           ></textarea>

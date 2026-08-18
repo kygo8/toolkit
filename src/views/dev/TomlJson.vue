@@ -4,6 +4,10 @@ import { formatToml, jsonToToml, tomlToJson } from '../../utils/toml-json.js'
 import { useConvertTool } from '../../utils/useConvertTool.js'
 
 const mode = ref('toml-to-json')
+const placeholders = {
+  'toml-to-json': 'title = "ToolX"',
+  'json-to-toml': '{"title": "ToolX"}'
+}
 const { input, output, error, copied, run, clearAll, swapInputOutput, copyResult } = useConvertTool()
 
 const convert = () => {
@@ -60,7 +64,7 @@ const swap = () => {
           <textarea
             v-model="input"
             class="converter-textarea"
-            :placeholder="mode === 'toml-to-json' ? 'title = \"ToolX\"' : '{\"title\": \"ToolX\"}'"
+            :placeholder="placeholders[mode]"
             @keydown.ctrl.enter="convert"
             @keydown.meta.enter="convert"
           ></textarea>
