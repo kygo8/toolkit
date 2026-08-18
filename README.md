@@ -14,6 +14,10 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 🖼️ 图片格式转换 | PNG、JPG、WebP 本地转换 | Convert PNG/JPG/WebP locally |
 | 📉 图片压缩 | 调整质量和尺寸，压缩图片体积 | Compress images by quality and size |
 | 🔤 图片转 Base64 | 生成 Base64 和 Data URL | Generate Base64 and Data URL |
+| 印 图片水印 | 本地添加文字、Logo、印章和平铺水印 | Add text, logo, stamp and tiled watermarks locally |
+| 📐 图片裁剪缩放 | 裁剪、缩放并下载 PNG/JPG/WebP | Crop, resize and download PNG/JPG/WebP |
+| ✴️ SVG 转换 | SVG 转 PNG，或位图包装为 SVG | Convert SVG to PNG, or wrap rasters as SVG |
+| 📷 EXIF 查看 | 查看并清除 EXIF 元数据 | View and strip EXIF metadata |
 
 ### 网络工具 | Network Tools (`/network`)
 | 工具 | 说明 | Description |
@@ -35,8 +39,9 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | <> HTML | HTML 实体编码与解码 | HTML entity encode/decode |
 | 🌐 Unicode | Unicode 编码转换 | Unicode encode/decode |
 | 🔢 HEX | 十六进制编码与解码 | Hex encode/decode |
-| 🔑 JWT | JWT Token 解码 | JWT Token decode |
+| 🔑 JWT | JWT Token 编解码（含 HS256 签名） | JWT encode/decode with HS256 signing |
 | # Hash | MD5 / SHA-1 / SHA-256 / SHA-512 | MD5 / SHA-1 / SHA-256 / SHA-512 |
+| 🔏 HMAC | HMAC-SHA1/256/512，输出 HEX 和 Base64 | HMAC-SHA1/256/512 with hex and Base64 |
 
 ### 开发者工具 | Developer Tools (`/dev`)
 | 工具 | 说明 | Description |
@@ -45,8 +50,20 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 🎨 颜色转换 | HEX / RGB / HSL 实时转换 | HEX / RGB / HSL conversion |
 | 🔍 正则测试 | 匹配高亮、分组捕获、替换预览 | Regex highlight, capture and replace preview |
 | 🔢 进制转换 | 二/八/十/十六进制互转 | Binary/Octal/Decimal/Hex conversion |
-| 🆔 UUID | 批量生成 UUID v4 | Batch generate UUID v4 |
+| 🆔 UUID | 批量生成 UUID v4 / v7 | Batch generate UUID v4 / v7 |
 | 📋 文本对比 | 逐行差异高亮显示 | Line-by-line diff highlight |
+| 🧾 JSON ↔ YAML | JSON 与 YAML 互转、格式化和校验 | Convert, format and validate JSON/YAML |
+| 🧩 JSON ↔ XML | JSON 与 XML 互转、格式化和校验 | Convert, format and validate JSON/XML |
+| 📑 JSON ↔ CSV | 对象数组与 CSV 互转 | Convert JSON object arrays and CSV |
+| 📘 TOML ↔ JSON | TOML 与 JSON 互转和格式化 | Convert and format TOML/JSON |
+| 🗄️ SQL 格式化 | SQL 美化与压缩 | Beautify or minify SQL |
+| 💻 代码格式化 | 格式化或压缩 JavaScript / CSS | Format or minify JavaScript/CSS |
+| Aa 大小写转换 | camelCase / snake_case / kebab-case 等互转 | Convert camelCase, snake_case, kebab-case and more |
+| ⏱ Cron 解析 | 解析 Cron 并给出下次运行时间 | Parse cron and show next run times |
+| 🌍 时区转换 | 跨时区转换，显示 ISO 与 Unix | Convert across timezones with ISO and Unix |
+| 📝 Markdown 预览 | 实时预览并复制消毒后的 HTML | Live preview and copy sanitized HTML |
+| 🎲 假数据生成 | 姓名、邮箱、电话、地址、UUID、Lorem | Names, emails, phones, addresses, UUIDs, lorem |
+| 🔐 权限计算 | 复选框 / 八进制 / rwxr-xr-x 互转 | Checkboxes ↔ octal ↔ symbolic permissions |
 
 ### 二维码工具 | QR Code Tools (`/qrcode`)
 | 工具 | 说明 | Description |

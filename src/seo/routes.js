@@ -24,7 +24,7 @@ export const seoRoutes = [
   {
     path: '/codec',
     title: '编码解码工具合集 - ToolX',
-    description: '提供 Base64、URL、HTML、Unicode、HEX、JWT 和 Hash 等常用编码解码工具。'
+    description: '提供 Base64、URL、HTML、Unicode、HEX、JWT、Hash 和 HMAC 等常用编码解码工具。'
   },
   {
     path: '/codec/base64',
@@ -53,8 +53,8 @@ export const seoRoutes = [
   },
   {
     path: '/codec/jwt',
-    title: 'JWT Token 解码 - ToolX',
-    description: '在线解析 JWT Header 和 Payload，快速查看 Token 内容。'
+    title: 'JWT Token 编解码 - ToolX',
+    description: '在线解析 JWT Header 和 Payload，或使用 HS256 签名生成 Token。'
   },
   {
     path: '/codec/hash',
@@ -62,9 +62,14 @@ export const seoRoutes = [
     description: '在线计算 MD5、SHA-1、SHA-256、SHA-512 等哈希摘要。'
   },
   {
+    path: '/codec/hmac',
+    title: 'HMAC 计算工具 - ToolX',
+    description: '在线计算 HMAC-SHA1、HMAC-SHA256、HMAC-SHA512，输出 HEX 和 Base64。'
+  },
+  {
     path: '/dev',
     title: '开发者工具合集 - ToolX',
-    description: '提供时间戳转换、颜色转换、正则测试、进制转换、UUID 生成和文本对比工具。'
+    description: '提供时间戳转换、颜色转换、正则测试、进制转换、UUID 生成、文本对比，JSON/YAML/XML/CSV/TOML/SQL 和代码格式化，以及大小写、Cron、时区、Markdown、假数据和权限计算工具。'
   },
   {
     path: '/dev/timestamp',
@@ -89,12 +94,72 @@ export const seoRoutes = [
   {
     path: '/dev/uuid',
     title: 'UUID 生成器 - ToolX',
-    description: '在线批量生成 UUID v4，支持大写格式复制。'
+    description: '在线批量生成 UUID v4 和 UUID v7，支持大写格式复制。'
   },
   {
     path: '/dev/text-diff',
     title: '文本对比工具 - ToolX',
     description: '在线对比两段文本内容，逐行查看差异。'
+  },
+  {
+    path: '/dev/json-yaml',
+    title: 'JSON YAML 转换工具 - ToolX',
+    description: '在线互转、格式化和校验 JSON 与 YAML，所有处理均在浏览器本地完成。'
+  },
+  {
+    path: '/dev/json-xml',
+    title: 'JSON XML 转换工具 - ToolX',
+    description: '在线互转、格式化和校验 JSON 与 XML，适合接口调试和配置文件整理。'
+  },
+  {
+    path: '/dev/json-csv',
+    title: 'JSON CSV 转换工具 - ToolX',
+    description: '在线将对象数组在 JSON 和 CSV 之间互相转换，支持引号和逗号字段。'
+  },
+  {
+    path: '/dev/toml',
+    title: 'TOML JSON 转换工具 - ToolX',
+    description: '在线互转并格式化 TOML 与 JSON，适合配置文件转换。'
+  },
+  {
+    path: '/dev/sql',
+    title: 'SQL 格式化工具 - ToolX',
+    description: '在线美化或压缩 SQL，支持 MySQL、PostgreSQL、SQLite 和 T-SQL 等方言。'
+  },
+  {
+    path: '/dev/code-format',
+    title: '代码格式化工具 - ToolX',
+    description: '在线格式化或压缩 JavaScript 和 CSS，支持空格或 Tab 缩进。'
+  },
+  {
+    path: '/dev/case',
+    title: '大小写转换工具 - ToolX',
+    description: '在线转换 camelCase、snake_case、kebab-case、PascalCase、CONSTANT_CASE 和 Title Case。'
+  },
+  {
+    path: '/dev/cron',
+    title: 'Cron 表达式解析 - ToolX',
+    description: '在线解析 5/6 段 Cron 表达式，生成可读描述并计算接下来的运行时间。'
+  },
+  {
+    path: '/dev/timezone',
+    title: '时区转换工具 - ToolX',
+    description: '在 UTC、Asia/Taipei 以及美欧常见时区之间转换时间，并显示 ISO 与 Unix 时间戳。'
+  },
+  {
+    path: '/dev/markdown',
+    title: 'Markdown 预览 - ToolX',
+    description: '在线实时预览 Markdown，并复制经过消毒处理的 HTML。'
+  },
+  {
+    path: '/dev/fake-data',
+    title: '假数据生成器 - ToolX',
+    description: '在线生成中英姓名、邮箱、电话、地址、UUID 和 Lorem 测试数据。'
+  },
+  {
+    path: '/dev/chmod',
+    title: 'Unix 权限计算器 - ToolX',
+    description: '在复选框、八进制和 rwxr-xr-x 符号权限之间互转，快速计算 chmod。'
   },
   {
     path: '/qrcode',
@@ -129,7 +194,7 @@ export const seoRoutes = [
   {
     path: '/image',
     title: '图片工具合集 - ToolX',
-    description: '提供图片格式转换、图片压缩、图片转 Base64 和 Data URL 等本地图片处理工具。'
+    description: '提供图片格式转换、图片压缩、图片转 Base64、裁剪缩放、SVG 转换和 EXIF 查看等本地图片处理工具。'
   },
   {
     path: '/image/convert',
@@ -145,6 +210,26 @@ export const seoRoutes = [
     path: '/image/base64',
     title: '图片转 Base64 工具 - ToolX',
     description: '在线将图片转换为 Base64 或完整 Data URL，适合 HTML、CSS、小图标内联和接口调试。'
+  },
+  {
+    path: '/image/watermark',
+    title: '图片水印工具 - ToolX',
+    description: '在线为图片添加文字水印、图片 Logo、圆形印章、方形印章和平铺水印，所有图片处理均在浏览器本地完成。'
+  },
+  {
+    path: '/image/resize',
+    title: '图片裁剪缩放工具 - ToolX',
+    description: '在线裁剪和缩放图片，支持宽高、锁定比例和常用尺寸预设，所有处理均在浏览器本地完成。'
+  },
+  {
+    path: '/image/svg',
+    title: 'SVG 转换工具 - ToolX',
+    description: '在线将 SVG 转为 PNG，或把 PNG/JPG 包装成简易 SVG，预览尺寸，全部在浏览器本地完成。'
+  },
+  {
+    path: '/image/exif',
+    title: 'EXIF 查看与清除 - ToolX',
+    description: '在线查看图片 EXIF 信息（相机、GPS、拍摄时间），并导出去除元数据的副本，处理均在本地完成。
   },
   {
     path: '/network',
