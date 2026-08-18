@@ -131,7 +131,29 @@ export const sourceText = {
   '请输入有效域名，例如 example.com': 'Please enter a valid domain, for example example.com',
   '解码失败，输入不是有效的 Base64 字符串': 'Decode failed. The input is not valid Base64.',
   '解码失败，请检查输入是否正确 URL 编码': 'Decode failed. Please check whether the input is URL encoded.',
-  '编码失败': 'Encode failed'
+  '编码失败': 'Encode failed',
+  'JSON ↔ YAML': 'JSON ↔ YAML',
+  '🧾 JSON ↔ YAML': 'JSON ↔ YAML',
+  'JSON ↔ XML': 'JSON ↔ XML',
+  '🧩 JSON ↔ XML': 'JSON ↔ XML',
+  'JSON ↔ CSV': 'JSON ↔ CSV',
+  '📑 JSON ↔ CSV': 'JSON ↔ CSV',
+  'TOML ↔ JSON': 'TOML ↔ JSON',
+  '📘 TOML ↔ JSON': 'TOML ↔ JSON',
+  'SQL 格式化': 'SQL Formatter',
+  '🗄️ SQL 格式化': 'SQL Formatter',
+  '代码格式化': 'Code Formatter',
+  '💻 代码格式化': 'Code Formatter',
+  '输入 YAML': 'Input YAML',
+  '输入 XML': 'Input XML',
+  '输入 CSV': 'Input CSV',
+  '输入 TOML': 'Input TOML',
+  '输入 SQL': 'Input SQL',
+  '输入 CSS': 'Input CSS',
+  '输入 JavaScript': 'Input JavaScript',
+  '对象数组': 'Array of objects',
+  '首行为表头': 'First row is the header',
+  '→ 转换': 'Convert'
 }
 
 export const sourceAttributes = {
@@ -175,7 +197,12 @@ export const sourceAttributes = {
   'Header值': 'Header value',
   '字段名': 'Field name',
   '字段值': 'Field value',
-  '交换输入输出': 'Swap input and output'
+  '交换输入输出': 'Swap input and output',
+  '输入 YAML': 'Enter YAML...',
+  '输入 XML': 'Enter XML...',
+  '输入 CSV': 'Enter CSV...',
+  '输入 TOML': 'Enter TOML...',
+  '输入 SQL': 'Enter SQL...'
 }
 
 export default {

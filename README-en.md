@@ -42,6 +42,12 @@ ToolX is a Nuxt 4 + Vue 3 SSR online toolkit optimized for Cloudflare Pages. It 
 | 🔢 Base | Binary/Octal/Decimal/Hex conversion |
 | 🆔 UUID | Batch generate UUID v4 |
 | 📋 Diff | Line-by-line diff highlight |
+| 🧾 JSON ↔ YAML | Convert, format, and validate JSON/YAML |
+| 🧩 JSON ↔ XML | Convert, format, and validate JSON/XML |
+| 📑 JSON ↔ CSV | Convert JSON object arrays and CSV |
+| 📘 TOML ↔ JSON | Convert and format TOML/JSON |
+| 🗄️ SQL Formatter | Beautify or minify SQL |
+| 💻 Code Formatter | Format or minify JavaScript/CSS |
 
 ### QR Code Tools (`/qrcode`)
 | Tool | Description |
