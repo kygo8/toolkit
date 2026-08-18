@@ -1,23 +1,19 @@
 <script setup>
 import { ref } from 'vue'
+import { uuidv4, uuidv7 } from '~/src/utils/uuid.js'
 
 const count = ref(5)
+const version = ref('v4')
 const uppercase = ref(false)
 const uuids = ref([])
 const copied = ref('')
 
-const generateUUID = () => {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-    const r = Math.random() * 16 | 0
-    const v = c === 'x' ? r : (r & 0x3 | 0x8)
-    return v.toString(16)
-  })
-}
+const generateOne = () => (version.value === 'v7' ? uuidv7() : uuidv4())
 
 const generate = () => {
   uuids.value = []
   for (let i = 0; i < count.value; i++) {
-    let uuid = generateUUID()
+    let uuid = generateOne()
     if (uppercase.value) uuid = uuid.toUpperCase()
     uuids.value.push(uuid)
   }
@@ -27,7 +23,7 @@ const copyOne = async (uuid, index) => {
   try {
     await navigator.clipboard.writeText(uuid)
     copied.value = String(index)
-    setTimeout(() => copied.value = '', 2000)
+    setTimeout(() => { copied.value = '' }, 2000)
   } catch {}
 }
 
@@ -36,7 +32,7 @@ const copyAll = async () => {
   try {
     await navigator.clipboard.writeText(uuids.value.join('\n'))
     copied.value = 'all'
-    setTimeout(() => copied.value = '', 2000)
+    setTimeout(() => { copied.value = '' }, 2000)
   } catch {}
 }
 
@@ -51,6 +47,13 @@ generate()
 
     <div class="card">
       <div class="config-row">
+        <div class="config-item">
+          <label class="config-label">版本</label>
+          <select v-model="version" class="form-select-sm">
+            <option value="v4">UUID v4</option>
+            <option value="v7">UUID v7</option>
+          </select>
+        </div>
         <div class="config-item">
           <label class="config-label">数量</label>
           <select v-model.number="count" class="form-select-sm">
