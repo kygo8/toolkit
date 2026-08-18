@@ -21,6 +21,9 @@ ToolX is a Nuxt 4 + Vue 3 SSR online toolkit optimized for Cloudflare Pages. It 
 | 🚀 cURL Test | Parse cURL, send requests, and inspect responses |
 | 🔄 cURL to Code | Convert cURL to Python/JavaScript/Go/PHP/Java code |
 | 🛠️ cURL Builder | Visual form to build cURL commands |
+| 🧮 CIDR Calculator | Calculate IPv4 network, broadcast, host range, mask, and count |
+| 🧭 User-Agent | Parse browser, OS, device, and engine |
+| 📑 HTTP Header | Parse request/response headers into a table |
 
 ### Codec Tools (`/codec`)
 | Tool | Description |
@@ -49,6 +52,8 @@ ToolX is a Nuxt 4 + Vue 3 SSR online toolkit optimized for Cloudflare Pages. It 
 | 📱 Generate | Generate QR from text/URL |
 | 🔍 Decode | Upload image to decode QR |
 | 🎨 Beautify | Customize color, shape, and logo |
+| 📶 Wi-Fi QR | Generate WIFI: QR codes |
+| 👤 vCard QR | Form to vCard 3.0 QR |
 
 ### SEO Tools (`/seo`)
 | Tool | Description |
@@ -63,6 +68,8 @@ ToolX is a Nuxt 4 + Vue 3 SSR online toolkit optimized for Cloudflare Pages. It 
 | 🕷️ Crawler | Crawl internal links |
 | 🌐 Batch URL | Batch extract domains and open URLs |
 | 🔍 404 Check | Batch check URL status |
+| 📰 OG Preview | Generate Open Graph / Twitter Card tags and preview |
+| 🧩 JSON-LD | Guided JSON-LD for WebSite, Article, Organization, and BreadcrumbList |
 
 ### Other Tools (`/other`)
 | Tool | Description |

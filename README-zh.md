@@ -21,6 +21,9 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 🚀 cURL 测试 | 解析 cURL，发送请求并查看响应 |
 | 🔄 cURL 转代码 | cURL 命令转为 Python/JavaScript/Go/PHP/Java 代码 |
 | 🛠️ cURL 构建器 | 可视化表单构建 cURL 命令 |
+| 🧮 CIDR 计算 | 计算 IPv4 网段、广播、主机范围、掩码和地址数量 |
+| 🧭 User-Agent | 解析浏览器、系统、设备和引擎 |
+| 📑 HTTP Header | 解析请求/响应头为表格 |
 
 ### 编码/解码工具 (`/codec`)
 | 工具 | 说明 |
@@ -49,6 +52,8 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 📱 生成 | 输入文本/URL 生成二维码 |
 | 🔍 解码 | 上传图片识别二维码 |
 | 🎨 美化 | 自定义颜色、圆角和 Logo |
+| 📶 WiFi 二维码 | 生成 WIFI: 配网二维码 |
+| 👤 名片二维码 | 表单生成 vCard 3.0 二维码 |
 
 ### SEO 工具 (`/seo`)
 | 工具 | 说明 |
@@ -63,6 +68,8 @@ ToolX 是一个基于 Nuxt 4 + Vue 3 的 SSR 在线工具站，面向 Cloudflare
 | 🕷️ 全站爬取 | 爬取站内链接并发现问题 |
 | 🌐 批量 URL | 批量提取域名和打开 URL |
 | 🔍 404 检查 | 批量检查 URL 状态码 |
+| 📰 OG 预览 | 生成 Open Graph / Twitter Card 并预览 |
+| 🧩 JSON-LD | 引导生成 WebSite / Article / Organization / BreadcrumbList |
 
 ### 其他工具 (`/other`)
 | 工具 | 说明 |
