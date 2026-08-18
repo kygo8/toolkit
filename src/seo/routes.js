@@ -117,6 +117,16 @@ export const seoRoutes = [
     description: '在线定制二维码渐变色、圆角、圆点样式、定位点配色和 Logo。'
   },
   {
+    path: '/qrcode/wifi',
+    title: 'WiFi 二维码生成 - ToolX',
+    description: '根据 SSID、加密方式、密码和隐藏网络设置生成 WIFI: 配网二维码。'
+  },
+  {
+    path: '/qrcode/vcard',
+    title: '名片二维码生成 - ToolX',
+    description: '通过表单生成 vCard 3.0 名片，并输出可扫描的二维码。'
+  },
+  {
     path: '/image',
     title: '图片工具合集 - ToolX',
     description: '提供图片格式转换、图片压缩、图片转 Base64 和 Data URL 等本地图片处理工具。'
@@ -150,6 +160,21 @@ export const seoRoutes = [
     path: '/network/domain',
     title: '域名检测工具 - ToolX',
     description: '在线解析域名结构并查询 A、AAAA、CNAME、MX、NS、TXT 等 DNS 记录。'
+  },
+  {
+    path: '/network/cidr',
+    title: 'CIDR 计算器 - ToolX',
+    description: '在线计算 IPv4 CIDR 的网络地址、广播地址、主机范围、子网掩码、通配符掩码和地址数量。'
+  },
+  {
+    path: '/network/ua',
+    title: 'User-Agent 解析 - ToolX',
+    description: '在线解析 User-Agent 字符串，识别浏览器、操作系统、设备和渲染引擎。'
+  },
+  {
+    path: '/network/header',
+    title: 'HTTP Header 解析 - ToolX',
+    description: '把原始 HTTP 请求或响应头解析成表格，并提供常见 Header 的简单说明。'
   },
   {
     path: '/network/curl',
@@ -225,6 +250,16 @@ export const seoRoutes = [
     path: '/seo/site-crawler',
     title: '网站爬虫工具 - ToolX',
     description: '递归爬取站内链接，发现页面、死链和 404 问题。'
+  },
+  {
+    path: '/seo/og',
+    title: 'Open Graph 预览 - ToolX',
+    description: '根据标题、描述、图片和 URL 生成 Open Graph、Twitter Card 标签，并预览分享卡片。'
+  },
+  {
+    path: '/seo/json-ld',
+    title: 'JSON-LD 生成器 - ToolX',
+    description: '引导生成 WebSite、Article、Organization 和 BreadcrumbList 的 JSON-LD 结构化数据。'
   }
 ]
 
