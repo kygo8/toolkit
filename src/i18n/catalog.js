@@ -19,6 +19,9 @@ export const toolCatalog = {
   imageExif: { path: '/image/exif', icon: '📷', color: '#f59e0b', category: 'image' },
   networkCheck: { path: '/network/check', icon: '📗', color: '#00d9ff', category: 'network' },
   domainCheck: { path: '/network/domain', icon: '🌍', color: '#10b981', category: 'network' },
+  cidr: { path: '/network/cidr', icon: '🧮', color: '#6366f1', category: 'network' },
+  userAgent: { path: '/network/ua', icon: '🧭', color: '#0ea5e9', category: 'network' },
+  httpHeader: { path: '/network/header', icon: '📑', color: '#a855f7', category: 'network' },
   curlTest: { path: '/network/curl/test', icon: '🚀', color: '#f97316', category: 'curl' },
   curlBuilder: { path: '/network/curl/builder', icon: '🛠️', color: '#7c3aed', category: 'curl' },
   curlToCode: { path: '/network/curl/to-code', icon: '🔄', color: '#ec4899', category: 'curl' },
@@ -51,6 +54,8 @@ export const toolCatalog = {
   qrGenerate: { path: '/qrcode/generate', icon: '📱', color: '#00d9ff', category: 'qrcode' },
   qrDecode: { path: '/qrcode/decode', icon: '🔍', color: '#7c3aed', category: 'qrcode' },
   qrBeautify: { path: '/qrcode/beautify', icon: '🎨', color: '#ec4899', category: 'qrcode' },
+  qrWifi: { path: '/qrcode/wifi', icon: '📶', color: '#22c55e', category: 'qrcode' },
+  qrVcard: { path: '/qrcode/vcard', icon: '👤', color: '#f59e0b', category: 'qrcode' },
   batchUrl: { path: '/seo/batch-url', icon: '🌐', color: '#8b5cf6', category: 'seo' },
   siteCrawler: { path: '/seo/site-crawler', icon: '🕷️', color: '#06b6d4', category: 'seo' },
   meta: { path: '/seo/meta', icon: '📝', color: '#00d9ff', category: 'seo' },
@@ -61,17 +66,19 @@ export const toolCatalog = {
   robots: { path: '/seo/robots', icon: '🤖', color: '#ef4444', category: 'seo' },
   htag: { path: '/seo/htag', icon: '#', color: '#14b8a6', category: 'seo' },
   characterCounter: { path: '/seo/character-counter', icon: '🔢', color: '#10b981', category: 'seo' },
+  ogPreview: { path: '/seo/og', icon: '📰', color: '#3b82f6', category: 'seo' },
+  jsonLd: { path: '/seo/json-ld', icon: '🧩', color: '#14b8a6', category: 'seo' },
   password: { path: '/password', icon: '🔑', color: '#7c3aed', category: 'other' },
   json: { path: '/json', icon: '{}', color: '#14b8a6', category: 'other' }
 }
 
 export const categoryCatalog = {
   image: { path: '/image', icon: '🖼️', color: '#38bdf8', tools: ['imageConvert', 'imageCompress', 'imageBase64', 'imageWatermark', 'imageResize', 'svgConvert', 'imageExif'] },
-  network: { path: '/network', icon: '🌐', color: '#f97316', tools: ['networkCheck', 'domainCheck', 'curlTest', 'curlBuilder', 'curlToCode'] },
+  network: { path: '/network', icon: '🌐', color: '#f97316', tools: ['networkCheck', 'domainCheck', 'cidr', 'userAgent', 'httpHeader', 'curlTest', 'curlBuilder', 'curlToCode'] },
   codec: { path: '/codec', icon: '↔', color: '#10b981', tools: ['base64', 'url', 'html', 'unicode', 'hex', 'jwt', 'hash', 'hmac'] },
   dev: { path: '/dev', icon: '🛠️', color: '#00d9ff', tools: ['timestamp', 'color', 'regex', 'numberBase', 'uuid', 'textDiff', 'jsonYaml', 'jsonXml', 'jsonCsv', 'tomlJson', 'sqlFormat', 'codeFormat', 'caseConvert', 'cron', 'timezone', 'markdown', 'fakeData', 'chmod'] },
-  qrcode: { path: '/qrcode', icon: '📱', color: '#ec4899', tools: ['qrGenerate', 'qrDecode', 'qrBeautify'] },
-  seo: { path: '/seo', icon: '📊', color: '#f59e0b', tools: ['batchUrl', 'siteCrawler', 'meta', 'keywordDensity', 'sitemap', 'checker404', 'deadLink', 'robots', 'htag', 'characterCounter'] },
+  qrcode: { path: '/qrcode', icon: '📱', color: '#ec4899', tools: ['qrGenerate', 'qrDecode', 'qrBeautify', 'qrWifi', 'qrVcard'] },
+  seo: { path: '/seo', icon: '📊', color: '#f59e0b', tools: ['batchUrl', 'siteCrawler', 'meta', 'keywordDensity', 'sitemap', 'checker404', 'deadLink', 'robots', 'htag', 'characterCounter', 'ogPreview', 'jsonLd'] },
   other: { path: '/other', icon: '✨', color: '#a78bfa', tools: ['password', 'json'] },
   curl: { path: '/network/curl', icon: '🌐', color: '#f97316', tools: ['curlTest', 'curlToCode', 'curlBuilder'] }
 }
