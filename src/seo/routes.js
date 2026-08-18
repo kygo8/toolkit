@@ -24,7 +24,7 @@ export const seoRoutes = [
   {
     path: '/codec',
     title: '编码解码工具合集 - ToolX',
-    description: '提供 Base64、URL、HTML、Unicode、HEX、JWT 和 Hash 等常用编码解码工具。'
+    description: '提供 Base64、URL、HTML、Unicode、HEX、JWT、Hash 和 HMAC 等常用编码解码工具。'
   },
   {
     path: '/codec/base64',
@@ -53,8 +53,8 @@ export const seoRoutes = [
   },
   {
     path: '/codec/jwt',
-    title: 'JWT Token 解码 - ToolX',
-    description: '在线解析 JWT Header 和 Payload，快速查看 Token 内容。'
+    title: 'JWT Token 编解码 - ToolX',
+    description: '在线解析 JWT Header 和 Payload，或使用 HS256 签名生成 Token。'
   },
   {
     path: '/codec/hash',
@@ -62,9 +62,14 @@ export const seoRoutes = [
     description: '在线计算 MD5、SHA-1、SHA-256、SHA-512 等哈希摘要。'
   },
   {
+    path: '/codec/hmac',
+    title: 'HMAC 计算工具 - ToolX',
+    description: '在线计算 HMAC-SHA1、HMAC-SHA256、HMAC-SHA512，输出 HEX 和 Base64。'
+  },
+  {
     path: '/dev',
     title: '开发者工具合集 - ToolX',
-    description: '提供时间戳转换、颜色转换、正则测试、进制转换、UUID 生成和文本对比工具。'
+    description: '提供时间戳、颜色、正则、进制、UUID、文本对比、大小写、Cron、时区、Markdown、假数据和权限计算工具。'
   },
   {
     path: '/dev/timestamp',
@@ -89,12 +94,42 @@ export const seoRoutes = [
   {
     path: '/dev/uuid',
     title: 'UUID 生成器 - ToolX',
-    description: '在线批量生成 UUID v4，支持大写格式复制。'
+    description: '在线批量生成 UUID v4 和 UUID v7，支持大写格式复制。'
   },
   {
     path: '/dev/text-diff',
     title: '文本对比工具 - ToolX',
     description: '在线对比两段文本内容，逐行查看差异。'
+  },
+  {
+    path: '/dev/case',
+    title: '大小写转换工具 - ToolX',
+    description: '在线转换 camelCase、snake_case、kebab-case、PascalCase、CONSTANT_CASE 和 Title Case。'
+  },
+  {
+    path: '/dev/cron',
+    title: 'Cron 表达式解析 - ToolX',
+    description: '在线解析 5/6 段 Cron 表达式，生成可读描述并计算接下来的运行时间。'
+  },
+  {
+    path: '/dev/timezone',
+    title: '时区转换工具 - ToolX',
+    description: '在 UTC、Asia/Taipei 以及美欧常见时区之间转换时间，并显示 ISO 与 Unix 时间戳。'
+  },
+  {
+    path: '/dev/markdown',
+    title: 'Markdown 预览 - ToolX',
+    description: '在线实时预览 Markdown，并复制经过消毒处理的 HTML。'
+  },
+  {
+    path: '/dev/fake-data',
+    title: '假数据生成器 - ToolX',
+    description: '在线生成中英姓名、邮箱、电话、地址、UUID 和 Lorem 测试数据。'
+  },
+  {
+    path: '/dev/chmod',
+    title: 'Unix 权限计算器 - ToolX',
+    description: '在复选框、八进制和 rwxr-xr-x 符号权限之间互转，快速计算 chmod。'
   },
   {
     path: '/qrcode',
