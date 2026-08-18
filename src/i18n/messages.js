@@ -141,6 +141,7 @@ const zhCN = {
     imageConvert: { title: '图片格式转换', desc: 'PNG、JPG、WebP 在线本地转换。' },
     imageCompress: { title: '图片压缩', desc: '调整质量和最大宽度，快速压缩图片体积。' },
     imageBase64: { title: '图片转 Base64', desc: '将图片转换为 Base64 或 Data URL，适合 CSS、HTML 和接口调试。' },
+    imageWatermark: { title: '图片水印', desc: '在本地为图片添加文字水印、图片 Logo、圆形印章、方形印章和平铺水印。' },
     networkCheck: { title: '网络检测', desc: '检测浏览器联网状态、当前网络信息、本站连通性和响应延迟。' },
     domainCheck: { title: '域名检测', desc: '解析域名结构，查询 A、AAAA、CNAME、MX、NS、TXT 等 DNS 记录。' },
     curlTest: { title: 'cURL 测试', desc: '解析 cURL 命令并通过代理发送请求，查看响应状态、Header 和 Body。' },

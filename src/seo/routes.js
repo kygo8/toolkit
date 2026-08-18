@@ -137,6 +137,11 @@ export const seoRoutes = [
     description: '在线将图片转换为 Base64 或完整 Data URL，适合 HTML、CSS、小图标内联和接口调试。'
   },
   {
+    path: '/image/watermark',
+    title: '图片水印工具 - ToolX',
+    description: '在线为图片添加文字水印、图片 Logo、圆形印章、方形印章和平铺水印，所有图片处理均在浏览器本地完成。'
+  },
+  {
     path: '/network',
     title: '网络工具合集 - ToolX',
     description: '提供网络检测、域名检测、DNS 查询、cURL 测试、cURL 构建和 cURL 转代码工具。'
