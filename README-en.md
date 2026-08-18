@@ -13,6 +13,9 @@ ToolX is a Nuxt 4 + Vue 3 SSR online toolkit optimized for Cloudflare Pages. It 
 | 📉 Image Compress | Compress images by quality and size |
 | 🔤 Image to Base64 | Generate Base64 and Data URL output |
 | 印 Image Watermark | Add text, logo, stamp and tiled watermarks locally |
+| 📐 Crop & Resize | Crop, resize, and download PNG/JPG/WebP |
+| ✴️ SVG Converter | Convert SVG to PNG, or wrap rasters as SVG |
+| 📷 EXIF Viewer | View and strip EXIF metadata |
 
 ### Network Tools (`/network`)
 | Tool | Description |
